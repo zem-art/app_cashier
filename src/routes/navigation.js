@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
@@ -8,6 +7,8 @@ const Stack = createStackNavigator();
 import Intro from '../screen/Intro';
 import Splash from '../screen/Splash';
 import Login from '../screen/auth/login';
+import Register from '../screen/auth/Register';
+
 export class Navigation extends Component {
   constructor() {
     super();
@@ -40,6 +41,11 @@ export class Navigation extends Component {
             <Stack.Screen
               name="Login"
               component={Login}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="Register"
+              component={Register}
               options={{headerShown: false}}
             />
           </>

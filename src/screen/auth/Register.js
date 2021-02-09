@@ -3,19 +3,19 @@ import {
   Text,
   View,
   StatusBar,
+  TouchableOpacity,
   Image,
   ScrollView,
   TextInput,
-  TouchableOpacity,
 } from 'react-native';
+import {styles} from '../../styles/styleRegister';
 
-import {styles} from '../../styles/styleLogin';
-
-export class Login extends Component {
+export class Register extends Component {
   constructor() {
     super();
     this.state = {
       mata: true,
+      name: '',
       email: '',
       password: '',
       isloading: false,
@@ -28,28 +28,37 @@ export class Login extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar backgroundColor="#4f52ffff" />
+        <StatusBar backgroundColor="#585aa7ff" />
         <View style={styles.header}>
-          <Text style={styles.textLogin}>Sign In</Text>
+          <Text style={styles.textLogin}>Sign Up</Text>
         </View>
         <View style={styles.pactImage}>
           <Image
             style={styles.icon}
-            source={require('../../assets/img/IconLogin.png')}
+            source={require('../../assets/img/Register.png')}
           />
         </View>
         <ScrollView>
           <View style={styles.pactAccount}>
-            <Text>Email Or No Phone :</Text>
+            <Text>No Phone :</Text>
             <View style={styles.inAccount}>
               <Image
-                style={styles.pass}
-                source={require('../../assets/icon/mail.png')}
+                style={styles.pass2}
+                source={require('../../assets/icon/Phone.png')}
               />
               <TextInput
+                keyboardType="number-pad"
                 style={styles.input}
-                placeholder="Email Or Phone Number"
+                placeholder="Please Enter +62 in Front"
               />
+            </View>
+            <Text>Name :</Text>
+            <View style={styles.inAccount}>
+              <Image
+                style={[styles.pass1, {height: 30}]}
+                source={require('../../assets/icon/signUP.png')}
+              />
+              <TextInput style={styles.input} placeholder="Enter Your Name" />
             </View>
             <Text>Password :</Text>
             <View style={styles.inAccount}>
@@ -77,18 +86,15 @@ export class Login extends Component {
             </View>
           </View>
           <View style={styles.Bootom}>
-            <TouchableOpacity style={styles.inBottom}>
-              <Text style={styles.forgot}>Forgot Password</Text>
-            </TouchableOpacity>
             <TouchableOpacity style={styles.inBottom1}>
               <Text style={styles.textLogin}>Sign In</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.Register}>
-            <Text>You don 't have an account ? </Text>
+            <Text>You Already Have An Account ? </Text>
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('Register')}>
-              <Text style={styles.textRegister}> Sign Up</Text>
+              onPress={() => this.props.navigation.navigate('Login')}>
+              <Text style={styles.textRegister}> Sign in</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
@@ -97,4 +103,4 @@ export class Login extends Component {
   }
 }
 
-export default Login;
+export default Register;

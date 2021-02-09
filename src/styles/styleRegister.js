@@ -10,7 +10,11 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     justifyContent: 'center',
     paddingHorizontal: 30,
-    backgroundColor: '#4f52ffff',
+    backgroundColor: '#585aa7ff',
+  },
+  textLogin: {
+    fontSize: 17,
+    color: '#ffff',
   },
   pactImage: {
     // borderWidth: 1,
@@ -33,11 +37,21 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginVertical: 10,
     paddingLeft: 20,
+    // borderBottomWidth: 1,
+    borderBottomColor: '#585aa7ff',
     width: '100%',
   },
   pass: {
-    height: 25,
-    width: 25,
+    height: 30,
+    width: 30,
+  },
+  pass1: {
+    width: 30,
+  },
+  pass2: {
+    height: 50,
+    width: 20,
+    marginRight: 10,
   },
   inAccount: {
     paddingHorizontal: 5,
@@ -45,15 +59,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingRight: 70,
     borderBottomWidth: 1,
+    borderBottomColor: '#585aa7ff',
     // borderWidth: 1,
-    borderBottomColor: '#4f52ffff',
-    marginVertical: 5,
     width: '100%',
   },
   Bootom: {
-    // borderWidth: 1,
     flexDirection: 'row',
-    // padding: 10,
+    // borderWidth: 1,
     width: '100%',
     height: 80,
     alignItems: 'center',
@@ -75,17 +87,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,
-    backgroundColor: '#4f52ffff',
+    backgroundColor: '#585aa7ff',
     // marginLeft: 10,
-  },
-  textLogin: {
-    color: '#ffffff',
-    fontSize: 17,
-  },
-  forgot: {
-    color: '#a9a9',
-    fontWeight: 'bold',
-    fontSize: 15,
   },
   Register: {
     height: 40,

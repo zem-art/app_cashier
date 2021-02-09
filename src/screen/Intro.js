@@ -28,7 +28,9 @@ export class Intro extends Component {
             />
             <Text style={styles.textLogin}>Sign</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.register}>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('Register')}
+            style={styles.register}>
             <Image
               style={styles.iconLogin}
               source={require('../assets/icon/signUP.png')}
@@ -37,7 +39,7 @@ export class Intro extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.pactForgot}>
-          <Text>Forgot Password ?</Text>
+          <Text>Send OTP ?</Text>
           <TouchableOpacity>
             <Text style={styles.forgot}>Klik</Text>
           </TouchableOpacity>
