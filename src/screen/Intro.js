@@ -19,7 +19,9 @@ export class Intro extends Component {
           />
         </View>
         <View style={styles.pactAccount}>
-          <TouchableOpacity style={styles.login}>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('Login')}
+            style={styles.login}>
             <Image
               style={styles.iconLogin}
               source={require('../assets/icon/login1.png')}

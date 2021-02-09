@@ -7,7 +7,7 @@ const Stack = createStackNavigator();
 
 import Intro from '../screen/Intro';
 import Splash from '../screen/Splash';
-
+import Login from '../screen/auth/login';
 export class Navigation extends Component {
   constructor() {
     super();
@@ -35,6 +35,11 @@ export class Navigation extends Component {
             <Stack.Screen
               name="Intro"
               component={Intro}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="Login"
+              component={Login}
               options={{headerShown: false}}
             />
           </>

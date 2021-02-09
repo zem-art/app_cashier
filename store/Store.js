@@ -1,5 +1,5 @@
 import {createStore} from 'redux';
-import Data from '../reducer/Connector';
+import Data from '../src/reducer/Connector';
 
 let store;
 
