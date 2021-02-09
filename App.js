@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
-import Splash from './src/screen/Splash';
+import {Provider} from 'react-redux';
+import Navigation from './src/routes/navigation';
+import store from './src/store/Store';
 
 export class App extends Component {
   render() {
     return (
-      <>
-        <Splash />
-      </>
+      <Provider store={store}>
+        <Navigation />
+      </Provider>
     );
   }
 }
