@@ -8,6 +8,8 @@ import Intro from '../screen/Intro';
 import Splash from '../screen/Splash';
 import Login from '../screen/auth/login';
 import Register from '../screen/auth/Register';
+import Otp from '../screen/auth/otp';
+import NoPhone from '../screen/auth/NoPhone';
 
 export class Navigation extends Component {
   constructor() {
@@ -46,6 +48,16 @@ export class Navigation extends Component {
             <Stack.Screen
               name="Register"
               component={Register}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="Otp"
+              component={Otp}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="NoPhone"
+              component={NoPhone}
               options={{headerShown: false}}
             />
           </>
