@@ -12,11 +12,12 @@ import {styles} from '../../styles/styleOtp';
 import LottieView from 'lottie-react-native';
 import {connect} from 'react-redux';
 import Spinner from 'react-native-spinkit';
+import axios from 'axios';
 
 export class Otp extends Component {
   constructor() {
     super();
-    // const data = this.props.userData.userReducer.number;
+    // const data = this.props.userData.userReducer;
     this.state = {
       noPhone: '',
       otp: '',
@@ -30,22 +31,14 @@ export class Otp extends Component {
 
   sendOTp() {
     this.setState({isloading: true});
-    const {otp, noPhone} = this.state;
-    if (otp !== '' || noPhone !== '') {
-      let data = {
-        kode: otp,
-        nomer: noPhone,
-      };
-      console.log('Ini data ==', data);
-      fetch('https://project-mini.herokuapp.com/api/verify', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: data,
-      })
-        .then((responseJson) => {
-          console.log('Succsess==', responseJson);
+    try {
+      axios
+        .post('https://project-mini.herokuapp.com/api/verify', {
+          kode: this.state.otp,
+          nomor: this.state.noPhone,
+        })
+        .then((result) => {
+          console.log('Succsess==', result.data);
           ToastAndroid.show('Kode OTP Anda Benar', ToastAndroid.LONG);
           this.lead_To();
           this.setState({
@@ -59,15 +52,13 @@ export class Otp extends Component {
             isloading: false,
           });
         });
-    } else {
+    } catch {
       ToastAndroid.show('Kode OTP Belum Di Isi', ToastAndroid.LONG);
       this.setState({isloading: false});
     }
   }
 
   render() {
-    console.log('Ini Data Redux===', this.props.userData.userReducer.number);
-    console.log('Ini Data ===', this.props.route.params);
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#00D380" />
@@ -95,8 +86,9 @@ export class Otp extends Component {
                 <TextInput
                   style={styles.input1}
                   placeholder="No Phone"
-                  // value={this.props.userData.userReducer.number}
-                  value={this.props.route.params.item}
+                  keyboardType="number-pad"
+                  value={this.state.noPhone}
+                  onChangeText={(number) => this.setState({noPhone: number})}
                 />
               </View>
             </View>

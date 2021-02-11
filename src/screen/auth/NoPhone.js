@@ -20,12 +20,11 @@ export class NoPhone extends Component {
     this.state = {
       NoPhone: '',
       isloading: false,
-      number: {},
     };
   }
 
   lead_To() {
-    this.props.navigation.navigate('Otp', {item: this.state.number});
+    this.props.navigation.navigate('Otp');
   }
 
   sendNumber() {
@@ -44,23 +43,16 @@ export class NoPhone extends Component {
           this.lead_To();
           const {data} = responseJson.data;
           this.props.numberUser(data);
-          this.setState({
-            isloading: false,
-            number: responseJson.data,
-          });
+          this.setState({isloading: false});
         })
         .catch((err) => {
           console.log('Eror===', err);
           ToastAndroid.show('No Phone Tidak Di Temukan', ToastAndroid.LONG);
-          this.setState({
-            isloading: false,
-          });
+          this.setState({isloading: false});
         });
     } catch (err) {
       console.log(err);
-      this.setState({
-        isloading: false,
-      });
+      this.setState({isloading: false});
     }
   }
 

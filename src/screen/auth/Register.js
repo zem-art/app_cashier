@@ -12,6 +12,7 @@ import {
 import {styles} from '../../styles/styleRegister';
 import axios from 'axios';
 import Spinner from 'react-native-spinkit';
+import {connect} from 'react-redux';
 
 export class Register extends Component {
   constructor() {
@@ -29,6 +30,10 @@ export class Register extends Component {
     this.setState({mata: eyes});
   };
 
+  lead_To() {
+    this.props.navigation.navigate('Otp');
+  }
+
   userRegister() {
     this.setState({isloading: true});
     axios({
@@ -40,15 +45,18 @@ export class Register extends Component {
         password: this.state.password,
       },
     })
-      .then((result) => {
-        const {token} = result.data;
-        console.log('Ini Data====', result.data);
+      .then((responseJson) => {
+        const {token} = responseJson.data;
+        console.log('Ini Data====', responseJson.data);
+        const {data} = responseJson.data;
+        this.props.numberUser(data);
         if (token === token) {
           ToastAndroid.show(
             'Akun Berhasil Mendaftar Daftar',
             ToastAndroid.LONG,
           );
         }
+        this.lead_To();
         this.setState({
           isloading: false,
         });
@@ -166,5 +174,10 @@ export class Register extends Component {
     );
   }
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    numberUser: (data) => dispatch({type: 'SET_NUMBER', payload: data}),
+  };
+};
 
-export default Register;
+export default connect(null, mapDispatchToProps)(Register);
