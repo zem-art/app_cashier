@@ -40,16 +40,22 @@ export class Login extends Component {
         })
         .then((result) => {
           const {id} = result.data.user;
+          const {is_verified} = result.data.user;
           const {kode_member} = result.data.user;
           const {nama} = result.data.user;
           const {nomor} = result.data.user;
-          const {saldo} = result.data.user;
-          // const {is_verified} = result.data;
-          const {qrCode} = result.data.user;
-          const {token} = result.data;
+          const {qr_code} = result.data.user;
           const {role_id} = result.data.user;
+          const {token} = result.data;
+          this.props.userId(id);
+          this.props.userVerifed(is_verified);
+          this.props.kodeUser(kode_member);
+          this.props.nameUser(nama);
+          this.props.numberUser(nomor);
+          this.props.userQrcode(qr_code);
+          this.props.userRole(role_id);
+          this.props.userToken(token);
           console.log('Ini Role==', result.data.user);
-          console.log('Ini Data===', result.data.user);
           if (
             token !== null ||
             role_id !== null ||
@@ -57,10 +63,37 @@ export class Login extends Component {
             nama !== null ||
             id !== null ||
             nomor !== null ||
-            saldo !== null ||
-            qrCode !== null
-            // is_verified !== null
+            qr_code !== null ||
+            is_verified !== null
           ) {
+            const token_Key = ['token', token];
+            const role_Key = ['role_id', JSON.stringify(role_id)];
+            const qr_Key = ['qr_code', qr_code];
+            const nomor_Key = ['nomor', nomor];
+            const name_Key = ['nama', nama];
+            const kode_Key = ['kode_member', kode_member];
+            const id_Key = ['id', JSON.stringify(id)];
+            console.log('Sedang Menyimpan');
+            AsyncStorage.multiSet([
+              token_Key,
+              role_Key,
+              name_Key,
+              qr_Key,
+              nomor_Key,
+              kode_Key,
+              id_Key,
+            ]).then((value) => {
+              this.setState({
+                token_Key: value,
+                role_Key: value,
+                qr_Key: value,
+                nomor_Key: value,
+                name_Key: value,
+                kode_Key: value,
+                id_Key: value,
+              });
+              console.log('Save Done');
+            });
             ToastAndroid.show('Anda Berhasil Login', ToastAndroid.LONG);
             this.setState({
               isloading: false,
@@ -86,6 +119,7 @@ export class Login extends Component {
     }
   };
   render() {
+    // console.log('INi DAta Redux', this.props.userData.userReducer);
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#4f52ffff" />
@@ -178,4 +212,18 @@ export class Login extends Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    userId: (id) => dispatch({type: 'SET_ID', payload: id}),
+    userVerifed: (verifed) => dispatch({type: 'SET_VERIVIC', payload: verifed}),
+    kodeUser: (kode) => dispatch({type: 'SET_KODE', payload: kode}),
+    nameUser: (name) => dispatch({type: 'SET_NAME', payload: name}),
+    numberUser: (data) => dispatch({type: 'SET_NUMBER', payload: data}),
+    userQrcode: (qr) => dispatch({type: 'SET_QRCODE', payload: qr}),
+    userRole: (role) => dispatch({type: 'SET_ROLE', payload: role}),
+    userSaldo: (saldo) => dispatch({type: 'SET_SALDO', payload: saldo}),
+    userToken: (token) => dispatch({type: 'SET_USER', payload: token}),
+    emailUser: (email) => dispatch({type: 'EMAIL_USER', payload: email}),
+  };
+};
+export default connect(null, mapDispatchToProps)(Login);
