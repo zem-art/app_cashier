@@ -73,6 +73,7 @@ export class Login extends Component {
             const name_Key = ['nama', nama];
             const kode_Key = ['kode_member', kode_member];
             const id_Key = ['id', JSON.stringify(id)];
+            const verifed_Key = ['verifid', is_verified];
             console.log('Sedang Menyimpan');
             AsyncStorage.multiSet([
               token_Key,
@@ -82,6 +83,7 @@ export class Login extends Component {
               nomor_Key,
               kode_Key,
               id_Key,
+              verifed_Key,
             ]).then((value) => {
               this.setState({
                 token_Key: value,
@@ -91,6 +93,7 @@ export class Login extends Component {
                 name_Key: value,
                 kode_Key: value,
                 id_Key: value,
+                verifed_Key: value,
               });
               console.log('Save Done');
             });
