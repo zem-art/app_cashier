@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const Stack = createStackNavigator();
 
@@ -19,17 +20,34 @@ export class Navigation extends Component {
     };
   }
 
+  getDataStore = async () => {
+    try {
+      AsyncStorage.multiGet([
+        'token',
+        'nama',
+        'qr_code',
+        'nomor',
+        'kode_member',
+        'verifid',
+      ]).then((value) => {
+        console.log('INI dari Asynstore== ', value);
+        this.setState({splash: false});
+      });
+    } catch (err) {
+      console.log('Eror Get Store', err);
+      this.setState({splash: false});
+    }
+  };
+
   componentDidMount() {
     setTimeout(() => {
-      null;
+      this.getDataStore();
     }, 3000);
   }
 
   render() {
     if (this.state.splash) {
-      <>
-        <Splash />
-      </>;
+      return <Splash />;
     }
     return (
       <NavigationContainer>
