@@ -67,11 +67,11 @@ export class Login extends Component {
             is_verified !== null
           ) {
             const token_Key = ['token', token];
-            const role_Key = ['role_id', JSON.stringify(role_id)];
+            const role_Key = ['role', JSON.stringify(role_id)];
             const qr_Key = ['qr_code', qr_code];
             const nomor_Key = ['nomor', nomor];
             const name_Key = ['nama', nama];
-            const kode_Key = ['kode_member', kode_member];
+            const kode_Key = ['kodeMember', kode_member];
             const id_Key = ['id', JSON.stringify(id)];
             const verifed_Key = ['verifid', is_verified];
             console.log('Sedang Menyimpan');

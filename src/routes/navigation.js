@@ -27,8 +27,10 @@ export class Navigation extends Component {
         'nama',
         'qr_code',
         'nomor',
-        'kode_member',
+        'kodeMember',
         'verifid',
+        'role',
+        'id',
       ]).then((value) => {
         console.log('INI dari Asynstore== ', value);
         this.setState({splash: false});
@@ -42,7 +44,7 @@ export class Navigation extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.getDataStore();
-    }, 3000);
+    }, 7000);
   }
 
   render() {
