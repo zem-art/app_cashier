@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     color: '#ffff',
     fontSize: 20,
     alignSelf: 'center',
+    fontWeight: 'bold',
   },
   body: {
     // borderWidth: 1,
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
   },
   pathBack: {
     // borderWidth: 1,
-    marginBottom: 50,
+    marginBottom: 15,
     paddingLeft: 20,
   },
   back: {
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     width: 50,
   },
   klik: {
-    borderWidth: 1,
+    width: 55,
   },
 });
 
