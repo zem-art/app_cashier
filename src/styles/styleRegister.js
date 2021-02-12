@@ -63,14 +63,6 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     width: '100%',
   },
-  Bootom: {
-    flexDirection: 'row',
-    // borderWidth: 1,
-    width: '100%',
-    height: 80,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   inBottom: {
     height: 30,
     // borderWidth: 1,
@@ -79,6 +71,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,
+  },
+  Bootom: {
+    flexDirection: 'row',
+    // borderWidth: 1,
+    width: '100%',
+    height: 80,
+    alignItems: 'center',
+    // justifyContent: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
   },
   inBottom1: {
     height: 50,
@@ -91,11 +93,14 @@ const styles = StyleSheet.create({
     // marginLeft: 10,
   },
   Register: {
-    height: 40,
-    // borderWidth: 1,
-    flexDirection: 'row',
+    height: 50,
+    borderWidth: 1,
+    borderColor: '#585aa7ff',
+    // flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    width: '45%',
+    borderRadius: 10,
   },
   textRegister: {
     color: '#4f52ffff',
@@ -106,6 +111,16 @@ const styles = StyleSheet.create({
     height: 30,
     width: 30,
     marginRight: 10,
+  },
+  bottom: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 40,
+  },
+  textBootom: {
+    color: '#a9a9',
+    fontWeight: 'bold',
+    fontSize: 15,
   },
 });
 

@@ -59,6 +59,9 @@ export class Register extends Component {
         this.lead_To();
         this.setState({
           isloading: false,
+          noPhone: '',
+          name: '',
+          password: '',
         });
       })
       .catch((err) => {
@@ -148,6 +151,11 @@ export class Register extends Component {
           </View>
           <View style={styles.Bootom}>
             <TouchableOpacity
+              style={styles.Register}
+              onPress={() => this.props.navigation.navigate('Login')}>
+              <Text style={styles.textRegister}> Sign In</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
               onPress={() => this.userRegister()}
               style={styles.inBottom1}>
               {this.state.isloading ? (
@@ -162,12 +170,10 @@ export class Register extends Component {
               )}
             </TouchableOpacity>
           </View>
-          <View style={styles.Register}>
-            <Text>You Already Have An Account ? </Text>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('Login')}>
-              <Text style={styles.textRegister}> Sign in</Text>
-            </TouchableOpacity>
+          <View style={styles.bottom}>
+            <Text style={styles.textBootom}>
+              We Will Protect Your Privacy Completely
+            </Text>
           </View>
         </ScrollView>
       </View>
