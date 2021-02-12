@@ -13,13 +13,15 @@ const Tab = createBottomTabNavigator();
 
 class BottomTab extends Component {
   render() {
+    console.log('Ini Redux', this.props.userData.userReducer.role);
     return (
       <Tab.Navigator
         tabBarOptions={{
-          activeTintColor: '#FFFFFF',
+          activeTintColor: '#F9C900',
           inactiveTintColor: '#a9a9a9',
-          activeBackgroundColor: '#7cfc00',
+          activeBackgroundColor: '#FFFFFF',
         }}>
+        {/* <Tab.Screen name="HomeBos" component={HomeBos} /> */}
         {this.props.userData.userReducer.role ? (
           this.props.userData.userReducer.role == 1 ? (
             <Tab.Screen name="HomeBos" component={HomeBos} />

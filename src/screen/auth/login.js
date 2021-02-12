@@ -51,14 +51,15 @@ class Login extends Component {
           const {role_id} = responseJson.data.user;
           const {token} = responseJson.data;
           console.log('==Sedang Berjalan==');
+          this.props.userRole(role_id);
+          this.props.userToken(token);
           this.props.userId(id);
           this.props.userVerifed(is_verified);
           this.props.kodeUser(kode_member);
           this.props.nameUser(nama);
+          console.log('== Ini Berjalanan ===');
           this.props.numberUser(nomor);
           this.props.userQrcode(qr_code);
-          this.props.userRole(role_id);
-          this.props.userToken(token);
           console.log('==Selesai Menyimpan==');
           if (
             token !== null ||
@@ -222,13 +223,15 @@ class Login extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     userId: (id) => dispatch({type: 'SET_ID', payload: id}),
-    userVerifed: (verifed) => dispatch({type: 'SET_VERIVIC', payload: verifed}),
-    kodeUser: (kode) => dispatch({type: 'SET_KODE', payload: kode}),
-    nameUser: (name) => dispatch({type: 'SET_NAME', payload: name}),
-    numberUser: (data) => dispatch({type: 'SET_NUMBER', payload: data}),
-    userQrcode: (qr) => dispatch({type: 'SET_QRCODE', payload: qr}),
-    userRole: (role) => dispatch({type: 'SET_ROLE', payload: role}),
-    userSaldo: (saldo) => dispatch({type: 'SET_SALDO', payload: saldo}),
+    userVerifed: (is_verified) =>
+      dispatch({type: 'SET_VERIVIC', payload: is_verified}),
+    kodeUser: (kode_member) =>
+      dispatch({type: 'SET_KODE', payload: kode_member}),
+    nameUser: (nama) => dispatch({type: 'SET_NAME', payload: nama}),
+    numberUser: (nomor) => dispatch({type: 'SET_NUMBER', payload: nomor}),
+    userQrcode: (qr_code) => dispatch({type: 'SET_QRCODE', payload: qr_code}),
+    userRole: (role_id) => dispatch({type: 'SET_ROLE', payload: role_id}),
+    // userSaldo: (saldo) => dispatch({type: 'SET_SALDO', payload: saldo}),
     userToken: (token) => dispatch({type: 'SET_USER', payload: token}),
     emailUser: (email) => dispatch({type: 'EMAIL_USER', payload: email}),
   };
