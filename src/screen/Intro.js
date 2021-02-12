@@ -39,7 +39,7 @@ export class Intro extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.pactForgot}>
-          <Text>Send OTP ?</Text>
+          <Text>Resend Your OTP ?</Text>
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate('NoPhone')}>
             <Text style={styles.forgot}>Klik</Text>
