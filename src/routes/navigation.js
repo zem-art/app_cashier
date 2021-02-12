@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import AsyncStorage from '@react-native-community/async-storage';
-
-const Stack = createStackNavigator();
+import {connect} from 'react-redux';
 
 import Intro from '../screen/Intro';
 import Splash from '../screen/Splash';
@@ -11,8 +10,11 @@ import Login from '../screen/auth/login';
 import Register from '../screen/auth/Register';
 import Otp from '../screen/auth/otp';
 import NoPhone from '../screen/auth/NoPhone';
+import BottomTab from './BottomTab';
 
-export class Navigation extends Component {
+const Stack = createStackNavigator();
+
+class Navigation extends Component {
   constructor() {
     super();
     this.state = {
@@ -32,6 +34,14 @@ export class Navigation extends Component {
         'role',
         'id',
       ]).then((value) => {
+        this.props.userToken(value[0][1]);
+        this.props.nameUser(value[1][1]);
+        this.props.userQrcode(value[2][1]);
+        this.props.numberUser(value[3][1]);
+        this.props.kodeUser(value[4][1]);
+        this.props.userVerifed(value[5][1]);
+        this.props.userRole(value[6][1]);
+        this.props.userId(value[7][1]);
         console.log('INI dari Asynstore== ', value);
         this.setState({splash: false});
       });
@@ -51,40 +61,72 @@ export class Navigation extends Component {
     if (this.state.splash) {
       return <Splash />;
     }
+    console.log(
+      'ini Data Redux Navigation===',
+      this.props.userData.userReducer,
+    );
     return (
       <NavigationContainer>
         <Stack.Navigator>
-          <>
+          {this.props.userData.userReducer.user === '' ||
+          this.props.userData.userReducer.user === null ? (
+            <>
+              <Stack.Screen
+                name="Intro"
+                component={Intro}
+                options={{headerShown: false}}
+              />
+              <Stack.Screen
+                name="Login"
+                component={Login}
+                options={{headerShown: false}}
+              />
+              <Stack.Screen
+                name="Register"
+                component={Register}
+                options={{headerShown: false}}
+              />
+              <Stack.Screen
+                name="Otp"
+                component={Otp}
+                options={{headerShown: false}}
+              />
+              <Stack.Screen
+                name="NoPhone"
+                component={NoPhone}
+                options={{headerShown: false}}
+              />
+            </>
+          ) : (
             <Stack.Screen
-              name="Intro"
-              component={Intro}
+              name="BottomTab"
+              component={BottomTab}
               options={{headerShown: false}}
             />
-            <Stack.Screen
-              name="Login"
-              component={Login}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Register"
-              component={Register}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Otp"
-              component={Otp}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="NoPhone"
-              component={NoPhone}
-              options={{headerShown: false}}
-            />
-          </>
+          )}
         </Stack.Navigator>
       </NavigationContainer>
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    userData: state,
+  };
+};
 
-export default Navigation;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    userId: (id) => dispatch({type: 'SET_ID', payload: id}),
+    userVerifed: (verifed) => dispatch({type: 'SET_VERIVIC', payload: verifed}),
+    kodeUser: (kode) => dispatch({type: 'SET_KODE', payload: kode}),
+    nameUser: (name) => dispatch({type: 'SET_NAME', payload: name}),
+    numberUser: (data) => dispatch({type: 'SET_NUMBER', payload: data}),
+    userQrcode: (qr) => dispatch({type: 'SET_QRCODE', payload: qr}),
+    userRole: (role) => dispatch({type: 'SET_ROLE', payload: role}),
+    userSaldo: (saldo) => dispatch({type: 'SET_SALDO', payload: saldo}),
+    userToken: (token) => dispatch({type: 'SET_USER', payload: token}),
+    emailUser: (email) => dispatch({type: 'EMAIL_USER', payload: email}),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

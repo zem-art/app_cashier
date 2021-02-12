@@ -15,7 +15,7 @@ import Spinner from 'react-native-spinkit';
 import {styles} from '../../styles/styleLogin';
 import AsyncStorage from '@react-native-community/async-storage';
 
-export class Login extends Component {
+class Login extends Component {
   constructor() {
     super();
     this.state = {
@@ -32,21 +32,25 @@ export class Login extends Component {
 
   userLogin = async () => {
     this.setState({isloading: true});
+    console.log('Mulai Menyimpan');
     try {
       axios
         .post('https://project-mini.herokuapp.com/api/login', {
           email: this.state.email,
           password: this.state.password,
         })
-        .then((result) => {
-          const {id} = result.data.user;
-          const {is_verified} = result.data.user;
-          const {kode_member} = result.data.user;
-          const {nama} = result.data.user;
-          const {nomor} = result.data.user;
-          const {qr_code} = result.data.user;
-          const {role_id} = result.data.user;
-          const {token} = result.data;
+        .then((responseJson) => {
+          console.log('sedang Menyimpan');
+          console.log('Ini Data BackEnd==', responseJson.data);
+          const {id} = responseJson.data.user;
+          const {is_verified} = responseJson.data.user;
+          const {kode_member} = responseJson.data.user;
+          const {nama} = responseJson.data.user;
+          const {nomor} = responseJson.data.user;
+          const {qr_code} = responseJson.data.user;
+          const {role_id} = responseJson.data.user;
+          const {token} = responseJson.data;
+          console.log('==Sedang Berjalan==');
           this.props.userId(id);
           this.props.userVerifed(is_verified);
           this.props.kodeUser(kode_member);
@@ -55,7 +59,7 @@ export class Login extends Component {
           this.props.userQrcode(qr_code);
           this.props.userRole(role_id);
           this.props.userToken(token);
-          console.log('Ini Role==', result.data.user);
+          console.log('==Selesai Menyimpan==');
           if (
             token !== null ||
             role_id !== null ||
@@ -122,7 +126,7 @@ export class Login extends Component {
     }
   };
   render() {
-    // console.log('INi DAta Redux', this.props.userData.userReducer);
+    // console.log('==INi Data Redux==', this.props.userData.userReducer);
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#4f52ffff" />
