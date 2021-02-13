@@ -91,7 +91,6 @@ class Login extends Component {
             const kode_Key = ['kodeMember', kode_member];
             const id_Key = ['id', JSON.stringify(id)];
             const verifed_Key = ['verifid', is_verified];
-
             // const image_Key = ['Image', avatar];
             // const age_Key = ['age', umur];
             // const email_Key = ['email', email];
