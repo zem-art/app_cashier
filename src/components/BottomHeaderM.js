@@ -16,7 +16,9 @@ class BottomHeaderM extends Component {
           </TouchableOpacity>
         </View>
         <View style={styles.inBottom}>
-          <TouchableOpacity style={styles.Klik}>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('AddSaldo')}
+            style={styles.Klik}>
             <Image
               style={styles.scan}
               source={require('../assets/icon/addMoney.png')}
