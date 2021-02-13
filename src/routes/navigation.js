@@ -61,15 +61,12 @@ class Navigation extends Component {
     if (this.state.splash) {
       return <Splash />;
     }
-    console.log(
-      'ini Data Redux Navigation===',
-      this.props.userData.userReducer,
-    );
+    // console.log('ini Redux Navigation===', this.props.userData.userReducer);
     return (
       <NavigationContainer>
         <Stack.Navigator>
-          {this.props.userData.userReducer.user === '' ||
-          this.props.userData.userReducer.user === null ? (
+          {this.props.userData.userReducer.verivic === '' ||
+          this.props.userData.userReducer.verivic === null ? (
             <>
               <Stack.Screen
                 name="Intro"
@@ -124,9 +121,9 @@ const mapDispatchToProps = (dispatch) => {
     numberUser: (data) => dispatch({type: 'SET_NUMBER', payload: data}),
     userQrcode: (qr) => dispatch({type: 'SET_QRCODE', payload: qr}),
     userRole: (role) => dispatch({type: 'SET_ROLE', payload: role}),
-    userSaldo: (saldo) => dispatch({type: 'SET_SALDO', payload: saldo}),
     userToken: (token) => dispatch({type: 'SET_USER', payload: token}),
     emailUser: (email) => dispatch({type: 'EMAIL_USER', payload: email}),
+    userImage: (avatar) => dispatch({type: 'SET_IMAGE', payload: avatar}),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

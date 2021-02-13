@@ -13,7 +13,7 @@ const Tab = createBottomTabNavigator();
 
 class BottomTab extends Component {
   render() {
-    console.log('Ini Redux', this.props.userData.userReducer.role);
+    // console.log('Ini Redux', this.props.userData.userReducer.role);
     return (
       <Tab.Navigator
         tabBarOptions={{

@@ -39,17 +39,21 @@ class Login extends Component {
           email: this.state.email,
           password: this.state.password,
         })
-        .then((responseJson) => {
+        .then((result) => {
           console.log('sedang Menyimpan');
-          console.log('Ini Data BackEnd==', responseJson.data);
-          const {id} = responseJson.data.user;
-          const {is_verified} = responseJson.data.user;
-          const {kode_member} = responseJson.data.user;
-          const {nama} = responseJson.data.user;
-          const {nomor} = responseJson.data.user;
-          const {qr_code} = responseJson.data.user;
-          const {role_id} = responseJson.data.user;
-          const {token} = responseJson.data;
+          console.log('Ini Data BackEnd==', result.data);
+          const {id} = result.data.user;
+          const {is_verified} = result.data.user;
+          const {kode_member} = result.data.user;
+          const {nama} = result.data.user;
+          const {nomor} = result.data.user;
+          const {qr_code} = result.data.user;
+          const {role_id} = result.data.user;
+          const {token} = result.data;
+          const {email} = result.data.user;
+          const {umur} = result.data.user;
+          const {alamat} = result.data.user;
+          const {avatar} = result.data.user;
           console.log('==Sedang Berjalan==');
           this.props.userRole(role_id);
           this.props.userToken(token);
@@ -57,9 +61,12 @@ class Login extends Component {
           this.props.userVerifed(is_verified);
           this.props.kodeUser(kode_member);
           this.props.nameUser(nama);
-          console.log('== Ini Berjalanan ===');
-          this.props.numberUser(nomor);
           this.props.userQrcode(qr_code);
+          this.props.userEmail(email);
+          this.props.userAddress(alamat);
+          this.props.userImage(avatar);
+          this.props.userAge(umur);
+          this.props.numberUser(nomor);
           console.log('==Selesai Menyimpan==');
           if (
             token !== null ||
@@ -69,7 +76,11 @@ class Login extends Component {
             id !== null ||
             nomor !== null ||
             qr_code !== null ||
-            is_verified !== null
+            is_verified !== null ||
+            alamat !== null ||
+            avatar !== null ||
+            umur !== null ||
+            email !== null
           ) {
             const token_Key = ['token', token];
             const role_Key = ['role', JSON.stringify(role_id)];
@@ -79,6 +90,10 @@ class Login extends Component {
             const kode_Key = ['kodeMember', kode_member];
             const id_Key = ['id', JSON.stringify(id)];
             const verifed_Key = ['verifid', is_verified];
+            const image_Key = ['Image', avatar];
+            const age_Key = ['age', umur];
+            const email_Key = ['email', email];
+            const address_Key = ['address', alamat];
             console.log('Sedang Menyimpan');
             AsyncStorage.multiSet([
               token_Key,
@@ -89,6 +104,10 @@ class Login extends Component {
               kode_Key,
               id_Key,
               verifed_Key,
+              image_Key,
+              age_Key,
+              email_Key,
+              address_Key,
             ]).then((value) => {
               this.setState({
                 token_Key: value,
@@ -99,6 +118,10 @@ class Login extends Component {
                 kode_Key: value,
                 id_Key: value,
                 verifed_Key: value,
+                image_Key: value,
+                age_Key: value,
+                email_Key: value,
+                address_Key: value,
               });
               console.log('Save Done');
             });
@@ -231,9 +254,11 @@ const mapDispatchToProps = (dispatch) => {
     numberUser: (nomor) => dispatch({type: 'SET_NUMBER', payload: nomor}),
     userQrcode: (qr_code) => dispatch({type: 'SET_QRCODE', payload: qr_code}),
     userRole: (role_id) => dispatch({type: 'SET_ROLE', payload: role_id}),
-    // userSaldo: (saldo) => dispatch({type: 'SET_SALDO', payload: saldo}),
     userToken: (token) => dispatch({type: 'SET_USER', payload: token}),
-    emailUser: (email) => dispatch({type: 'EMAIL_USER', payload: email}),
+    userImage: (avatar) => dispatch({type: 'SET_IMAGE', payload: avatar}),
+    userEmail: (email) => dispatch({type: 'SET_EMAIL', payload: email}),
+    userAddress: (alamat) => dispatch({type: 'SET_ADDRESS', payload: alamat}),
+    userAge: (umur) => dispatch({type: 'SET_AGE', payload: umur}),
   };
 };
 export default connect(null, mapDispatchToProps)(Login);

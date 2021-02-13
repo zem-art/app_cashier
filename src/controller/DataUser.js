@@ -2,7 +2,6 @@ const defaultstate = {
   login: false,
   user: '',
   token: '',
-  image: '',
   name: '',
   qrcode: '',
   verivic: '',
@@ -10,7 +9,10 @@ const defaultstate = {
   number: '',
   kode: '',
   saldo: '',
+  image: '',
   email: '',
+  age: '',
+  address: '',
 };
 
 const userData = (state = defaultstate, action) => {
@@ -19,8 +21,6 @@ const userData = (state = defaultstate, action) => {
       return {...state, login: true, user: action.payload};
     case 'SET_USER':
       return {...state, login: true, token: action.payload};
-    case 'SET_IMAGE':
-      return {...state, login: true, image: action.payload};
     case 'SET_NAME':
       return {...state, login: true, name: action.payload};
     case 'SET_QRCODE':
@@ -33,8 +33,14 @@ const userData = (state = defaultstate, action) => {
       return {...state, login: true, kode: action.payload};
     case 'SET_SALDO':
       return {...state, login: true, saldo: action.payload};
+    case 'SET_IMAGE':
+      return {...state, login: true, image: action.payload};
     case 'SET_EMAIL':
       return {...state, login: true, email: action.payload};
+    case 'SET_ADDRESS':
+      return {...state, login: true, address: action.payload};
+    case 'SET_AGE':
+      return {...state, login: true, age: action.payload};
     case 'SET_NUMBER':
       return {...state, number: action.payload};
     default:
