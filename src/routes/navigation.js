@@ -12,6 +12,7 @@ import Otp from '../screen/auth/otp';
 import NoPhone from '../screen/auth/NoPhone';
 import BottomTab from './BottomTab';
 import AddSaldo from '../screen/AddSaldo';
+import Price from '../screen/Price';
 
 const Stack = createStackNavigator();
 
@@ -113,6 +114,11 @@ class Navigation extends Component {
           <Stack.Screen
             name="AddSaldo"
             component={AddSaldo}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="ResponM"
+            component={Price}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

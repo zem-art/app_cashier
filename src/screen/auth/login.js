@@ -82,6 +82,7 @@ class Login extends Component {
             umur !== null ||
             email !== null
           ) {
+            ToastAndroid.show('Anda Berhasil Login', ToastAndroid.LONG);
             const token_Key = ['token', token];
             const role_Key = ['role', JSON.stringify(role_id)];
             const qr_Key = ['qr_code', qr_code];
@@ -90,11 +91,13 @@ class Login extends Component {
             const kode_Key = ['kodeMember', kode_member];
             const id_Key = ['id', JSON.stringify(id)];
             const verifed_Key = ['verifid', is_verified];
-            const image_Key = ['Image', avatar];
-            const age_Key = ['age', umur];
-            const email_Key = ['email', email];
-            const address_Key = ['address', alamat];
-            console.log('Sedang Menyimpan');
+
+            // const image_Key = ['Image', avatar];
+            // const age_Key = ['age', umur];
+            // const email_Key = ['email', email];
+            // const address_Key = ['address', alamat];
+            console.log('+++Sedang Menyimpan+++');
+            console.log('===Mulai Menyimpan Di Asynstore===');
             AsyncStorage.multiSet([
               token_Key,
               role_Key,
@@ -104,10 +107,10 @@ class Login extends Component {
               kode_Key,
               id_Key,
               verifed_Key,
-              image_Key,
-              age_Key,
-              email_Key,
-              address_Key,
+              // image_Key,
+              // age_Key,
+              // email_Key,
+              // address_Key,
             ]).then((value) => {
               this.setState({
                 token_Key: value,
@@ -118,12 +121,12 @@ class Login extends Component {
                 kode_Key: value,
                 id_Key: value,
                 verifed_Key: value,
-                image_Key: value,
-                age_Key: value,
-                email_Key: value,
-                address_Key: value,
+                // image: value,
+                // age: value,
+                // email_Key: value,
+                // address_Key: value,
               });
-              console.log('Save Done');
+              console.log('++++===SAVE DONE===++++');
             });
             ToastAndroid.show('Anda Berhasil Login', ToastAndroid.LONG);
             this.setState({

@@ -27,7 +27,7 @@ export class AddSaldo extends Component {
   }
 
   lead_To() {
-    this.props.navigation.navigate('ResponM');
+    this.props.navigation.navigate('ResponM', {item: this.state.bank});
   }
 
   addMoney() {
@@ -48,6 +48,7 @@ export class AddSaldo extends Component {
       .then((result) => {
         console.log('Berhasil Add Saldo==', result.data.data);
         this.setState({bank: result.data.data, isloading: false});
+        this.lead_To();
         ToastAndroid.show('Berhasil Menambahkan Saldo Anda', ToastAndroid.LONG);
       })
       .catch((err) => {
