@@ -24,10 +24,10 @@ class HomeM extends Component {
           <HeaderUpM navigation={this.props.navigation} />
           <BottomHeaderM navigation={this.props.navigation} />
           <View style={styles.pactHistory}>
-            <Text>All History</Text>
-            <View>
-              <Text>See All</Text>
-            </View>
+            <Text style={styles.text}>History</Text>
+            <TouchableOpacity style={styles.Seeklik}>
+              <Text style={styles.see}>See All</Text>
+            </TouchableOpacity>
           </View>
           <View style={styles.body}>
             <View style={styles.inBody}>

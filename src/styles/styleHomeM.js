@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   pactHistory: {
     marginTop: 5,
     flexDirection: 'row',
-    borderWidth: 1,
+    // borderWidth: 1,
     height: 40,
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -71,10 +71,26 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 15,
   },
+  Seeklik: {
+    height: 30,
+    width: 70,
+    // borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  see: {
+    color: '#007dfe',
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
+  text: {
+    fontSize: 15,
+    fontWeight: 'bold',
+  },
   inBody: {
     height: 100,
     width: '100%',
-    borderWidth: 1,
+    // borderWidth: 1,
     borderRadius: 10,
     elevation: 5,
     alignItems: 'center',
