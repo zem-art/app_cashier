@@ -33,6 +33,10 @@ class Navigation extends Component {
         'verifid',
         'role',
         'id',
+        'email',
+        'address',
+        'age',
+        'Image',
       ]).then((value) => {
         this.props.userToken(value[0][1]);
         this.props.nameUser(value[1][1]);
@@ -42,6 +46,10 @@ class Navigation extends Component {
         this.props.userVerifed(value[5][1]);
         this.props.userRole(value[6][1]);
         this.props.userId(value[7][1]);
+        this.props.userEmail(value[8][1]);
+        this.props.userAddress(value[9][1]);
+        this.props.userImage([10][1]);
+        this.props.userAge([11][1]);
         console.log('INI dari Asynstore== ', value);
         this.setState({splash: false});
       });
@@ -54,7 +62,7 @@ class Navigation extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.getDataStore();
-    }, 7000);
+    }, 6000);
   }
 
   render() {
@@ -122,8 +130,10 @@ const mapDispatchToProps = (dispatch) => {
     userQrcode: (qr) => dispatch({type: 'SET_QRCODE', payload: qr}),
     userRole: (role) => dispatch({type: 'SET_ROLE', payload: role}),
     userToken: (token) => dispatch({type: 'SET_USER', payload: token}),
-    emailUser: (email) => dispatch({type: 'EMAIL_USER', payload: email}),
     userImage: (avatar) => dispatch({type: 'SET_IMAGE', payload: avatar}),
+    userEmail: (email) => dispatch({type: 'SET_EMAIL', payload: email}),
+    userAddress: (alamat) => dispatch({type: 'SET_ADDRESS', payload: alamat}),
+    userAge: (umur) => dispatch({type: 'SET_AGE', payload: umur}),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
