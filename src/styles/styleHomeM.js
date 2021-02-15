@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   inBody: {
-    height: 100,
+    height: 130,
     width: '100%',
     // borderWidth: 1,
     borderRadius: 10,
@@ -96,6 +96,37 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 10,
     marginVertical: 5,
+  },
+  Loading1: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+  History: {
+    flexDirection: 'row',
+    height: 50,
+    width: '100%',
+    // borderWidth: 1,
+    justifyContent: 'space-between',
+    paddingHorizontal: 30,
+    alignItems: 'center',
+  },
+  pactDate: {
+    alignItems: 'center',
+  },
+  textDate: {
+    color: '#007dfe',
+    fontSize: 15,
+    fontWeight: 'bold',
+    marginTop: 5,
+  },
+  textPrice: {
+    color: '#ffd700',
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
+  pactPrice: {
+    flexDirection: 'row',
   },
 });
 
