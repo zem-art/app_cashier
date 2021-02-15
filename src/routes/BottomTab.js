@@ -8,6 +8,7 @@ import HomeM from '../container/HomeM';
 import HomeStaf from '../container/HomeStaf';
 import HomeKasir from '../container/HomeKasir';
 import HomeBos from '../container/HomeBos';
+import MeMember from '../container/MeMember';
 
 const Tab = createBottomTabNavigator();
 
@@ -17,9 +18,9 @@ class BottomTab extends Component {
     return (
       <Tab.Navigator
         tabBarOptions={{
-          activeTintColor: '#F9C900',
+          activeTintColor: '#000000',
           inactiveTintColor: '#a9a9a9',
-          activeBackgroundColor: '#FFFFFF',
+          activeBackgroundColor: '#F9C900',
         }}>
         {/* <Tab.Screen name="HomeBos" component={HomeBos} /> */}
         {this.props.userData.userReducer.role ? (
@@ -30,18 +31,32 @@ class BottomTab extends Component {
           ) : this.props.userData.userReducer.role == 3 ? (
             <Tab.Screen name="Cashier" component={HomeKasir} />
           ) : this.props.userData.userReducer.role == 4 ? (
-            <Tab.Screen
-              name="Home"
-              component={HomeM}
-              options={{
-                tabBarIcon: () => (
-                  <Image
-                    style={styles.icon}
-                    source={require('../assets/icon/Home.png')}
-                  />
-                ),
-              }}
-            />
+            <>
+              <Tab.Screen
+                name="Home"
+                component={HomeM}
+                options={{
+                  tabBarIcon: () => (
+                    <Image
+                      style={styles.icon}
+                      source={require('../assets/icon/Home.png')}
+                    />
+                  ),
+                }}
+              />
+              <Tab.Screen
+                name="Profil"
+                component={MeMember}
+                options={{
+                  tabBarIcon: () => (
+                    <Image
+                      style={styles.icon}
+                      source={require('../assets/icon/Profile.png')}
+                    />
+                  ),
+                }}
+              />
+            </>
           ) : null
         ) : null}
       </Tab.Navigator>
