@@ -1,14 +1,37 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, Image} from 'react-native';
+import {styles} from '../styles/styleQrCode';
+import {connect} from 'react-redux';
 
 export class QrCode extends Component {
   render() {
+    // console.log('Redux==', this.props.userData.userReducer);
     return (
-      <View>
-        <Text> Ini Bagian QR Code </Text>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.title}>Kode Unix</Text>
+        </View>
+        <View style={styles.kode}>
+          <Text style={styles.textKode}>
+            {this.props.userData.userReducer.kode}
+          </Text>
+        </View>
+        <View style={styles.body}>
+          <View style={styles.qrcode}>
+            <Image
+              style={styles.icon}
+              source={{uri: this.props.userData.userReducer.qrcode}}
+            />
+          </View>
+        </View>
       </View>
     );
   }
 }
 
-export default QrCode;
+const mapStateToProps = (state) => {
+  return {
+    userData: state,
+  };
+};
+export default connect(mapStateToProps)(QrCode);
