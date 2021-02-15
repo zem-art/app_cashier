@@ -8,6 +8,7 @@ import {
   StatusBar,
 } from 'react-native';
 import {connect} from 'react-redux';
+import DataProfile from '../components/dataProfile';
 import {styles} from '../styles/styleProfilM';
 
 export class MeMember extends Component {
@@ -37,36 +38,7 @@ export class MeMember extends Component {
             </View>
           </View>
           <View style={styles.body}>
-            <View style={styles.inBodyBottom}>
-              <TouchableOpacity style={styles.pactinBottom}>
-                <Image
-                  style={styles.iconCircle}
-                  source={require('../assets/icon/helpCenter.png')}
-                />
-                <Text>Help Center</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.pactinBottom}>
-                <Image
-                  style={styles.iconCircle}
-                  source={require('../assets/icon/Question.png')}
-                />
-                <Text>Question</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.pactinBottom}>
-                <Image
-                  style={styles.iconCircle}
-                  source={require('../assets/icon/Start3.png')}
-                />
-                <Text>Rating App</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.pactinBottom}>
-                <Image
-                  style={styles.iconCircle}
-                  source={require('../assets/icon/logOuth.png')}
-                />
-                <Text>Log Out</Text>
-              </TouchableOpacity>
-            </View>
+            <DataProfile navigation={this.props.navigation} />
           </View>
           <View style={styles.bottom} />
         </ScrollView>

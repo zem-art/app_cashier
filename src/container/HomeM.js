@@ -4,7 +4,6 @@ import {
   View,
   StatusBar,
   ScrollView,
-  Image,
   TouchableOpacity,
 } from 'react-native';
 import BottomHeaderM from '../components/BottomHeaderM';
