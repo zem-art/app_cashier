@@ -78,7 +78,9 @@ export class MeMember extends Component {
             <Text style={styles.title}>Akun Saya</Text>
           </View>
           <View style={styles.profile}>
-            <TouchableOpacity style={styles.inBody}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('QR Code')}
+              style={styles.inBody}>
               <Image
                 style={styles.qrCode}
                 source={{uri: this.props.userData.userReducer.qrcode}}

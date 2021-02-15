@@ -9,6 +9,7 @@ import HomeStaf from '../container/HomeStaf';
 import HomeKasir from '../container/HomeKasir';
 import HomeBos from '../container/HomeBos';
 import MeMember from '../container/MeMember';
+import QrCode from '../screen/QrCode';
 
 const Tab = createBottomTabNavigator();
 
@@ -40,6 +41,18 @@ class BottomTab extends Component {
                     <Image
                       style={styles.icon}
                       source={require('../assets/icon/Home.png')}
+                    />
+                  ),
+                }}
+              />
+              <Tab.Screen
+                name="QR Code"
+                component={QrCode}
+                options={{
+                  tabBarIcon: () => (
+                    <Image
+                      style={styles.icon}
+                      source={require('../assets/icon/qrcode.png')}
                     />
                   ),
                 }}
