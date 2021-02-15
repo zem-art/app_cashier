@@ -54,7 +54,7 @@ export class Price extends Component {
             <Text>Rp . {this.state.price}</Text>
           </View>
           <View style={styles.data}>
-            <Text>Status</Text>
+            <Text>Kode ID</Text>
             <Text style={styles.textPending}>{this.state.noTransaksi}</Text>
           </View>
         </View>
