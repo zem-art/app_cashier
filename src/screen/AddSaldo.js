@@ -107,12 +107,15 @@ export class AddSaldo extends Component {
                 <Picker.item label="BCA" value="bca" />
                 <Picker.item label="BNI" value="bni" />
               </Picker>
-              <TextInput
-                onChangeText={(price) => this.setState({price: price})}
-                style={styles.input}
-                keyboardType="number-pad"
-                placeholder="Nominal"
-              />
+              <View style={styles.pactNominal}>
+                <Text>Rp .</Text>
+                <TextInput
+                  onChangeText={(price) => this.setState({price: price})}
+                  style={styles.input}
+                  keyboardType="number-pad"
+                  placeholder="Nominal"
+                />
+              </View>
             </View>
           </View>
           <View style={styles.pacTouchable}>

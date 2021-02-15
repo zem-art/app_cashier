@@ -77,12 +77,14 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 50,
-    width: '100%',
+    width: '70%',
     // borderWidth: 1,
     paddingLeft: 20,
     paddingRight: 30,
     borderRadius: 10,
-    backgroundColor: '#ffffff',
+    // backgroundColor: '#ffffff',
+    borderBottomWidth: 1,
+    // borderBottomColor: '#ffffff',
   },
   title: {
     fontSize: 20,
@@ -104,6 +106,11 @@ const styles = StyleSheet.create({
     height: 70,
     width: 50,
     // borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  pactNominal: {
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
   },
