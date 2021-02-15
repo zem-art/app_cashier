@@ -16,6 +16,10 @@ export class Price extends Component {
       noTransaksi: item.va_numbers,
     };
   }
+
+  goTO() {
+    this.props.navigation.navigate('SuccsesAdd');
+  }
   render() {
     // console.log('Ini Data Params', this.props.route.params);
     return (
@@ -59,10 +63,13 @@ export class Price extends Component {
           </View>
         </View>
         <View style={styles.bottom}>
-          <TouchableOpacity style={styles.klik}>
+          <TouchableOpacity onPress={() => this.goTO()} style={styles.klik}>
             <Text style={styles.Title}>OK</Text>
           </TouchableOpacity>
         </View>
+        <Text style={styles.textSaldo}>
+          Salin Kode ID Untuk Konfirmasi Pembayaran
+        </Text>
       </View>
     );
   }

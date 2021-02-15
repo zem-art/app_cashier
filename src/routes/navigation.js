@@ -13,6 +13,7 @@ import NoPhone from '../screen/auth/NoPhone';
 import BottomTab from './BottomTab';
 import AddSaldo from '../screen/AddSaldo';
 import Price from '../screen/Price';
+import SaldoAdd from '../screen/sucssesSaldo';
 
 const Stack = createStackNavigator();
 
@@ -119,6 +120,11 @@ class Navigation extends Component {
           <Stack.Screen
             name="ResponM"
             component={Price}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="SuccsesAdd"
+            component={SaldoAdd}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

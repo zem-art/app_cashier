@@ -60,6 +60,10 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
   },
+  textSaldo: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
 });
 
 export {styles};
