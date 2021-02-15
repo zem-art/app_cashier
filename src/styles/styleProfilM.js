@@ -56,6 +56,22 @@ const styles = StyleSheet.create({
     marginTop: 5,
     paddingHorizontal: 20,
     paddingTop: 10,
+    // borderWidth: 1,
+  },
+  saldo: {
+    marginTop: 5,
+    height: 50,
+    // borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    backgroundColor: '#F9C900',
+    borderRadius: 10,
+  },
+  textSaldo: {
+    fontWeight: 'bold',
+    fontSize: 15,
+    color: '#ffff',
   },
   inBodyBottom: {
     elevation: 7,
