@@ -30,7 +30,18 @@ class BottomTab extends Component {
           ) : this.props.userData.userReducer.role == 3 ? (
             <Tab.Screen name="Cashier" component={HomeKasir} />
           ) : this.props.userData.userReducer.role == 4 ? (
-            <Tab.Screen name="Home" component={HomeM} />
+            <Tab.Screen
+              name="Home"
+              component={HomeM}
+              options={{
+                tabBarIcon: () => (
+                  <Image
+                    style={styles.icon}
+                    source={require('../assets/icon/Home.png')}
+                  />
+                ),
+              }}
+            />
           ) : null
         ) : null}
       </Tab.Navigator>
