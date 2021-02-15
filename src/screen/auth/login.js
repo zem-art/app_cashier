@@ -51,9 +51,7 @@ class Login extends Component {
           const {role_id} = result.data.user;
           const {token} = result.data;
           const {email} = result.data.user;
-          const {umur} = result.data.user;
-          const {alamat} = result.data.user;
-          const {avatar} = result.data.user;
+
           console.log('==Sedang Berjalan==');
           this.props.userRole(role_id);
           this.props.userToken(token);
@@ -63,10 +61,7 @@ class Login extends Component {
           this.props.nameUser(nama);
           this.props.userQrcode(qr_code);
           this.props.userEmail(email);
-          this.props.userAddress(alamat);
-          this.props.userImage(avatar);
-          this.props.userAge(umur);
-          this.props.numberUser(nomor);
+
           console.log('==Selesai Menyimpan==');
           if (
             token !== null ||
@@ -76,11 +71,7 @@ class Login extends Component {
             id !== null ||
             nomor !== null ||
             qr_code !== null ||
-            is_verified !== null ||
-            alamat !== null ||
-            avatar !== null ||
-            umur !== null ||
-            email !== null
+            is_verified !== null
           ) {
             ToastAndroid.show('Anda Berhasil Login', ToastAndroid.LONG);
             const token_Key = ['token', token];
@@ -91,10 +82,7 @@ class Login extends Component {
             const kode_Key = ['kodeMember', kode_member];
             const id_Key = ['id', JSON.stringify(id)];
             const verifed_Key = ['verifid', is_verified];
-            // const image_Key = ['Image', avatar];
-            // const age_Key = ['age', umur];
-            // const email_Key = ['email', email];
-            // const address_Key = ['address', alamat];
+
             console.log('+++Sedang Menyimpan+++');
             console.log('===Mulai Menyimpan Di Asynstore===');
             AsyncStorage.multiSet([
@@ -106,10 +94,6 @@ class Login extends Component {
               kode_Key,
               id_Key,
               verifed_Key,
-              // image_Key,
-              // age_Key,
-              // email_Key,
-              // address_Key,
             ]).then((value) => {
               this.setState({
                 token_Key: value,
