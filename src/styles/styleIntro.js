@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     color: '#a9a9',
   },
   icon: {
-    height: '100%',
+    height: '70%',
     width: '100%',
   },
   body: {
