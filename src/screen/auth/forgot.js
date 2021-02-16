@@ -36,6 +36,7 @@ export class Forgot extends Component {
           console.log('Succses Send==', result.data);
           ToastAndroid.show('Permintaan Berhasil Terkirim', ToastAndroid.LONG);
           this.setState({isloading: false, number: ''});
+          this.goTO();
         })
         .catch((err) => {
           console.log('Eroro Send Data', err);
