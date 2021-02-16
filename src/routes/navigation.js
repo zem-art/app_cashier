@@ -14,7 +14,6 @@ import BottomTab from './BottomTab';
 import AddSaldo from '../screen/AddSaldo';
 import Price from '../screen/Price';
 import SaldoAdd from '../screen/sucssesSaldo';
-import QrCode from '../screen/QrCode';
 
 const Stack = createStackNavigator();
 
