@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
     width: '100%',
     // borderWidth: 1,
     borderRadius: 10,
+    backgroundColor: '#ffff',
     elevation: 5,
     alignItems: 'center',
     paddingTop: 10,
