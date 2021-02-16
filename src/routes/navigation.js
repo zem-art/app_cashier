@@ -15,6 +15,7 @@ import AddSaldo from '../screen/AddSaldo';
 import Price from '../screen/Price';
 import SaldoAdd from '../screen/sucssesSaldo';
 import Forgot from '../screen/auth/forgot';
+import Succes from '../screen/succes';
 
 const Stack = createStackNavigator();
 
@@ -131,6 +132,11 @@ class Navigation extends Component {
           <Stack.Screen
             name="Forgot"
             component={Forgot}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Succses"
+            component={Succes}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
