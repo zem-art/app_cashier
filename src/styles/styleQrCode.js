@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   icon: {
-    height: 170,
-    width: 170,
+    height: '100%',
+    width: '100%',
   },
   body: {
     alignItems: 'center',
@@ -30,10 +30,11 @@ const styles = StyleSheet.create({
   qrcode: {
     borderRadius: 10,
     backgroundColor: '#ffff',
-    height: 200,
-    width: 200,
+    height: 250,
+    width: 250,
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 15,
   },
   kode: {
     alignItems: 'center',
