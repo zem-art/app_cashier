@@ -14,6 +14,7 @@ import BottomTab from './BottomTab';
 import AddSaldo from '../screen/AddSaldo';
 import Price from '../screen/Price';
 import SaldoAdd from '../screen/sucssesSaldo';
+import Forgot from '../screen/auth/forgot';
 
 const Stack = createStackNavigator();
 
@@ -127,11 +128,11 @@ class Navigation extends Component {
             component={SaldoAdd}
             options={{headerShown: false}}
           />
-          {/* <Stack.Screen
-            name="QrCode"
-            component={QrCode}
+          <Stack.Screen
+            name="Forgot"
+            component={Forgot}
             options={{headerShown: false}}
-          /> */}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     );

@@ -198,7 +198,9 @@ class Login extends Component {
             </View>
           </View>
           <View style={styles.Bootom}>
-            <TouchableOpacity style={styles.inBottom}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate('Forgot')}
+              style={styles.inBottom}>
               <Text style={styles.forgot}>Forgot Password</Text>
             </TouchableOpacity>
             <TouchableOpacity
