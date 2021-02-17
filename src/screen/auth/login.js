@@ -41,7 +41,7 @@ class Login extends Component {
         })
         .then((result) => {
           console.log('sedang Menyimpan');
-          console.log('Ini Data BackEnd==', result.data);
+          // console.log('Ini Data BackEnd==', result.data);
           const {id} = result.data.user;
           const {is_verified} = result.data.user;
           const {kode_member} = result.data.user;
@@ -51,7 +51,6 @@ class Login extends Component {
           const {role_id} = result.data.user;
           const {token} = result.data;
           const {email} = result.data.user;
-
           console.log('==Sedang Berjalan==');
           this.props.userRole(role_id);
           this.props.userToken(token);
@@ -82,8 +81,7 @@ class Login extends Component {
             const kode_Key = ['kodeMember', kode_member];
             const id_Key = ['id', JSON.stringify(id)];
             const verifed_Key = ['verifid', is_verified];
-
-            console.log('+++Sedang Menyimpan+++');
+            // console.log('+++Sedang Menyimpan+++');
             console.log('===Mulai Menyimpan Di Asynstore===');
             AsyncStorage.multiSet([
               token_Key,
@@ -104,10 +102,6 @@ class Login extends Component {
                 kode_Key: value,
                 id_Key: value,
                 verifed_Key: value,
-                // image: value,
-                // age: value,
-                // email_Key: value,
-                // address_Key: value,
               });
               console.log('++++===SAVE DONE===++++');
             });
