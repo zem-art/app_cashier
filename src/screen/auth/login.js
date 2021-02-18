@@ -205,15 +205,9 @@ const mapDispatchToProps = (dispatch) => {
 };
 export default connect(null, mapDispatchToProps)(Login);
 
-// const {kode_member} = result.data.user;
-// const {nama} = result.data.user;
-// const {nomor} = result.data.user;
-// const {qr_code} = result.data.user;
 // const {email} = result.data.user;
 
-// this.props.kodeUser(kode_member);
-// this.props.nameUser(nama);
-// this.props.userQrcode(qr_code);
+//
 // this.props.userEmail(email);
 // this.props.userId(id);
 
@@ -237,9 +231,3 @@ export default connect(null, mapDispatchToProps)(Login);
 // name_Key: value,
 // kode_Key: value,
 // id_Key: value,
-
-// kode_member !== null ||
-// nama !== null ||
-// id !== null ||
-// nomor !== null ||
-// qr_code !== null ||

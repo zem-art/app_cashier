@@ -11,14 +11,16 @@ import BottomHeaderM from '../components/BottomHeaderM';
 import HeaderUpM from '../components/headerUpM';
 import {styles} from '../styles/styleHomeM';
 import axios from 'axios';
-import {connect} from 'react-redux';
 import Spinner from 'react-native-spinkit';
+import {connect} from 'react-redux';
+import Body from '../components/bodyHome';
+import AsyncStorage from '@react-native-community/async-storage';
 
 class HomeM extends Component {
   constructor() {
     super();
     this.state = {
-      data: [],
+      data: {},
       isloading: true,
       isEror: false,
       refreash: false,
@@ -26,39 +28,61 @@ class HomeM extends Component {
   }
 
   componentDidMount() {
-    this.getHistory();
+    this.getData();
   }
 
   onRefreash() {
     this.setState({
       refreash: true,
     });
-    this.getHistory();
+    this.getData();
   }
 
-  getHistory = async () => {
+  getData = async () => {
     try {
       await axios
-        .get('https://project-mini.herokuapp.com/api/transaksi', {
+        .get('https://project-mini.herokuapp.com/api/get-member', {
           headers: {
             Authorization: `Bearer${this.props.userData.userReducer.token}`,
           },
         })
         .then((result) => {
-          console.log('Ini data==', result.data.data);
+          const {kode_member} = result.data.data;
+          const {nama} = result.data.data;
+          const {nomor} = result.data.data;
+          const {qr_code} = result.data.data;
+          this.props.numberUser(nomor);
+          this.props.kodeUser(kode_member);
+          this.props.nameUser(nama);
+          this.props.userQrcode(qr_code);
+          // console.log('Berhasil Get ==', result.data.data);
           this.setState({
             data: result.data.data,
             isloading: false,
             refreash: false,
           });
+          const qr_Key = ['qr_code', qr_code];
+          const nomor_Key = ['nomor', nomor];
+          const name_Key = ['nama', nama];
+          const kode_Key = ['kodeMember', kode_member];
+          AsyncStorage.multiSet([name_Key, qr_Key, nomor_Key, kode_Key]).then(
+            (value) => {
+              this.setState({
+                token_Key: value,
+                role_Key: value,
+                verifed_Key: value,
+              });
+              console.log('++++===SAVE DONE===++++');
+            },
+          );
         })
         .catch((err) => {
-          console.log('Eror Get Data===', err);
+          console.log('Eroro Get Data===', err);
           this.setState({isloading: false, isEror: true, refreash: false});
         });
     } catch (err) {
-      console.log('Eroro Get Data==', err);
-      this.setState({isloading: false, isEror: false, refreash: false});
+      console.log('Erroro Get Data==', err);
+      this.setState({isloading: false, isEror: true, refreash: false});
     }
   };
 
@@ -102,23 +126,7 @@ class HomeM extends Component {
             </TouchableOpacity>
           </View>
           <View style={styles.body}>
-            {this.state.data.map((item, value) => {
-              return (
-                <View style={styles.inBody}>
-                  <View style={styles.History}>
-                    <Text>Bank : {item.bank}</Text>
-                    <View style={styles.pactPrice}>
-                      <Text>Price : </Text>
-                      <Text style={styles.textPrice}>{item.jumlah}</Text>
-                    </View>
-                  </View>
-                  <View style={styles.pactDate}>
-                    <Text>Date</Text>
-                    <Text style={styles.textDate}>{item.created_at}</Text>
-                  </View>
-                </View>
-              );
-            })}
+            <Body navigation={this.props.navigation} />
           </View>
         </ScrollView>
       </View>
@@ -131,4 +139,14 @@ const mapStateToProps = (state) => {
     userData: state,
   };
 };
-export default connect(mapStateToProps)(HomeM);
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    kodeUser: (kode_member) =>
+      dispatch({type: 'SET_KODE', payload: kode_member}),
+    nameUser: (nama) => dispatch({type: 'SET_NAME', payload: nama}),
+    numberUser: (nomor) => dispatch({type: 'SET_NUMBER', payload: nomor}),
+    userQrcode: (qr_code) => dispatch({type: 'SET_QRCODE', payload: qr_code}),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(HomeM);

@@ -63,7 +63,7 @@ export class LogOut extends Component {
   };
 
   render() {
-    console.log('Data Token==', this.props.userData.userReducer.token);
+    // console.log('Data Token==', this.props.userData.userReducer);
     return (
       <>
         <TouchableOpacity

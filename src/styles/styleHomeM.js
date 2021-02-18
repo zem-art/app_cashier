@@ -129,6 +129,16 @@ const styles = StyleSheet.create({
   pactPrice: {
     flexDirection: 'row',
   },
+  toc: {
+    height: 50,
+    borderWidth: 1,
+    borderColor: 'red',
+    marginTop: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 10,
+    borderRadius: 10,
+  },
 });
 
 export {styles};
