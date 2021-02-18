@@ -67,7 +67,13 @@ export class ProfileAdmin extends Component {
             source={{uri: this.props.userData.userReducer.image}}
           />
         </View>
-        <TouchableOpacity style={styles.icon}>
+        <TouchableOpacity
+          onPress={() =>
+            this.props.navigation.navigate('Edit Profil', {
+              item: this.state.data,
+            })
+          }
+          style={styles.icon}>
           <Image
             style={styles.iconGo}
             source={require('../assets/icon/edit.png')}

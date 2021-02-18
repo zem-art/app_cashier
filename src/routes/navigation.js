@@ -18,6 +18,7 @@ import Forgot from '../screen/auth/forgot';
 import Succes from '../screen/succes';
 import ScanQr from '../screen/ScanQr';
 import QrCode from '../screen/QrCode';
+import ProfileStaf from '../container/ProfileStaf';
 
 const Stack = createStackNavigator();
 
@@ -149,6 +150,11 @@ class Navigation extends Component {
           <Stack.Screen
             name="Qr Code"
             component={QrCode}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Edit Profil"
+            component={ProfileStaf}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
