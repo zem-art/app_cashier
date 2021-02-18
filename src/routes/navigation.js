@@ -16,6 +16,8 @@ import Price from '../screen/Price';
 import SaldoAdd from '../screen/sucssesSaldo';
 import Forgot from '../screen/auth/forgot';
 import Succes from '../screen/succes';
+import ScanQr from '../screen/ScanQr';
+import QrCode from '../screen/QrCode';
 
 const Stack = createStackNavigator();
 
@@ -137,6 +139,16 @@ class Navigation extends Component {
           <Stack.Screen
             name="Succses"
             component={Succes}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Scan Qr"
+            component={ScanQr}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="QR Code"
+            component={QrCode}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

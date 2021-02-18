@@ -7,7 +7,9 @@ class BottomHeaderM extends Component {
     return (
       <View style={styles.bottomH}>
         <View style={styles.inBottom}>
-          <TouchableOpacity style={styles.Klik}>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('Scan Qr')}
+            style={styles.Klik}>
             <Image
               style={styles.scan}
               source={require('../assets/icon/scan.png')}

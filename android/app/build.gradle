@@ -1,5 +1,6 @@
 apply plugin: "com.android.application"
 
+
 import com.android.build.OutputFile
 
 /**
@@ -132,6 +133,9 @@ android {
         applicationId "com.kasir"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
+        missingDimensionStrategy 'react-native-camera', 'general'   // Untuk React Native Camera
+        missingDimensionStrategy 'react-native-camera', 'mlkit' // Untuk React Native Camera
+        multiDexEnabled true  // Untuk React Native Camera
         versionCode 1
         versionName "1.0"
     }
@@ -185,7 +189,10 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
+    implementation 'com.android.support:multidex:1.0.3' // Untuk React-native Camera
+    compile 'com.android.support:multidex:1.0.3'  // Untuk React-native Camera
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'

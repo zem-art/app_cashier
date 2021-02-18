@@ -45,7 +45,7 @@ class BottomTab extends Component {
                   ),
                 }}
               />
-              <Tab.Screen
+              {/* <Tab.Screen
                 name="QR Code"
                 component={QrCode}
                 options={{
@@ -56,7 +56,7 @@ class BottomTab extends Component {
                     />
                   ),
                 }}
-              />
+              /> */}
               <Tab.Screen
                 name="Profil"
                 component={MeMember}
