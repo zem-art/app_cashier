@@ -45,18 +45,7 @@ class BottomTab extends Component {
                   ),
                 }}
               />
-              {/* <Tab.Screen
-                name="QR Code"
-                component={QrCode}
-                options={{
-                  tabBarIcon: () => (
-                    <Image
-                      style={styles.icon}
-                      source={require('../assets/icon/qrcode.png')}
-                    />
-                  ),
-                }}
-              /> */}
+
               <Tab.Screen
                 name="Profil"
                 component={MeMember}

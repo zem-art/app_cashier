@@ -41,70 +41,30 @@ class Login extends Component {
         })
         .then((result) => {
           console.log('sedang Menyimpan');
-          // console.log('Ini Data BackEnd==', result.data);
-          const {id} = result.data.user;
-          const {is_verified} = result.data.user;
-          const {kode_member} = result.data.user;
-          const {nama} = result.data.user;
-          const {nomor} = result.data.user;
-          const {qr_code} = result.data.user;
-          const {role_id} = result.data.user;
+          const {is_verified} = result.data.data;
+          const {role_id} = result.data.data;
           const {token} = result.data;
-          const {email} = result.data.user;
           console.log('==Sedang Berjalan==');
           this.props.userRole(role_id);
           this.props.userToken(token);
-          this.props.userId(id);
           this.props.userVerifed(is_verified);
-          this.props.kodeUser(kode_member);
-          this.props.nameUser(nama);
-          this.props.userQrcode(qr_code);
-          this.props.userEmail(email);
-
           console.log('==Selesai Menyimpan==');
-          if (
-            token !== null ||
-            role_id !== null ||
-            kode_member !== null ||
-            nama !== null ||
-            id !== null ||
-            nomor !== null ||
-            qr_code !== null ||
-            is_verified !== null
-          ) {
+          if (token !== null || role_id !== null || is_verified !== null) {
             ToastAndroid.show('Anda Berhasil Login', ToastAndroid.LONG);
             const token_Key = ['token', token];
             const role_Key = ['role', JSON.stringify(role_id)];
-            const qr_Key = ['qr_code', qr_code];
-            const nomor_Key = ['nomor', nomor];
-            const name_Key = ['nama', nama];
-            const kode_Key = ['kodeMember', kode_member];
-            const id_Key = ['id', JSON.stringify(id)];
             const verifed_Key = ['verifid', is_verified];
-            // console.log('+++Sedang Menyimpan+++');
             console.log('===Mulai Menyimpan Di Asynstore===');
-            AsyncStorage.multiSet([
-              token_Key,
-              role_Key,
-              name_Key,
-              qr_Key,
-              nomor_Key,
-              kode_Key,
-              id_Key,
-              verifed_Key,
-            ]).then((value) => {
-              this.setState({
-                token_Key: value,
-                role_Key: value,
-                qr_Key: value,
-                nomor_Key: value,
-                name_Key: value,
-                kode_Key: value,
-                id_Key: value,
-                verifed_Key: value,
-              });
-              console.log('++++===SAVE DONE===++++');
-            });
+            AsyncStorage.multiSet([token_Key, role_Key, verifed_Key]).then(
+              (value) => {
+                this.setState({
+                  token_Key: value,
+                  role_Key: value,
+                  verifed_Key: value,
+                });
+                console.log('++++===SAVE DONE===++++');
+              },
+            );
             ToastAndroid.show('Anda Berhasil Login', ToastAndroid.LONG);
             this.setState({
               isloading: false,
@@ -244,3 +204,42 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 export default connect(null, mapDispatchToProps)(Login);
+
+// const {kode_member} = result.data.user;
+// const {nama} = result.data.user;
+// const {nomor} = result.data.user;
+// const {qr_code} = result.data.user;
+// const {email} = result.data.user;
+
+// this.props.kodeUser(kode_member);
+// this.props.nameUser(nama);
+// this.props.userQrcode(qr_code);
+// this.props.userEmail(email);
+// this.props.userId(id);
+
+// console.log('Ini Data BackEnd==', result.data);
+// const {id} = result.data.user;
+
+// name_Key,
+// qr_Key,
+// nomor_Key,
+// kode_Key,
+// id_Key,
+
+// const qr_Key = ['qr_code', qr_code];
+// const nomor_Key = ['nomor', nomor];
+// const name_Key = ['nama', nama];
+// const kode_Key = ['kodeMember', kode_member];
+// const id_Key = ['id', JSON.stringify(id)];
+
+// qr_Key: value,
+// nomor_Key: value,
+// name_Key: value,
+// kode_Key: value,
+// id_Key: value,
+
+// kode_member !== null ||
+// nama !== null ||
+// id !== null ||
+// nomor !== null ||
+// qr_code !== null ||

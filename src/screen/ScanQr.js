@@ -3,6 +3,7 @@ import {Text, View} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import axios from 'axios';
+import {styles} from '../styles/styleScanQr';
 
 export class ScanQr extends Component {
   constructor() {
@@ -11,7 +12,6 @@ export class ScanQr extends Component {
       data: {},
     };
   }
-
   getBarCode() {
     try {
       axios
@@ -28,7 +28,7 @@ export class ScanQr extends Component {
   }
   render() {
     return (
-      <View style={{flex: 1}}>
+      <View style={styles.container}>
         <View>
           <Text>Scan QR</Text>
         </View>
