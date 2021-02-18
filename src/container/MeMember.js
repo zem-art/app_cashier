@@ -79,7 +79,7 @@ export class MeMember extends Component {
           </View>
           <View style={styles.profile}>
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('QR Code')}
+              onPress={() => this.props.navigation.navigate('Qr Code')}
               style={styles.inBody}>
               <Image
                 style={styles.qrCode}
