@@ -8,13 +8,13 @@ class BottomHeaderM extends Component {
       <View style={styles.bottomH}>
         <View style={styles.inBottom}>
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('Scan Qr')}
+            onPress={() => this.props.navigation.navigate('Qr Code')}
             style={styles.Klik}>
             <Image
               style={styles.scan}
-              source={require('../assets/icon/scan.png')}
+              source={require('../assets/icon/qrcode.png')}
             />
-            <Text>Scan</Text>
+            <Text>Qr Code</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.inBottom}>

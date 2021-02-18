@@ -147,7 +147,7 @@ class Navigation extends Component {
             options={{headerShown: false}}
           />
           <Stack.Screen
-            name="QR Code"
+            name="Qr Code"
             component={QrCode}
             options={{headerShown: false}}
           />
