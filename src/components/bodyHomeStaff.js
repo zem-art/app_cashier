@@ -22,7 +22,7 @@ export class BodyHomeS extends Component {
             style={styles.iconKlik}
             source={require('../assets/icon/addBOx.png')}
           />
-          <Text>Add Stock</Text>
+          <Text>Add Barang</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('StockGudang')}

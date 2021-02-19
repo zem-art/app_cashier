@@ -20,7 +20,7 @@ import ScanQr from '../screen/ScanQr';
 import QrCode from '../screen/QrCode';
 import ProfileStaf from '../container/ProfileStaf';
 import AddBuyer from '../screen/addBuyer';
-import AddStock from '../screen/addStock';
+import AddStock, {AddBarang} from '../screen/addStock';
 import Stock from '../screen/Stock';
 import AddSupllaier from '../screen/addSupllaier';
 
@@ -168,7 +168,7 @@ class Navigation extends Component {
           />
           <Stack.Screen
             name="AddStock"
-            component={AddStock}
+            component={AddBarang}
             options={{headerShown: false}}
           />
           <Stack.Screen
