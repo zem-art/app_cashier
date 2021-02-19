@@ -19,6 +19,11 @@ export class AddSupllaier extends Component {
       loading: false,
     };
   }
+
+  goTo() {
+    this.props.navigation.navigate('AddBuyer');
+  }
+
   addSuplleir = async () => {
     await axios({
       url: 'https://project-mini.herokuapp.com/api/add-supplier',
@@ -34,6 +39,7 @@ export class AddSupllaier extends Component {
         console.log('Sucsess Add==', result.data);
         this.setState({loading: false});
         ToastAndroid.show('Berhasil Menambahkan Perusaahaa', ToastAndroid.LONG);
+        this.goTo();
       })
       .catch((err) => {
         console.log('Eroror Add==', err);

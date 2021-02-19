@@ -7,13 +7,13 @@ export class BodyHomeS extends Component {
     return (
       <>
         <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('AddBuyer')}
+          onPress={() => this.props.navigation.navigate('AddSupllaier')}
           style={styles.bottomHeader}>
           <Image
             style={styles.iconKlik}
             source={require('../assets/icon/addMan.png')}
           />
-          <Text>Add Buyer</Text>
+          <Text>Add Company</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('AddStock')}
