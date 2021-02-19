@@ -23,7 +23,6 @@ class BottomTab extends Component {
           inactiveTintColor: '#a9a9a9',
           activeBackgroundColor: '#F9C900',
         }}>
-        {/* <Tab.Screen name="HomeBos" component={HomeBos} /> */}
         {this.props.userData.userReducer.role ? (
           this.props.userData.userReducer.role == 1 ? (
             <Tab.Screen name="HomeBos" component={HomeBos} />

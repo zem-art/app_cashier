@@ -77,7 +77,7 @@ class Navigation extends Component {
     if (this.state.splash) {
       return <Splash />;
     }
-    console.log('ini Redux Navigation===', this.props.userData.userReducer);
+    // console.log('ini Redux Navigation===', this.props.userData.userReducer);
     return (
       <NavigationContainer>
         <Stack.Navigator>

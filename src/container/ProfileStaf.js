@@ -10,9 +10,11 @@ import {
   Image,
 } from 'react-native';
 import {styles} from '../styles/styleProfil';
-import axios from 'axios';
+// import axios from 'axios';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {connect} from 'react-redux';
+import Spinner from 'react-native-spinkit';
+import AsyncStorage from '@react-native-community/async-storage';
 
 export class ProfileStaf extends Component {
   constructor(props) {
@@ -20,12 +22,14 @@ export class ProfileStaf extends Component {
     const {item} = this.props.route.params;
     this.state = {
       name: item.nama,
-      email: item.email,
       age: JSON.stringify(item.umur),
       address: item.alamat,
-      image: item.avatar,
+      image: {uri: item.avatar},
+      uri: item.avatar,
+
       srcImage: '',
       filename: '',
+      isloading: false,
     };
   }
 
@@ -50,7 +54,7 @@ export class ProfileStaf extends Component {
         console.log('Response Image Picker , and file name', response.fileName);
         this.setState({
           srcImage: {uri: response.uri},
-          image: response.uri,
+          uri: response.uri,
           filename: response.fileName,
         });
       }
@@ -58,38 +62,55 @@ export class ProfileStaf extends Component {
   }
 
   sendData() {
-    const data = {
+    this.setState({isloading: true});
+    let data = {
       nama: this.state.name,
-      email: this.state.email,
       umur: this.state.age,
       alamat: this.state.address,
     };
     const add = new FormData();
     add.append('avatar', {
-      uri: this.state.image,
+      uri: this.state.uri,
       type: 'image/jpeg',
-      name: this.state.fileName,
+      name: this.state.filename,
     });
     for (var key in data) {
       add.append(key.toString(), data[key]);
     }
-    axios({
-      url: 'https://project-mini.herokuapp.com/api/update-profile',
+    console.log('Ini Data Compile', add);
+    fetch('https://project-mini.herokuapp.com/api/update-profile', {
       method: 'POST',
       headers: {
         Authorization: `Bearer${this.props.userData.userReducer.token}`,
+        // url:
+        // 'Content-Type': 'multipart/from-data',
+        Accept: 'application/json',
       },
+      body: add,
     })
+      .then((response) => {
+        console.log('respon ===', response);
+        return response.json();
+      })
       .then((result) => {
+        const {avatar} = result.data;
+        this.props.userImage(avatar);
         console.log('IniBerhasil==', result.data);
+        this.setState({isloading: false});
+        const Image_key = ['image', avatar];
+        AsyncStorage.multiSet([Image_key]).then((value) => {
+          this.setState({Image_key: value});
+        });
+        console.log('++===Done Save==++');
       })
       .catch((err) => {
         console.log('Eroror Posdt Data==', err);
+        this.setState({isloading: false});
       });
   }
 
   render() {
-    // console.log('ini Data Params==', this.props.route.params);
+    // console.log('ini Data Redux==', this.props.userData.userReducer);
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#29abe2" />
@@ -107,7 +128,7 @@ export class ProfileStaf extends Component {
             <TouchableOpacity
               onPress={() => this.setPhoto()}
               style={styles.avatar}>
-              <Image style={styles.profile} source={{uri: this.state.image}} />
+              <Image style={styles.profile} source={{uri: this.state.uri}} />
             </TouchableOpacity>
           </View>
           <View style={styles.body}>
@@ -117,14 +138,7 @@ export class ProfileStaf extends Component {
                 value={this.state.name}
                 style={styles.input}
                 placeholder="Text"
-              />
-            </View>
-            <View style={styles.inbody}>
-              <Text>Email</Text>
-              <TextInput
-                value={this.state.email}
-                style={styles.input}
-                placeholder="Text"
+                onChangeText={(nama) => this.setState({name: nama})}
               />
             </View>
             <View style={styles.inbody}>
@@ -133,6 +147,7 @@ export class ProfileStaf extends Component {
                 value={this.state.age}
                 style={styles.input}
                 placeholder="Text"
+                onChangeText={(umur) => this.setState({age: umur})}
               />
             </View>
             <View style={styles.inbody}>
@@ -141,12 +156,24 @@ export class ProfileStaf extends Component {
                 value={this.state.address}
                 style={styles.input}
                 placeholder="Text"
+                onChangeText={(alamat) => this.setState({address: alamat})}
               />
             </View>
           </View>
           <View style={styles.klik}>
-            <TouchableOpacity style={styles.pactKlik}>
-              <Text>Klik</Text>
+            <TouchableOpacity
+              onPress={() => this.sendData()}
+              style={styles.pactKlik}>
+              {this.state.isloading ? (
+                <Spinner
+                  style={styles.loading}
+                  color={'#29abe2'}
+                  size={25}
+                  type="Wave"
+                />
+              ) : (
+                <Text style={styles.textBottom}>Edit Profile</Text>
+              )}
             </TouchableOpacity>
           </View>
           <View style={styles.bottom} />
@@ -160,4 +187,10 @@ const mapStateToProps = (state) => {
     userData: state,
   };
 };
-export default connect(mapStateToProps)(ProfileStaf);
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    userImage: (avatar) => dispatch({type: 'SET_IMAGE', payload: avatar}),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileStaf);

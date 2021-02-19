@@ -14,7 +14,7 @@ import ProfileAdmin from '../components/ProfileAdmin';
 
 export class HomeStaf extends Component {
   render() {
-    console.log('Ini Data Redux==', this.props.userData.userReducer);
+    // console.log('Ini Data Redux==', this.props.userData.userReducer);
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#F9C900" />

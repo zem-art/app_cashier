@@ -31,10 +31,10 @@ export class ProfileAdmin extends Component {
           console.log('Sucsess Get Profile==', result.data.data);
           const {id} = result.data.data;
           const {avatar} = result.data.data;
-          const Image_key = ['image', avatar];
-          const Id_key = ['id', JSON.stringify(id)];
           this.props.userImage(avatar);
           this.props.userId(id);
+          const Image_key = ['image', avatar];
+          const Id_key = ['id', JSON.stringify(id)];
           AsyncStorage.multiSet([Image_key, Id_key]).then((value) => {
             this.setState({Image_key: value, Id_key: value});
           });
