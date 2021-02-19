@@ -11,6 +11,7 @@ import {styles} from '../styles/styleHomestaf';
 import {connect} from 'react-redux';
 import HomeStaff from '../components/HeaderStaff';
 import ProfileAdmin from '../components/ProfileAdmin';
+import BodyHomeS from '../components/bodyHomeStaff';
 
 export class HomeStaf extends Component {
   render() {
@@ -24,34 +25,7 @@ export class HomeStaf extends Component {
             <ProfileAdmin navigation={this.props.navigation} />
           </View>
           <View style={styles.body}>
-            <TouchableOpacity style={styles.bottomHeader}>
-              <Image
-                style={styles.iconKlik}
-                source={require('../assets/icon/addMan.png')}
-              />
-              <Text>Add Supplier</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.bottomHeader}>
-              <Image
-                style={styles.iconKlik}
-                source={require('../assets/icon/addBOx.png')}
-              />
-              <Text>Add Stock</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.bottomHeader}>
-              <Image
-                style={styles.iconKlik}
-                source={require('../assets/icon/box.png')}
-              />
-              <Text>Scan</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.bottomHeader}>
-              <Image
-                style={styles.iconKlik}
-                source={require('../assets/icon/box.png')}
-              />
-              <Text>Scan</Text>
-            </TouchableOpacity>
+            <BodyHomeS navigation={this.props.navigation} />
           </View>
           <View>
             <Text>body</Text>

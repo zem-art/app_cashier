@@ -19,6 +19,9 @@ import Succes from '../screen/succes';
 import ScanQr from '../screen/ScanQr';
 import QrCode from '../screen/QrCode';
 import ProfileStaf from '../container/ProfileStaf';
+import AddBuyer from '../screen/addBuyer';
+import AddStock from '../screen/addStock';
+import Stock from '../screen/Stock';
 
 const Stack = createStackNavigator();
 
@@ -155,6 +158,21 @@ class Navigation extends Component {
           <Stack.Screen
             name="Edit Profil"
             component={ProfileStaf}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AddBuyer"
+            component={AddBuyer}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AddStock"
+            component={AddStock}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="StockGudang"
+            component={Stock}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

@@ -26,7 +26,6 @@ export class ProfileStaf extends Component {
       address: item.alamat,
       image: {uri: item.avatar},
       uri: item.avatar,
-
       srcImage: '',
       filename: '',
       isloading: false,
@@ -89,13 +88,13 @@ export class ProfileStaf extends Component {
       body: add,
     })
       .then((response) => {
-        console.log('respon ===', response);
+        console.log('respon ===', response.data);
         return response.json();
       })
       .then((result) => {
         const {avatar} = result.data;
         this.props.userImage(avatar);
-        console.log('IniBerhasil==', result.data);
+        // console.log('IniBerhasil==', result.data);
         this.setState({isloading: false});
         const Image_key = ['image', avatar];
         AsyncStorage.multiSet([Image_key]).then((value) => {
