@@ -204,30 +204,3 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 export default connect(null, mapDispatchToProps)(Login);
-
-// const {email} = result.data.user;
-
-//
-// this.props.userEmail(email);
-// this.props.userId(id);
-
-// console.log('Ini Data BackEnd==', result.data);
-// const {id} = result.data.user;
-
-// name_Key,
-// qr_Key,
-// nomor_Key,
-// kode_Key,
-// id_Key,
-
-// const qr_Key = ['qr_code', qr_code];
-// const nomor_Key = ['nomor', nomor];
-// const name_Key = ['nama', nama];
-// const kode_Key = ['kodeMember', kode_member];
-// const id_Key = ['id', JSON.stringify(id)];
-
-// qr_Key: value,
-// nomor_Key: value,
-// name_Key: value,
-// kode_Key: value,
-// id_Key: value,

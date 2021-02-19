@@ -22,6 +22,7 @@ import ProfileStaf from '../container/ProfileStaf';
 import AddBuyer from '../screen/addBuyer';
 import AddStock from '../screen/addStock';
 import Stock from '../screen/Stock';
+import AddSupllaier from '../screen/addSupllaier';
 
 const Stack = createStackNavigator();
 
@@ -173,6 +174,11 @@ class Navigation extends Component {
           <Stack.Screen
             name="StockGudang"
             component={Stock}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AddSupllaier"
+            component={AddSupllaier}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
