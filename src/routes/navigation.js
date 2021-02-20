@@ -23,6 +23,7 @@ import AddBuyer from '../screen/addBuyer';
 import AddBarang from '../screen/addBarang';
 import Stock from '../screen/Stock';
 import AddSupllaier from '../screen/addSupllaier';
+import ItemDetail from '../screen/ItemDetail';
 
 const Stack = createStackNavigator();
 
@@ -179,6 +180,11 @@ class Navigation extends Component {
           <Stack.Screen
             name="AddSupllaier"
             component={AddSupllaier}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Detail"
+            component={ItemDetail}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

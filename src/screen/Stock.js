@@ -32,7 +32,7 @@ export class Stock extends Component {
           },
         })
         .then((result) => {
-          console.log('Sucsees== Get Data', result.data.data);
+          // console.log('Sucsees== Get Data++', result.data.data);
           this.setState({dataGet: result.data.data});
         })
         .catch((err) => {
@@ -45,6 +45,7 @@ export class Stock extends Component {
     }
   };
   render() {
+    console.log('Ini Data Params==', this.props.route.params);
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#29abe2" />
@@ -62,7 +63,13 @@ export class Stock extends Component {
             {this.state.dataGet.map((item) => {
               return (
                 <View style={styles.inbody}>
-                  <TouchableOpacity style={styles.Pact}>
+                  <TouchableOpacity
+                    onPress={() =>
+                      this.props.navigation.navigate('Detail', {
+                        item: item,
+                      })
+                    }
+                    style={styles.Pact}>
                     <Text style={styles.colorDetail}>Detail</Text>
                   </TouchableOpacity>
                   <View style={styles.iinBody}>
