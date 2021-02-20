@@ -75,7 +75,6 @@ export class Stock extends Component {
                       <Text>{item.merek}</Text>
                     </View>
                   </View>
-
                   <View style={styles.PactEditDelete}>
                     <TouchableOpacity style={styles.Pact1}>
                       <Image
