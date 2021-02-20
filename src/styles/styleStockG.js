@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
   body: {
     // borderWidth: 1,
-    paddingHorizontal: 15,
+    paddingHorizontal: 10,
     paddingVertical: 10,
   },
   inbody: {
@@ -49,8 +49,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     // borderWidth: 1,
-    height: 70,
-    width: '50%',
+    height: 80,
+    width: '55%',
+    // marginBottom: 5,
   },
   Pact: {
     alignSelf: 'flex-end',
