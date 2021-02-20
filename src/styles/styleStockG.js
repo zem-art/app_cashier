@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     // borderWidth: 1,
-    height: 60,
+    height: 70,
     width: '50%',
   },
   Pact: {
