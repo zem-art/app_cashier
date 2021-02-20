@@ -20,7 +20,7 @@ import ScanQr from '../screen/ScanQr';
 import QrCode from '../screen/QrCode';
 import ProfileStaf from '../container/ProfileStaf';
 import AddBuyer from '../screen/addBuyer';
-import AddStock, {AddBarang} from '../screen/addStock';
+import AddBarang from '../screen/addStock';
 import Stock from '../screen/Stock';
 import AddSupllaier from '../screen/addSupllaier';
 
