@@ -25,6 +25,7 @@ import Stock from '../screen/Stock';
 import AddSupllaier from '../screen/addSupllaier';
 import ItemDetail from '../screen/ItemDetail';
 import EditBarang from '../screen/EditBarang';
+import SucsessAdd from '../screen/sucsessAdd';
 
 const Stack = createStackNavigator();
 
@@ -191,6 +192,11 @@ class Navigation extends Component {
           <Stack.Screen
             name="Submit"
             component={EditBarang}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="SucsessAdGoods"
+            component={SucsessAdd}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

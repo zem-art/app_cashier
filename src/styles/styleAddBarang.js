@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
   },
   pactHitung: {
     flexDirection: 'row',
+
     marginTop: 10,
   },
   textL: {
@@ -54,6 +55,18 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     marginHorizontal: 10,
     borderBottomColor: '#a9a9',
+    // alignItems: 'center',
+    justifyContent: 'center',
+  },
+  pactInHitung: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    // justifyContent: 'center',
+    // borderWidth: 1,
+  },
+  textRP: {
+    marginRight: 5,
+    // borderWidth: 1,
   },
   bottom: {
     height: 70,

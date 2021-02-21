@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   StatusBar,
   Image,
+  ToastAndroid,
 } from 'react-native';
 import {styles} from '../styles/styleAddBarang';
 import {Picker} from '@react-native-picker/picker';
@@ -27,6 +28,8 @@ export class AddBarang extends Component {
       InitialPrice: '',
       FinalPrice: '',
       stock: '',
+      data: {},
+      isloading: false,
     };
   }
 
@@ -34,8 +37,12 @@ export class AddBarang extends Component {
     this.getCategory();
     this.getBrand();
   }
+  goTo() {
+    this.props.navigation.navigate('SucsessAdGoods', {item: this.state.data});
+  }
 
   AddBarang() {
+    this.setState({isloading: true});
     axios({
       url: 'https://project-mini.herokuapp.com/api/add-barang',
       method: 'POST',
@@ -52,10 +59,15 @@ export class AddBarang extends Component {
       },
     })
       .then((result) => {
-        console.log('Sucsess==', result.data);
+        // console.log('Sucsess==', result.data.data);
+        ToastAndroid.show('Dat Berhasil Di Tambaha Kan ', ToastAndroid.LONG);
+        this.setState({data: result.data.data, isloading: false});
+        this.goTo();
       })
       .catch((err) => {
         console.log('Eror Post Data==', err);
+        ToastAndroid.show('Data Gagal Di Tambah Kan', ToastAndroid.LONG);
+        this.setState({isloading: false});
       });
   }
 
@@ -124,7 +136,7 @@ export class AddBarang extends Component {
         </View>
       );
     }
-    console.log('Ini data Redux==', this.props.userData.userReducer.token);
+    // console.log('Ini data Redux==', this.props.userData.userReducer.token);
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#29abe2" />
@@ -149,19 +161,26 @@ export class AddBarang extends Component {
             <View style={styles.pactHitung}>
               <View style={styles.inHitung}>
                 <Text style={styles.textL}>Harga Awal</Text>
-                <TextInput
-                  keyboardType="number-pad"
-                  placeholder="Ex : 500"
-                  onChangeText={(awal) => this.setState({InitialPrice: awal})}
-                />
+                <View style={styles.pactInHitung}>
+                  <Text style={styles.textRP}>Rp.</Text>
+                  <TextInput
+                    keyboardType="number-pad"
+                    placeholder="Ex : Rp. 500"
+                    style={styles.input}
+                    onChangeText={(awal) => this.setState({InitialPrice: awal})}
+                  />
+                </View>
               </View>
               <View style={styles.inHitung}>
                 <Text style={styles.textL}>Harga Jual</Text>
-                <TextInput
-                  keyboardType="number-pad"
-                  placeholder="Ex : 5000"
-                  onChangeText={(final) => this.setState({FinalPrice: final})}
-                />
+                <View style={styles.pactInHitung}>
+                  <Text style={styles.textRP}>Rp.</Text>
+                  <TextInput
+                    keyboardType="number-pad"
+                    placeholder="Ex : 5000"
+                    onChangeText={(final) => this.setState({FinalPrice: final})}
+                  />
+                </View>
               </View>
             </View>
             <View style={styles.pactHitung}>
@@ -220,7 +239,11 @@ export class AddBarang extends Component {
             <TouchableOpacity
               onPress={() => this.AddBarang()}
               style={styles.inBottom}>
-              <Text style={styles.textKlik}>Add</Text>
+              {this.state.isloading ? (
+                <Spinner color={'white'} size={25} type="Wave" />
+              ) : (
+                <Text style={styles.textKlik}>Add</Text>
+              )}
             </TouchableOpacity>
           </View>
         </ScrollView>
