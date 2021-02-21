@@ -72,8 +72,8 @@ const styles = StyleSheet.create({
   },
 
   delete: {
-    height: 22,
-    width: 22,
+    height: 20,
+    width: 20,
   },
   colorDetail: {
     color: '#0000ff',
