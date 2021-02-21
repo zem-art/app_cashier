@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   bottom: {
-    borderWidth: 1,
+    // borderWidth: 1,
     paddingHorizontal: 20,
     paddingVertical: 10,
   },
@@ -76,6 +76,39 @@ const styles = StyleSheet.create({
     marginTop: '7%',
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  pactModal: {
+    flex: 1,
+    backgroundColor: '#a9a9',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 10,
+  },
+  inModal: {
+    backgroundColor: '#ffff',
+    height: '30%',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+    paddingHorizontal: 20,
+    marginTop: 10,
+  },
+  inModalQr: {
+    height: 70,
+    width: '100%',
+  },
+  pactBack: {
+    height: 50,
+    width: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 20,
+    borderRadius: 10,
+  },
+  backinModal: {
+    height: 50,
+    width: 50,
   },
 });
 

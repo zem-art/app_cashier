@@ -1,5 +1,13 @@
 import React, {Component} from 'react';
-import {Text, View, Image, TouchableOpacity, ScrollView} from 'react-native';
+import {
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  Modal,
+  Alert,
+} from 'react-native';
 import {connect} from 'react-redux';
 import {styles} from '../styles/styeleDetail';
 
@@ -15,10 +23,21 @@ export class ItemDetail extends Component {
       stock: item.stok,
       finalBuy: item.harga_jual,
       category: item.kategori,
+      modal: false,
     };
   }
+
+  openModal = () => {
+    this.setState({modal: true});
+  };
+
+  closeModal = () => {
+    this.setState({modal: false});
+  };
+
   render() {
-    console.log('Ini Data Params==', this.props.route.params);
+    // console.log('Ini Data Params==', this.props.route.params);
+    const {modal} = this.state;
     return (
       <View style={styles.container}>
         <View style={styles.header}>
@@ -37,7 +56,9 @@ export class ItemDetail extends Component {
         </View>
         <ScrollView>
           <View style={styles.body}>
-            <TouchableOpacity style={styles.inBody}>
+            <TouchableOpacity
+              onPress={() => this.openModal()}
+              style={styles.inBody}>
               <Image style={styles.barcode} source={{uri: this.state.qrCode}} />
             </TouchableOpacity>
           </View>
@@ -68,6 +89,24 @@ export class ItemDetail extends Component {
             </View>
           </View>
         </ScrollView>
+        <Modal animationType="fade" transparent visible={modal}>
+          <View style={styles.pactModal}>
+            <View style={styles.inModal}>
+              <Image
+                style={styles.inModalQr}
+                source={{uri: this.state.qrCode}}
+              />
+              <TouchableOpacity
+                style={styles.pactBack}
+                onPress={() => this.closeModal()}>
+                <Image
+                  style={styles.backinModal}
+                  source={require('../assets/icon/close.png')}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+        </Modal>
       </View>
     );
   }
