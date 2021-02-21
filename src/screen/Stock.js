@@ -11,12 +11,14 @@ import {
 import {styles} from '../styles/styleStockG';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import Spinner from 'react-native-spinkit';
 
 export class Stock extends Component {
   constructor() {
     super();
     this.state = {
       dataGet: [],
+      loading: false,
     };
   }
   componentDidMount() {
@@ -24,6 +26,7 @@ export class Stock extends Component {
   }
 
   getData = async () => {
+    this.setState({loading: true});
     try {
       await axios
         .get('https://project-mini.herokuapp.com/api/barang', {
@@ -32,15 +35,17 @@ export class Stock extends Component {
           },
         })
         .then((result) => {
-          this.setState({dataGet: result.data.data});
+          this.setState({dataGet: result.data.data, loading: false});
         })
         .catch((err) => {
           console.log('Eroro Get Data==', err);
           ToastAndroid.show('Maaf Terjadi Kesalahan', ToastAndroid.LONG);
+          this.setState({loading: false, isEror: true});
         });
     } catch (err) {
       console.log('eroro Get Data', err);
       ToastAndroid.show('Maaf Terjadi Kesalahan', ToastAndroid.LONG);
+      this.setState({loading: false, isEror: true});
     }
   };
 
@@ -62,7 +67,27 @@ export class Stock extends Component {
       });
   }
   render() {
-    console.log('Ini Data Params==', this.props.route.params);
+    // console.log('Ini Data Params==', this.props.route.params);
+    if (this.state.loading) {
+      return (
+        <View style={styles.isloading}>
+          <Spinner color={'blue'} size={40} type="ThreeBounce" />
+          <Text>Sedang Memuat data</Text>
+        </View>
+      );
+    } else if (this.state.isEror) {
+      return (
+        <View style={styles.isloading}>
+          <Text>Maaf Terjadi Eror Saat Memuat Data</Text>
+          <Text>Dan Kesalahan Dari Kami Bukan Dari Anda</Text>
+          <TouchableOpacity
+            style={styles.toc}
+            onPress={() => this.onRefreash()}>
+            <Text>Klik Me Untuk refreash</Text>
+          </TouchableOpacity>
+        </View>
+      );
+    }
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#29abe2" />
