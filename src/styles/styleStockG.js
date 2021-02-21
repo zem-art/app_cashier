@@ -66,9 +66,9 @@ const styles = StyleSheet.create({
     height: 30,
     // borderWidth: 1,
     width: '100%',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     marginVertical: 5,
-    marginTop: 10,
+    // marginTop: 5,
   },
 
   delete: {

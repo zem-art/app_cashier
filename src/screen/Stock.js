@@ -32,7 +32,6 @@ export class Stock extends Component {
           },
         })
         .then((result) => {
-          // console.log('Sucsees== Get Data++', result.data.data);
           this.setState({dataGet: result.data.data});
         })
         .catch((err) => {
@@ -44,6 +43,24 @@ export class Stock extends Component {
       ToastAndroid.show('Maaf Terjadi Kesalahan', ToastAndroid.LONG);
     }
   };
+
+  deleteItem() {
+    axios({
+      url: `https://project-mini.herokuapp.com/api/delete-barang/${this.props.route.params.item}`,
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer${this.props.userData.userReducer.token}`,
+      },
+    })
+      .then((result) => {
+        console.log('Sucsess Delet==', result.data);
+        ToastAndroid.show('Item Berhasil DI Hapus', ToastAndroid.LONG);
+        this.getData();
+      })
+      .catch((err) => {
+        console.log('eroro Delete Data==', err);
+      });
+  }
   render() {
     console.log('Ini Data Params==', this.props.route.params);
     return (
@@ -83,12 +100,6 @@ export class Stock extends Component {
                     </View>
                   </View>
                   <View style={styles.PactEditDelete}>
-                    <TouchableOpacity style={styles.Pact1}>
-                      <Image
-                        style={styles.delete}
-                        source={require('../assets/icon/delete.png')}
-                      />
-                    </TouchableOpacity>
                     <TouchableOpacity style={styles.Pact1}>
                       <Image
                         style={styles.delete}
