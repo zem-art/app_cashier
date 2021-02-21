@@ -125,7 +125,9 @@ export class Stock extends Component {
                     </View>
                   </View>
                   <View style={styles.PactEditDelete}>
-                    <TouchableOpacity style={styles.Pact1}>
+                    <TouchableOpacity
+                      onPress={() => this.props.navigation.navigate('Submit')}
+                      style={styles.Pact1}>
                       <Image
                         style={styles.delete}
                         source={require('../assets/icon/edit.png')}
