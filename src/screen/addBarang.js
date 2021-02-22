@@ -37,6 +37,7 @@ export class AddBarang extends Component {
     this.getCategory();
     this.getBrand();
   }
+
   goTo() {
     this.props.navigation.navigate('SucsessAdGoods', {item: this.state.data});
   }
@@ -60,7 +61,7 @@ export class AddBarang extends Component {
     })
       .then((result) => {
         // console.log('Sucsess==', result.data.data);
-        ToastAndroid.show('Dat Berhasil Di Tambaha Kan ', ToastAndroid.LONG);
+        ToastAndroid.show('Data Berhasil Di Tambaha Kan ', ToastAndroid.LONG);
         this.setState({data: result.data.data, isloading: false});
         this.goTo();
       })
