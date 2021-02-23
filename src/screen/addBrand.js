@@ -22,7 +22,7 @@ export class AddBrand extends Component {
   }
 
   goTo() {
-    this.props.navigation.navigate('AddStock');
+    this.props.navigation.navigate('Staf');
   }
 
   addBrand() {
