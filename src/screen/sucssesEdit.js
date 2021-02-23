@@ -68,11 +68,17 @@ export class SucssesEdit extends Component {
             </View>
             <View style={styles.inBottom}>
               <Text>Harga Beli :</Text>
-              <Text>{this.state.initialPrice}</Text>
+              <View style={styles.pactRp}>
+                <Text>Rp .</Text>
+                <Text>{this.state.initialPrice}</Text>
+              </View>
             </View>
             <View style={styles.inBottom}>
               <Text>Harga Jual :</Text>
-              <Text>{this.state.finalPrice}</Text>
+              <View style={styles.pactRp}>
+                <Text>Rp .</Text>
+                <Text>{this.state.finalPrice}</Text>
+              </View>
             </View>
             <View style={styles.inBottom}>
               <Text>Diskon :</Text>

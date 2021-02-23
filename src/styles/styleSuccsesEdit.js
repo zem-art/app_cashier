@@ -78,7 +78,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#29abe2',
   },
-
+  pactRp: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 5,
+  },
   text: {
     color: '#fff',
     fontSize: 20,
