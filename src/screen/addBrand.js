@@ -58,10 +58,10 @@ export class AddBrand extends Component {
         </View>
         <View style={styles.body}>
           <View style={styles.inBody}>
-            <Text style={styles.text}>Enter Your Brand</Text>
+            <Text style={styles.text}>Enter The Brand You Like</Text>
             <TextInput
               style={styles.input}
-              placeholder="Enter Your Brand"
+              placeholder="Insert Here"
               onChangeText={(name) => this.setState({brand: name})}
             />
           </View>
