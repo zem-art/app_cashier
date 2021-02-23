@@ -2,23 +2,23 @@ import React, {Component} from 'react';
 import {
   Text,
   View,
-  Image,
   StatusBar,
+  Image,
   ScrollView,
   TouchableOpacity,
   Modal,
 } from 'react-native';
-import {styles} from '../styles/styleSucssesA';
+import {styles} from '../styles/styleSuccsesEdit';
 import LottieView from 'lottie-react-native';
 
-export class SucsessAdd extends Component {
+export class SucssesEdit extends Component {
   constructor(props) {
     super(props);
     const {item} = this.props.route.params;
     this.state = {
       name: item.nama_barang,
       barcode: item.barcode,
-      date: item.created_at,
+      date: item.updated_at,
       diskon: item.diskon,
       initialPrice: item.harga_beli,
       finalPrice: item.harga_jual,
@@ -40,7 +40,7 @@ export class SucsessAdd extends Component {
       <View style={styles.container}>
         <StatusBar backgroundColor="#29abe2" />
         <View style={styles.header}>
-          <Text style={styles.title}>Sucsess</Text>
+          <Text style={styles.title}>Sucsess Edit</Text>
         </View>
         <View style={styles.body}>
           <View style={styles.inbody}>
@@ -79,7 +79,11 @@ export class SucsessAdd extends Component {
               <Text>{this.state.diskon}</Text>
             </View>
             <View style={styles.inBottom}>
-              <Text>Date :</Text>
+              <Text>Stock :</Text>
+              <Text>{this.state.stocl}</Text>
+            </View>
+            <View style={styles.inBottom}>
+              <Text>Update :</Text>
               <Text>{this.state.date}</Text>
             </View>
           </View>
@@ -87,11 +91,6 @@ export class SucsessAdd extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('Staf')}
               style={styles.inKlik}>
-              <Text style={styles.text}>Home</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('StockGudang')}
-              style={styles.inKlik1}>
               <Text style={styles.text}>Done</Text>
             </TouchableOpacity>
           </View>
@@ -122,4 +121,4 @@ export class SucsessAdd extends Component {
   }
 }
 
-export default SucsessAdd;
+export default SucssesEdit;

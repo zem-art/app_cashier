@@ -8,21 +8,33 @@ const styles = StyleSheet.create({
   header: {
     // borderWidth: 1,
     backgroundColor: '#29abe2',
-    height: 80,
+    height: 50,
     alignItems: 'center',
-    flexDirection: 'row',
-    paddingHorizontal: 15,
+    justifyContent: 'center',
   },
   title: {
     color: '#ffff',
     fontSize: 20,
     fontWeight: 'bold',
   },
-
+  body: {
+    height: 130,
+    backgroundColor: '#29abe2',
+    alignItems: 'center',
+    justifyContent: 'center',
+    // paddingHorizontal: 30,
+  },
+  inbody: {
+    height: 80,
+    backgroundColor: '#ffffff',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    // borderRadius: 10,
+  },
   icon: {
-    height: 30,
-    width: 30,
-    marginRight: 10,
+    height: 80,
+    width: 80,
   },
   bottom: {
     // borderWidth: 1,
@@ -30,14 +42,13 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   inBottom: {
-    height: 60,
+    height: 50,
     width: '100%',
     marginVertical: 10,
     paddingLeft: 10,
     paddingTop: 5,
     borderBottomWidth: 1,
     borderBottomColor: '#a9a9a9',
-    // borderWidth: 1,
   },
   StartBottom: {
     height: 50,
@@ -59,17 +70,7 @@ const styles = StyleSheet.create({
   },
   inKlik: {
     // borderWidth: 1,
-    width: '50%',
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginHorizontal: 10,
-    borderRadius: 10,
-    backgroundColor: '#b22222',
-  },
-  inKlik1: {
-    // borderWidth: 1,
-    width: '50%',
+    width: '100%',
     height: 50,
     alignItems: 'center',
     justifyContent: 'center',
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#29abe2',
   },
+
   text: {
     color: '#fff',
     fontSize: 20,
@@ -126,10 +128,6 @@ const styles = StyleSheet.create({
     height: 30,
     fontWeight: 'bold',
     fontSize: 20,
-  },
-  pactEdit: {
-    flexDirection: 'row',
-    alignItems: 'center',
   },
 });
 

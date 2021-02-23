@@ -7,7 +7,7 @@ import {
   Image,
   StatusBar,
   ToastAndroid,
-  // RefreshControl,
+  RefreshControl,
 } from 'react-native';
 import {styles} from '../styles/styleStockG';
 import {connect} from 'react-redux';
@@ -20,9 +20,17 @@ export class Stock extends Component {
     this.state = {
       dataGet: [],
       loading: false,
+      refreash: false,
     };
   }
   componentDidMount() {
+    this.getData();
+  }
+
+  onRefreash() {
+    this.setState({
+      refreash: true,
+    });
     this.getData();
   }
 
@@ -36,17 +44,21 @@ export class Stock extends Component {
           },
         })
         .then((result) => {
-          this.setState({dataGet: result.data.data, loading: false});
+          this.setState({
+            dataGet: result.data.data,
+            loading: false,
+            refreash: false,
+          });
         })
         .catch((err) => {
           console.log('Eroro Get Data==', err);
           ToastAndroid.show('Maaf Terjadi Kesalahan', ToastAndroid.LONG);
-          this.setState({loading: false, isEror: true});
+          this.setState({loading: false, isEror: true, refreash: false});
         });
     } catch (err) {
       console.log('eroro Get Data', err);
       ToastAndroid.show('Maaf Terjadi Kesalahan', ToastAndroid.LONG);
-      this.setState({loading: false, isEror: true});
+      this.setState({loading: false, isEror: true, refreash: false});
     }
   };
 
@@ -93,7 +105,8 @@ export class Stock extends Component {
       <View style={styles.container}>
         <StatusBar backgroundColor="#29abe2" />
         <View style={styles.header}>
-          <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('Staf')}>
             <Image
               style={styles.back}
               source={require('../assets/icon/back.png')}
@@ -101,7 +114,13 @@ export class Stock extends Component {
           </TouchableOpacity>
           <Text style={styles.title}>Stok Gudang</Text>
         </View>
-        <ScrollView>
+        <ScrollView
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreash}
+              onRefresh={() => this.onRefreash()}
+            />
+          }>
           <View style={styles.body}>
             {this.state.dataGet.map((item) => {
               return (

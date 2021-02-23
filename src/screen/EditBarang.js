@@ -47,6 +47,10 @@ export class EditBarang extends Component {
     this.props.navigation.navigate('Staf');
   }
 
+  leadTo() {
+    this.props.navigation.navigate('SucsseEdit', {item: this.state.submit});
+  }
+
   submitBarang() {
     this.setState({isloading: true});
     axios({
@@ -57,7 +61,7 @@ export class EditBarang extends Component {
       },
       data: {
         nama_barang: this.state.name,
-        harga_beli: '',
+        harga_beli: this.state.initialPrice,
         harga_jual: this.state.finalPrice,
         stok: this.state.stock,
         diskon: this.state.diskon,
@@ -67,6 +71,7 @@ export class EditBarang extends Component {
         console.log('Sucsses Submit Barang==', result.data.data);
         ToastAndroid.show('Sucsses Edit Barang', ToastAndroid.LONG);
         this.setState({isloading: false, submit: result.data.data});
+        this.leadTo();
       })
       .catch((err) => {
         console.log('eroro==', err);
@@ -105,7 +110,6 @@ export class EditBarang extends Component {
     }
   }
   render() {
-    console.log('Ini Data==', this.props.route.params);
     const {Imagebarcode} = this.state;
     return (
       <View style={styles.container}>
@@ -139,19 +143,25 @@ export class EditBarang extends Component {
             </View>
             <View style={styles.inBottom}>
               <Text>Harga Jual :</Text>
-              <TextInput
-                value={this.state.initialPrice}
-                placeholder="Text"
-                onChangeText={(jual) => this.setState({finalPrice: jual})}
-              />
+              <View style={styles.pactEdit}>
+                <Text>Rp .</Text>
+                <TextInput
+                  value={this.state.initialPrice}
+                  placeholder="Text"
+                  onChangeText={(beli) => this.setState({initialPrice: beli})}
+                />
+              </View>
             </View>
             <View style={styles.inBottom}>
               <Text>Harga Jual :</Text>
-              <TextInput
-                value={this.state.finalPrice}
-                placeholder="Text"
-                onChangeText={(jual) => this.setState({finalPrice: jual})}
-              />
+              <View style={styles.pactEdit}>
+                <Text>Rp .</Text>
+                <TextInput
+                  value={this.state.finalPrice}
+                  placeholder="Text"
+                  onChangeText={(jual) => this.setState({finalPrice: jual})}
+                />
+              </View>
             </View>
             <View style={styles.inBottom}>
               <Text>Stock :</Text>
