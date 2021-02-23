@@ -54,7 +54,7 @@ export class AddCategory extends Component {
       <View style={styles.container}>
         <StatusBar backgroundColor="#6495ed" />
         <View style={styles.header}>
-          <Text style={styles.title}>Insert Category</Text>
+          <Text style={styles.title}>Add Category</Text>
         </View>
         <View style={styles.body}>
           <View style={styles.inBody}>
