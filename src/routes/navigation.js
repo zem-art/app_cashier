@@ -28,6 +28,7 @@ import EditBarang from '../screen/EditBarang';
 import SucsessAdd from '../screen/sucsessAdd';
 import SucssesEdit from '../screen/sucssesEdit';
 import AddBrand from '../screen/addBrand';
+import AddCategory from '../screen/AddCategory';
 
 const Stack = createStackNavigator();
 
@@ -209,6 +210,11 @@ class Navigation extends Component {
           <Stack.Screen
             name="AddBrand"
             component={AddBrand}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AddCategory"
+            component={AddCategory}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

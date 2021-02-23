@@ -33,9 +33,7 @@ export class BodyHomeS extends Component {
           />
           <Text>Stock Available</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('AddBrand')}
-          style={styles.bottomHeader}>
+        <TouchableOpacity style={styles.bottomHeader}>
           <Image
             style={styles.iconKlik}
             source={require('../assets/icon/box.png')}

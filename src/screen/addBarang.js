@@ -222,7 +222,7 @@ export class AddBarang extends Component {
                 style={styles.picker}
                 onValueChange={(itemValue) => {
                   if (itemValue === 'addKategori') {
-                    null;
+                    this.props.navigation.navigate('AddCategory');
                   } else {
                     this.setState({category: itemValue});
                   }
