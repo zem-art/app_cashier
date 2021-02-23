@@ -21,7 +21,7 @@ export class AddSupllaier extends Component {
   }
 
   goTo() {
-    this.props.navigation.navigate('AddBuyer');
+    this.props.navigation.navigate('Staf');
   }
 
   addSuplleir = async () => {

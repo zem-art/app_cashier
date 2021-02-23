@@ -214,13 +214,3 @@ const mapStateToProps = (state) => {
   };
 };
 export default connect(mapStateToProps)(AddBuyer);
-// onValueChange={(itemValue) => {
-//   if (itemValue === 'add') {
-//     munculin Modal
-//   } else {
-//     this.setState({inputCategory: itemValue});
-//   }
-// }}
-
-// kitabuatstatisuntukvaluenya
-// Picker.item label="Tambah_Barang" value="add"
