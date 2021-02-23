@@ -86,9 +86,9 @@ export class SucsessAdd extends Component {
           </View>
           <View style={styles.pactKlik}>
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('Submit')}
+              onPress={() => this.props.navigation.navigate('Staf')}
               style={styles.inKlik}>
-              <Text style={styles.text}>Edit</Text>
+              <Text style={styles.text}>Home</Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate('StockGudang')}

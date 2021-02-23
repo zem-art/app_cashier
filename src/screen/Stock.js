@@ -7,6 +7,7 @@ import {
   Image,
   StatusBar,
   ToastAndroid,
+  // RefreshControl,
 } from 'react-native';
 import {styles} from '../styles/styleStockG';
 import {connect} from 'react-redux';
@@ -126,7 +127,11 @@ export class Stock extends Component {
                   </View>
                   <View style={styles.PactEditDelete}>
                     <TouchableOpacity
-                      onPress={() => this.props.navigation.navigate('Submit')}
+                      onPress={() =>
+                        this.props.navigation.navigate('Submit', {
+                          item: item,
+                        })
+                      }
                       style={styles.Pact1}>
                       <Image
                         style={styles.delete}
