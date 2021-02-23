@@ -13,7 +13,16 @@ export class BodyHomeS extends Component {
             style={styles.iconKlik}
             source={require('../assets/icon/addMan.png')}
           />
-          <Text>Add Company</Text>
+          <Text>Insert Company</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('AddBuyer')}
+          style={styles.bottomHeader}>
+          <Image
+            style={styles.iconKlik}
+            source={require('../assets/icon/Buy.png')}
+          />
+          <Text>Purchase</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('AddStock')}
@@ -22,7 +31,7 @@ export class BodyHomeS extends Component {
             style={styles.iconKlik}
             source={require('../assets/icon/addBOx.png')}
           />
-          <Text>Add Barang</Text>
+          <Text>Insert Barang</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('StockGudang')}
@@ -32,15 +41,6 @@ export class BodyHomeS extends Component {
             source={require('../assets/icon/stokBrang.png')}
           />
           <Text>Stock Available</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('AddBuyer')}
-          style={styles.bottomHeader}>
-          <Image
-            style={styles.iconKlik}
-            source={require('../assets/icon/box.png')}
-          />
-          <Text>Scan</Text>
         </TouchableOpacity>
       </>
     );
