@@ -8,6 +8,7 @@ import {
   StatusBar,
   Image,
   ToastAndroid,
+  RefreshControl,
 } from 'react-native';
 import {styles} from '../styles/styleAddBarang';
 import {Picker} from '@react-native-picker/picker';
@@ -30,6 +31,7 @@ export class AddBarang extends Component {
       stock: '',
       data: {},
       isloading: false,
+      refreash: false,
     };
   }
 
@@ -72,6 +74,17 @@ export class AddBarang extends Component {
       });
   }
 
+  Reloade() {
+    this.getBrand(), this.getCategory();
+  }
+
+  onRefreash() {
+    this.setState({
+      refreash: true,
+    });
+    this.Reloade();
+  }
+
   getBrand = async () => {
     this.setState({loading: true});
     try {
@@ -83,15 +96,19 @@ export class AddBarang extends Component {
         })
         .then((result) => {
           console.log('get Sucsess=', result.data.data);
-          this.setState({dataBrand: result.data.data, loading: false});
+          this.setState({
+            dataBrand: result.data.data,
+            loading: false,
+            refreash: false,
+          });
         })
         .catch((err) => {
           console.log('Eror Get Data==', err);
-          this.setState({loading: false});
+          this.setState({loading: false, refreash: false});
         });
     } catch (err) {
       console.log('Eroro Get Data==', err);
-      this.setState({loading: false});
+      this.setState({loading: false, refreash: false});
     }
   };
   getCategory = async () => {
@@ -105,15 +122,19 @@ export class AddBarang extends Component {
         })
         .then((result) => {
           console.log('get Sucsess=', result.data.data);
-          this.setState({dataCategory: result.data.data, loading: false});
+          this.setState({
+            dataCategory: result.data.data,
+            loading: false,
+            refreash: false,
+          });
         })
         .catch((err) => {
           console.log('Eror Get Data==', err);
-          this.setState({loading: false});
+          this.setState({loading: false, refreash: false});
         });
     } catch (err) {
       console.log('Eroro Get Data==', err);
-      this.setState({loading: false});
+      this.setState({loading: false, refreash: false});
     }
   };
   render() {
@@ -150,7 +171,13 @@ export class AddBarang extends Component {
           </TouchableOpacity>
           <Text style={styles.title}>Add Barang</Text>
         </View>
-        <ScrollView>
+        <ScrollView
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreash}
+              onRefresh={() => this.onRefreash()}
+            />
+          }>
           <View style={styles.body}>
             <View style={styles.inBody}>
               <Text style={styles.textL}>Nama Barang</Text>
