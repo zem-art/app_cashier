@@ -124,7 +124,7 @@ export class AddBuyer extends Component {
               source={require('../assets/icon/back.png')}
             />
           </TouchableOpacity>
-          <Text style={styles.title}>Add Supllier</Text>
+          <Text style={styles.title}>Add Pembeli</Text>
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate('AddSupllaier')}>
             <Image

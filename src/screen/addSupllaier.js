@@ -21,7 +21,7 @@ export class AddSupllaier extends Component {
   }
 
   goTo() {
-    this.props.navigation.navigate('Staf');
+    this.props.navigation.navigate('AddBuyer');
   }
 
   addSuplleir = async () => {
@@ -48,6 +48,7 @@ export class AddSupllaier extends Component {
       });
   };
   render() {
+    console.log(this.props.userData.userReducer.token);
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#29abe2" />
