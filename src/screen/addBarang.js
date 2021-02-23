@@ -200,7 +200,7 @@ export class AddBarang extends Component {
                   selectedValue={this.state.brand}
                   onValueChange={(itemValue) => {
                     if (itemValue === 'addBrand') {
-                      null;
+                      this.props.navigation.navigate('AddBrand');
                     } else {
                       this.setState({brand: itemValue});
                     }
