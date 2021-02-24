@@ -31,13 +31,22 @@ export class ProfileAdmin extends Component {
           console.log('Sucsess Get Profile==', result.data.data);
           const {id} = result.data.data;
           const {avatar} = result.data.data;
+          const {email} = result.data.data;
           this.props.userImage(avatar);
           this.props.userId(id);
+          this.props.userEmail(email);
           const Image_key = ['image', avatar];
           const Id_key = ['id', JSON.stringify(id)];
-          AsyncStorage.multiSet([Image_key, Id_key]).then((value) => {
-            this.setState({Image_key: value, Id_key: value});
-          });
+          const email_Key = ['email', email];
+          AsyncStorage.multiSet([Image_key, Id_key, email_Key]).then(
+            (value) => {
+              this.setState({
+                Image_key: value,
+                Id_key: value,
+                email_Key: value,
+              });
+            },
+          );
           this.setState({data: result.data.data});
           this.setState({isloading: false, refreash: false});
         })
@@ -59,6 +68,7 @@ export class ProfileAdmin extends Component {
         </View>
       );
     }
+    console.log(this.props.userData.userReducer);
     return (
       <>
         <View style={styles.icon}>
@@ -67,6 +77,7 @@ export class ProfileAdmin extends Component {
             source={{uri: this.props.userData.userReducer.image}}
           />
         </View>
+        <Text>{this.props.userData.userReducer.email}</Text>
         <TouchableOpacity
           onPress={() =>
             this.props.navigation.navigate('Edit Profil', {
@@ -93,6 +104,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     userId: (id) => dispatch({type: 'SET_ID', payload: id}),
     userImage: (avatar) => dispatch({type: 'SET_IMAGE', payload: avatar}),
+    userEmail: (email) => dispatch({type: 'SET_EMAIL', payload: email}),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileAdmin);

@@ -36,6 +36,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 50,
+    // flexDirection: 'row',
+    // borderWidth: 1,
   },
   loading: {
     alignSelf: 'center',
