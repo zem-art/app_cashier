@@ -7,7 +7,7 @@ export class BodyHomeS extends Component {
     return (
       <>
         <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('AddSupllaier')}
+          onPress={() => this.props.navigation.navigate('Pembeli')}
           style={styles.bottomHeader}>
           <Image
             style={styles.iconKlik}

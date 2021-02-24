@@ -29,6 +29,7 @@ import SucsessAdd from '../screen/sucsessAdd';
 import SucssesEdit from '../screen/sucssesEdit';
 import AddBrand from '../screen/addBrand';
 import AddCategory from '../screen/AddCategory';
+import DataPembeli from '../screen/DataPembeli';
 
 const Stack = createStackNavigator();
 
@@ -215,6 +216,11 @@ class Navigation extends Component {
           <Stack.Screen
             name="AddCategory"
             component={AddCategory}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Pembeli"
+            component={DataPembeli}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
