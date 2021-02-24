@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {StatusBar, Text, View, ToastAndroid} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import QRCodeScanner from 'react-native-qrcode-scanner';
-import axios from 'axios';
+// import axios from 'axios';
 import {styles} from '../styles/styleScanQr';
 import {connect} from 'react-redux';
 
