@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 import {styles} from '../styles/styleProfile';
 
-export class ProfileAdmin extends Component {
+export class ProfileBos extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -45,4 +45,4 @@ export class ProfileAdmin extends Component {
   }
 }
 
-export default ProfileAdmin;
+export default ProfileBos;

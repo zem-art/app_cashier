@@ -9,9 +9,9 @@ import HomeStaf from '../container/HomeStaf';
 import HomeKasir from '../container/HomeKasir';
 import HomeBos from '../container/HomeBos';
 import MeMember from '../container/MeMember';
-import QrCode from '../screen/QrCode';
 import Profile from '../container/Profile';
-import {ProfileAdmin} from '../components/ProfileAdmin';
+import ProfileBos from '../container/ProfileAdmin';
+import ScanQr from '../screen/ScanQr';
 
 const Tab = createBottomTabNavigator();
 
@@ -31,7 +31,7 @@ class BottomTab extends Component {
               <Tab.Screen name="HomeBos" component={HomeBos} />
               <Tab.Screen
                 name="ProfileA"
-                component={ProfileAdmin}
+                component={ProfileBos}
                 options={{
                   tabBarIcon: () => (
                     <Image
@@ -57,6 +57,18 @@ class BottomTab extends Component {
                 }}
               />
               <Tab.Screen
+                name="Scan"
+                component={ScanQr}
+                options={{
+                  tabBarIcon: () => (
+                    <Image
+                      style={styles.icon}
+                      source={require('../assets/icon/scan.png')}
+                    />
+                  ),
+                }}
+              />
+              <Tab.Screen
                 name="Profile"
                 component={Profile}
                 options={{
@@ -73,7 +85,7 @@ class BottomTab extends Component {
             <>
               <Tab.Screen name="Cashier" component={HomeKasir} />
               <Tab.Screen
-                name="Profile"
+                name="ProfileCasher"
                 component={Profile}
                 options={{
                   tabBarIcon: () => (
