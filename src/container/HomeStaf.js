@@ -1,12 +1,5 @@
 import React, {Component} from 'react';
-import {
-  Text,
-  View,
-  ScrollView,
-  TouchableOpacity,
-  Image,
-  StatusBar,
-} from 'react-native';
+import {Text, View, ScrollView, StatusBar} from 'react-native';
 import {styles} from '../styles/styleHomestaf';
 import {connect} from 'react-redux';
 import HomeStaff from '../components/HeaderStaff';
@@ -26,9 +19,6 @@ export class HomeStaf extends Component {
           </View>
           <View style={styles.body}>
             <BodyHomeS navigation={this.props.navigation} />
-          </View>
-          <View>
-            <Text>body</Text>
           </View>
           <View style={styles.bottom} />
         </ScrollView>
