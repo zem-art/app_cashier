@@ -30,7 +30,7 @@ export class DetailP extends Component {
   }
 
   goto() {
-    this.props.navigation.navigate('Pembeli');
+    this.props.navigation.navigate('Staf');
   }
 
   changeStatus() {
