@@ -10,6 +10,8 @@ import HomeKasir from '../container/HomeKasir';
 import HomeBos from '../container/HomeBos';
 import MeMember from '../container/MeMember';
 import QrCode from '../screen/QrCode';
+import Profile from '../container/Profile';
+import {ProfileAdmin} from '../components/ProfileAdmin';
 
 const Tab = createBottomTabNavigator();
 
@@ -25,22 +27,64 @@ class BottomTab extends Component {
         }}>
         {this.props.userData.userReducer.role ? (
           this.props.userData.userReducer.role == 1 ? (
-            <Tab.Screen name="HomeBos" component={HomeBos} />
+            <>
+              <Tab.Screen name="HomeBos" component={HomeBos} />
+              <Tab.Screen
+                name="ProfileA"
+                component={ProfileAdmin}
+                options={{
+                  tabBarIcon: () => (
+                    <Image
+                      style={styles.icon}
+                      source={require('../assets/icon/iconProfile.png')}
+                    />
+                  ),
+                }}
+              />
+            </>
           ) : this.props.userData.userReducer.role == 2 ? (
-            <Tab.Screen
-              name="Staf"
-              component={HomeStaf}
-              options={{
-                tabBarIcon: () => (
-                  <Image
-                    style={styles.icon}
-                    source={require('../assets/icon/home.png')}
-                  />
-                ),
-              }}
-            />
+            <>
+              <Tab.Screen
+                name="Staf"
+                component={HomeStaf}
+                options={{
+                  tabBarIcon: () => (
+                    <Image
+                      style={styles.icon}
+                      source={require('../assets/icon/Home.png')}
+                    />
+                  ),
+                }}
+              />
+              <Tab.Screen
+                name="Profile"
+                component={Profile}
+                options={{
+                  tabBarIcon: () => (
+                    <Image
+                      style={styles.icon}
+                      source={require('../assets/icon/iconProfile.png')}
+                    />
+                  ),
+                }}
+              />
+            </>
           ) : this.props.userData.userReducer.role == 3 ? (
-            <Tab.Screen name="Cashier" component={HomeKasir} />
+            <>
+              <Tab.Screen name="Cashier" component={HomeKasir} />
+              <Tab.Screen
+                name="Profile"
+                component={Profile}
+                options={{
+                  tabBarIcon: () => (
+                    <Image
+                      style={styles.icon}
+                      source={require('../assets/icon/iconProfile.png')}
+                    />
+                  ),
+                }}
+              />
+            </>
           ) : this.props.userData.userReducer.role == 4 ? (
             <>
               <Tab.Screen

@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   iconGo: {
-    height: 25,
-    width: 25,
+    height: 23,
+    width: 23,
   },
   body: {
     paddingVertical: 10,

@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   body: {
-    borderWidth: 1,
+    // borderWidth: 1,
     width: '100%',
     paddingHorizontal: 15,
     paddingVertical: 10,
@@ -68,18 +68,24 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 50,
-    borderWidth: 1,
+    // borderWidth: 1,
   },
   pactKlik: {
     height: 50,
     width: '100%',
-    borderWidth: 1,
+    // borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 10,
+    backgroundColor: '#29abe2',
   },
   bottom: {
     height: 50,
+  },
+  textBottom: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    color: '#ffffff',
   },
 });
 

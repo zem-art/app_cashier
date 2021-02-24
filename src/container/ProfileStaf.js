@@ -10,7 +10,6 @@ import {
   Image,
 } from 'react-native';
 import {styles} from '../styles/styleProfil';
-// import axios from 'axios';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {connect} from 'react-redux';
 import Spinner from 'react-native-spinkit';
@@ -60,6 +59,10 @@ export class ProfileStaf extends Component {
     });
   }
 
+  goTo() {
+    this.props.navigation.navigate('Profile');
+  }
+
   sendData() {
     this.setState({isloading: true});
     let data = {
@@ -81,35 +84,33 @@ export class ProfileStaf extends Component {
       method: 'POST',
       headers: {
         Authorization: `Bearer${this.props.userData.userReducer.token}`,
-        // url:
-        // 'Content-Type': 'multipart/from-data',
         Accept: 'application/json',
       },
       body: add,
     })
       .then((response) => {
-        console.log('respon ===', response.data);
         return response.json();
       })
       .then((result) => {
         const {avatar} = result.data;
         this.props.userImage(avatar);
-        // console.log('IniBerhasil==', result.data);
         this.setState({isloading: false});
         const Image_key = ['image', avatar];
         AsyncStorage.multiSet([Image_key]).then((value) => {
           this.setState({Image_key: value});
         });
         console.log('++===Done Save==++');
+        this.goTo();
+        ToastAndroid.show('Sucsse Update Profil', ToastAndroid.LONG);
       })
       .catch((err) => {
-        console.log('Eroror Posdt Data==', err);
+        console.log('Eroror Post Data==', err);
         this.setState({isloading: false});
+        ToastAndroid.show('Tolong Ganti Foto Anda', ToastAndroid.LONG);
       });
   }
 
   render() {
-    // console.log('ini Data Redux==', this.props.userData.userReducer);
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#29abe2" />
@@ -166,12 +167,12 @@ export class ProfileStaf extends Component {
               {this.state.isloading ? (
                 <Spinner
                   style={styles.loading}
-                  color={'#29abe2'}
+                  color={'#ffff'}
                   size={25}
                   type="Wave"
                 />
               ) : (
-                <Text style={styles.textBottom}>Edit Profile</Text>
+                <Text style={styles.textBottom}>Done</Text>
               )}
             </TouchableOpacity>
           </View>
