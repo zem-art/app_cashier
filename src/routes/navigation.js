@@ -30,6 +30,7 @@ import SucssesEdit from '../screen/sucssesEdit';
 import AddBrand from '../screen/addBrand';
 import AddCategory from '../screen/AddCategory';
 import DataPembeli from '../screen/DataPembeli';
+import DetailP from '../screen/DetailP';
 
 const Stack = createStackNavigator();
 
@@ -221,6 +222,11 @@ class Navigation extends Component {
           <Stack.Screen
             name="Pembeli"
             component={DataPembeli}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="DetailPembeli"
+            component={DetailP}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

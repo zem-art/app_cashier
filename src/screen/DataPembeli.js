@@ -107,7 +107,13 @@ export class DataPembeli extends Component {
           <View style={styles.body}>
             {this.state.dataGet.map((item) => {
               return (
-                <TouchableOpacity style={styles.inbody}>
+                <TouchableOpacity
+                  onPress={() =>
+                    this.props.navigation.navigate('DetailPembeli', {
+                      item: item,
+                    })
+                  }
+                  style={styles.inbody}>
                   <View style={styles.iinBody}>
                     <View style={styles.ininBody}>
                       <Text style={styles.colorKet}>Nama Barang : </Text>
