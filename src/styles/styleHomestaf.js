@@ -67,8 +67,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffff',
   },
   iconKlik: {
-    height: 50,
-    width: 50,
+    height: 40,
+    width: 40,
+    marginBottom: 5,
   },
   iconHeader: {
     height: 25,

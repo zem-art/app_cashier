@@ -7,15 +7,6 @@ export class BodyHomeS extends Component {
     return (
       <>
         <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('Pembeli')}
-          style={styles.bottomHeader}>
-          <Image
-            style={styles.iconKlik}
-            source={require('../assets/icon/addMan.png')}
-          />
-          <Text>Insert Company</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
           onPress={() => this.props.navigation.navigate('AddBuyer')}
           style={styles.bottomHeader}>
           <Image
@@ -23,6 +14,15 @@ export class BodyHomeS extends Component {
             source={require('../assets/icon/Buy.png')}
           />
           <Text>Purchase</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('Pembeli')}
+          style={styles.bottomHeader}>
+          <Image
+            style={styles.iconKlik}
+            source={require('../assets/icon/History.png')}
+          />
+          <Text>History Purchase</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('AddStock')}
