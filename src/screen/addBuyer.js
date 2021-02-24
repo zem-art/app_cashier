@@ -67,6 +67,10 @@ export class AddBuyer extends Component {
     }
   };
 
+  leadTo() {
+    this.props.navigation.navigate('Pembeli');
+  }
+
   sendData() {
     this.setState({heloading: true});
     axios({
@@ -86,6 +90,7 @@ export class AddBuyer extends Component {
         console.log('Succses==', result.data.data);
         this.setState({data: result.data.data, heloading: false});
         ToastAndroid.show('Sucsess Add Pembeli', ToastAndroid.LONG);
+        this.leadTo();
       })
       .catch((err) => {
         console.log('Eroror Post==', err);
