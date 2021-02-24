@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {StatusBar, Text, View, ToastAndroid} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import axios from 'axios';
 import {styles} from '../styles/styleScanQr';
+import {connect} from 'react-redux';
 
 export class ScanQr extends Component {
   constructor() {
@@ -12,34 +13,41 @@ export class ScanQr extends Component {
       data: {},
     };
   }
-  getBarCode() {
+
+  Scan = (coba) => {
     try {
-      axios
-        .get('', {})
-        .then((result) => {
-          console.log('Berhasil==', result.data);
-        })
-        .catch((err) => {
-          console.log('eroro get Data==', err);
-        });
+      console.log('dataRR==', coba.data);
+      ToastAndroid.show(coba.data, ToastAndroid.LONG);
+      // this.props.navigation.goBack();
     } catch (err) {
-      console.log('Eroor==', err);
+      console.log('Eroro==', err);
     }
-  }
+  };
+  Scan() {}
+
   render() {
     return (
       <View style={styles.container}>
-        <View>
-          <Text>Scan QR</Text>
+        <StatusBar backgroundColor="#F9C900" />
+        <View style={styles.header}>
+          <Text style={styles.title}>Scan Barcode</Text>
         </View>
-        <QRCodeScanner
-          flashMode={RNCamera.Constants.FlashMode.auto}
-          showMarker
-          vibrate={true}
-        />
+        <View style={styles.body}>
+          <QRCodeScanner
+            flashMode={RNCamera.Constants.FlashMode.auto}
+            showMarker
+            vibrate={true}
+            onRead={(coba) => this.Scan(coba)}
+            reactivate
+          />
+        </View>
       </View>
     );
   }
 }
-
-export default ScanQr;
+const mapStateToProps = (state) => {
+  return {
+    userData: state,
+  };
+};
+export default connect(mapStateToProps)(ScanQr);
