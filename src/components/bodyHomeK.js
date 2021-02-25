@@ -22,7 +22,9 @@ export class BodyHomeK extends Component {
           />
           <Text>Add Cart</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.inBody}>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('Scan')}
+          style={styles.inBody}>
           <Image
             style={styles.icon}
             source={require('../assets/icon/scan.png')}
