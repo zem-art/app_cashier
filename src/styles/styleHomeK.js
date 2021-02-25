@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#ffff',
     elevation: 8,
+    marginVertical: 10,
   },
   icon: {
     height: 45,

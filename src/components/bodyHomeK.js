@@ -25,16 +25,16 @@ export class BodyHomeK extends Component {
         <TouchableOpacity style={styles.inBody}>
           <Image
             style={styles.icon}
-            source={require('../assets/icon/sald.png')}
+            source={require('../assets/icon/scan.png')}
           />
-          <Text>Top Up Saldo</Text>
+          <Text>Scan</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.inBody}>
           <Image
             style={styles.icon}
-            source={require('../assets/icon/addCart.png')}
+            source={require('../assets/icon/getCart.png')}
           />
-          <Text>Add Cart</Text>
+          <Text>My Cart</Text>
         </TouchableOpacity>
       </>
     );
