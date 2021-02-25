@@ -1,29 +1,61 @@
 import React, {Component} from 'react';
-import {StatusBar, Text, View, ToastAndroid} from 'react-native';
+import {StatusBar, Text, View, ToastAndroid, Alert} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 // import axios from 'axios';
 import {styles} from '../styles/styleScanQr';
 import {connect} from 'react-redux';
+import axios from 'axios';
 
 export class ScanQr extends Component {
   constructor() {
     super();
     this.state = {
-      data: {},
+      kode: {},
     };
   }
 
-  Scan = (coba) => {
-    try {
-      console.log('dataRR==', coba.data);
-      ToastAndroid.show(coba.data, ToastAndroid.LONG);
-      // this.props.navigation.goBack();
-    } catch (err) {
-      console.log('Eroro==', err);
-    }
+  routesGoto = () => {
+    Alert.alert(
+      'Silahkan Pilih',
+      'Selection',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => ToastAndroid.show('Cancel Select', ToastAndroid.LONG),
+          style: 'cancel',
+        },
+        {text: 'Scan', onPress: () => console.log('OK Pressed')},
+      ],
+      {cancelable: false},
+    );
   };
-  Scan() {}
+
+  getData(data) {
+    try {
+      axios
+        .get(`https://project-mini.herokuapp.com/api/barang/${data}`, {
+          headers: {
+            Authorization: `Bearer${this.props.userData.userReducer.token}`,
+          },
+        })
+        .then((result) => {
+          console.log('sucsse==', result.data);
+        });
+    } catch (err) {
+      console.log('Eroror==', err);
+    }
+  }
+
+  // Scan = (coba) => {
+  //   try {
+  //     console.log('dataRR==', coba.data);
+  //     ToastAndroid.show(coba.data, ToastAndroid.LONG);
+  //     // this.getData(coba.data);
+  //   } catch (err) {
+  //     console.log('Eroro==', err);
+  //   }
+  // };
 
   render() {
     return (

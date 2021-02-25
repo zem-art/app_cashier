@@ -16,19 +16,25 @@ import Spinner from 'react-native-spinkit';
 export class TopUpScan extends Component {
   constructor() {
     super();
-    const {item} = this.props.route.params;
+    // const {item} = this.props.route.params;
     this.state = {
-      kode: item,
+      kode: '',
       price: '',
       loading: false,
+      data: {},
     };
+  }
+
+  leadTo() {
+    this.props.navigation.navigate('SucssesTop', {item: this.state.data});
   }
 
   topUpSaldo = async () => {
     this.setState({loading: true});
+    const {item} = this.props.route.params;
     await axios({
       url: 'https://project-mini.herokuapp.com/api/isi-saldo',
-      data: {kode_member: this.state.kode, jumlah: this.state.price},
+      data: {kode_member: item, jumlah: this.state.price},
       method: 'POST',
       headers: {
         Authorization: `Bearer${this.props.userData.userReducer.token}`,
@@ -36,8 +42,9 @@ export class TopUpScan extends Component {
     })
       .then((result) => {
         console.log('Sucsses Top Up==', result.data);
-        this.setState({loading: false});
+        this.setState({loading: false, data: result.data});
         ToastAndroid.show('Top Up Berhasil', ToastAndroid.LONG);
+        this.leadTo();
       })
       .catch((err) => {
         console.log('Gagal Top Up==', err);
@@ -64,7 +71,7 @@ export class TopUpScan extends Component {
             <Text style={styles.text}>Insert Kode Unix And Price</Text>
             <TextInput
               style={styles.input}
-              value={this.state.kode}
+              value={this.props.route.params.item}
               onChangeText={(kodeN) => this.setState({kode: kodeN})}
               placeholder="Kode Member"
             />
@@ -72,17 +79,20 @@ export class TopUpScan extends Component {
               style={styles.input}
               onChangeText={(priceN) => this.setState({price: priceN})}
               placeholder="Jumlah"
+              keyboardType="number-pad"
             />
           </View>
         </View>
         <View style={styles.bottom}>
-          <View style={styles.klik}>
+          <TouchableOpacity
+            onPress={() => this.topUpSaldo()}
+            style={styles.klik}>
             {this.state.loading ? (
               <Spinner color={'white'} size={25} type="Wave" />
             ) : (
               <Text style={styles.textSend}>Top Up</Text>
             )}
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
     );
