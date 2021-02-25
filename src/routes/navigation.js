@@ -31,6 +31,8 @@ import AddBrand from '../screen/addBrand';
 import AddCategory from '../screen/AddCategory';
 import DataPembeli from '../screen/DataPembeli';
 import DetailP from '../screen/DetailP';
+import TopUp from '../screen/TopUp';
+import TopUpScan from '../screen/TopUpScan';
 
 const Stack = createStackNavigator();
 
@@ -227,6 +229,16 @@ class Navigation extends Component {
           <Stack.Screen
             name="DetailPembeli"
             component={DetailP}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="TopUp"
+            component={TopUp}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="TopUpScan"
+            component={TopUpScan}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
