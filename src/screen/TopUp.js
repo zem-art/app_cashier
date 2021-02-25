@@ -20,7 +20,12 @@ export class TopUp extends Component {
       kode: '',
       price: '',
       loading: false,
+      data: {},
     };
+  }
+
+  leadTo() {
+    this.props.navigation.navigate('SucssesTop', {item: this.state.data});
   }
 
   topUpSaldo = async () => {
@@ -35,8 +40,9 @@ export class TopUp extends Component {
     })
       .then((result) => {
         console.log('Sucsses Top Up==', result.data);
-        this.setState({loading: false});
+        this.setState({loading: false, data: result.data});
         ToastAndroid.show('Top Up Berhasil', ToastAndroid.LONG);
+        this.leadTo();
       })
       .catch((err) => {
         console.log('Gagal Top Up==', err);
@@ -65,11 +71,13 @@ export class TopUp extends Component {
               style={styles.input}
               onChangeText={(kodeN) => this.setState({kode: kodeN})}
               placeholder="Kode Member"
+              keyboardType="number-pad"
             />
             <TextInput
               style={styles.input}
               onChangeText={(priceN) => this.setState({price: priceN})}
               placeholder="Jumlah"
+              keyboardType="number-pad"
             />
           </View>
         </View>
