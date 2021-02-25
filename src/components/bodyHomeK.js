@@ -1,0 +1,28 @@
+import React, {Component} from 'react';
+import {Text, View, Image, TouchableOpacity} from 'react-native';
+import {styles} from '../styles/styleHomeK';
+
+export class BodyHomeK extends Component {
+  render() {
+    return (
+      <>
+        <TouchableOpacity style={styles.inBody}>
+          <Image
+            style={styles.icon}
+            source={require('../assets/icon/sald.png')}
+          />
+          <Text>Top Up Saldo</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.inBody}>
+          <Image
+            style={styles.icon}
+            source={require('../assets/icon/addCart.png')}
+          />
+          <Text>Add Cart</Text>
+        </TouchableOpacity>
+      </>
+    );
+  }
+}
+
+export default BodyHomeK;

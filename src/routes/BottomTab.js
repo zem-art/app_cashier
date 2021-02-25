@@ -71,7 +71,18 @@ class BottomTab extends Component {
             </>
           ) : this.props.userData.userReducer.role == 3 ? (
             <>
-              <Tab.Screen name="Cashier" component={HomeKasir} />
+              <Tab.Screen
+                name="Cashier"
+                component={HomeKasir}
+                options={{
+                  tabBarIcon: () => (
+                    <Image
+                      style={styles.icon}
+                      source={require('../assets/icon/Home.png')}
+                    />
+                  ),
+                }}
+              />
               {/* <Tab.Screen
                 name="Scan"
                 component={ScanQr}
@@ -85,7 +96,7 @@ class BottomTab extends Component {
                 }}
               /> */}
               <Tab.Screen
-                name="ProfileCasher"
+                name="Profile"
                 component={Profile}
                 options={{
                   tabBarIcon: () => (
