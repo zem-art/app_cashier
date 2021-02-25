@@ -22,11 +22,16 @@ export class ScanTopUp extends Component {
   Scan = (coba) => {
     try {
       console.log('dataRR==', coba.data);
-      ToastAndroid.show(coba.data, ToastAndroid.LONG);
-      this.setState({kode: coba.data});
-      this.goTo();
+      if (coba.data.length <= 14) {
+        ToastAndroid.show(coba.data, ToastAndroid.LONG);
+        this.setState({kode: coba.data});
+        this.goTo();
+      } else {
+        ToastAndroid.show('Barcode Salah', ToastAndroid.LONG);
+      }
     } catch (err) {
       console.log('Eroro==', err);
+      this.props.navigation.goBack();
     }
   };
 

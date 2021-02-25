@@ -71,7 +71,7 @@ export class TopUpScan extends Component {
             <Text style={styles.text}>Insert Kode Unix And Price</Text>
             <TextInput
               style={styles.input}
-              value={this.props.route.params.item}
+              value={`${this.props.route.params.item}`}
               onChangeText={(kodeN) => this.setState({kode: kodeN})}
               placeholder="Kode Member"
             />

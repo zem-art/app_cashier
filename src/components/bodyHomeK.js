@@ -29,7 +29,7 @@ export class BodyHomeK extends Component {
             style={styles.icon}
             source={require('../assets/icon/scan.png')}
           />
-          <Text>Scan</Text>
+          <Text>Scan Top Up</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.inBody}>
           <Image
