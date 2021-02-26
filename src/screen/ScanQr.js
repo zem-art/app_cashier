@@ -47,15 +47,15 @@ export class ScanQr extends Component {
     }
   }
 
-  // Scan = (coba) => {
-  //   try {
-  //     console.log('dataRR==', coba.data);
-  //     ToastAndroid.show(coba.data, ToastAndroid.LONG);
-  //     // this.getData(coba.data);
-  //   } catch (err) {
-  //     console.log('Eroro==', err);
-  //   }
-  // };
+  Scan = (coba) => {
+    try {
+      console.log('dataRR==', coba.data);
+      ToastAndroid.show(coba.data, ToastAndroid.LONG);
+      this.getData(coba.data);
+    } catch (err) {
+      console.log('Eroro==', err);
+    }
+  };
 
   render() {
     return (
