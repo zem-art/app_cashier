@@ -15,7 +15,9 @@ export class BodyHomeK extends Component {
           />
           <Text>Top Up Saldo</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.inBody}>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('AddCart')}
+          style={styles.inBody}>
           <Image
             style={styles.icon}
             source={require('../assets/icon/addCart.png')}

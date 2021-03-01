@@ -35,6 +35,8 @@ import TopUp from '../screen/TopUp';
 import TopUpScan from '../screen/TopUpScan';
 import SucssesTopUp from '../screen/SucssesTopUp';
 import {ScanTopUp} from '../screen/ScanTopUp';
+import AddCart from '../screen/addCart';
+import {ScanInAdd} from '../screen/ScanInAdd';
 
 const Stack = createStackNavigator();
 
@@ -251,6 +253,16 @@ class Navigation extends Component {
           <Stack.Screen
             name="ScanTopUp"
             component={ScanTopUp}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AddCart"
+            component={AddCart}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="InAdd"
+            component={ScanInAdd}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
