@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import {Text, View, ToastAndroid, Alert, StatusBar} from 'react-native';
+import {Text, View, ToastAndroid, StatusBar} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import QRCodeScanner from 'react-native-qrcode-scanner';
-// import axios from 'axios';
+
 import {styles} from '../styles/styleScanQr';
 import {connect} from 'react-redux';
-import axios from 'axios';
 
 export class ScanTopUp extends Component {
   constructor() {
