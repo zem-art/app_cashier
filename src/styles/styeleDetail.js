@@ -14,8 +14,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#29abe2',
   },
   back: {
-    height: 30,
-    width: 35,
+    height: 25,
+    width: 25,
     marginRight: 10,
   },
   title: {
@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     marginTop: '7%',
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
   pactModal: {
     flex: 1,

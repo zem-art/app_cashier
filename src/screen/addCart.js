@@ -33,7 +33,8 @@ export class AddCart extends Component {
       [
         {
           text: 'No',
-          onPress: () => ToastAndroid.show('User Route No', ToastAndroid.LONG),
+          onPress: () => this.props.navigation.navigate('Cart'),
+          // ToastAndroid.show('User Route No', ToastAndroid.LONG),
         },
         {
           text: 'Yes',
@@ -89,12 +90,13 @@ export class AddCart extends Component {
             </TouchableOpacity>
             <Text style={styles.title}>Add Cart</Text>
           </View>
-          <View>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('Cart')}>
             <Image
               style={styles.icon}
               source={require('../assets/icon/getCart.png')}
             />
-          </View>
+          </TouchableOpacity>
         </View>
         <ScrollView>
           <View style={styles.body}>

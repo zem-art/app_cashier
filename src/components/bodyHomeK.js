@@ -33,7 +33,9 @@ export class BodyHomeK extends Component {
           />
           <Text>Scan Top Up</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.inBody}>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('Cart')}
+          style={styles.inBody}>
           <Image
             style={styles.icon}
             source={require('../assets/icon/getCart.png')}
