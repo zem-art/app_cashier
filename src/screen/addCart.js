@@ -27,8 +27,8 @@ export class AddCart extends Component {
 
   routesGoto = () => {
     Alert.alert(
-      'Mau Menambah Kan Barang',
-      'Selection',
+      'Question',
+      'Apakah Ingin Menambahkan Barang',
       [
         {
           text: 'No',
