@@ -11,13 +11,12 @@ import HomeBos from '../container/HomeBos';
 import MeMember from '../container/MeMember';
 import Profile from '../container/Profile';
 import ProfileBos from '../container/ProfileAdmin';
-import ScanQr from '../screen/ScanQr';
+// import ScanQr from '../screen/ScanQr';
 
 const Tab = createBottomTabNavigator();
 
 class BottomTab extends Component {
   render() {
-    // console.log('Ini Redux', this.props.userData.userReducer.role);
     return (
       <Tab.Navigator
         tabBarOptions={{
@@ -83,18 +82,6 @@ class BottomTab extends Component {
                   ),
                 }}
               />
-              {/* <Tab.Screen
-                name="Scan"
-                component={ScanQr}
-                options={{
-                  tabBarIcon: () => (
-                    <Image
-                      style={styles.icon}
-                      source={require('../assets/icon/scan.png')}
-                    />
-                  ),
-                }}
-              /> */}
               <Tab.Screen
                 name="Profile"
                 component={Profile}
