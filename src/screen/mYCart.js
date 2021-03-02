@@ -20,6 +20,7 @@ export class MyCart extends Component {
     this.state = {
       data: [],
       loading: false,
+      response: {},
     };
   }
 
@@ -64,7 +65,7 @@ export class MyCart extends Component {
       .then((result) => {
         console.log('Sucsse ChecOt==', result.data);
         this.getCart();
-        this.setState({loading: false});
+        this.setState({loading: false, response: result.data.data});
       })
       .catch((err) => {
         console.log('Eroror==', err);
