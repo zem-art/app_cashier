@@ -227,7 +227,7 @@ export class MyCart extends Component {
                 </View>
                 <View style={styles.pactklikModal}>
                   <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('Cart')}
+                    onPress={() => this.closeModal()}
                     style={styles.klikM1}>
                     <Text style={styles.textModal}>Exit</Text>
                   </TouchableOpacity>
