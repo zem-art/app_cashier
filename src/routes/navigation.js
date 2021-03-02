@@ -77,10 +77,6 @@ class Navigation extends Component {
         this.props.userRole(value[6][1]);
         this.props.userId(value[7][1]);
         this.props.userEmail(value[8][1]);
-        // this.props.userAddress(value[9][1]);
-        // this.props.userImage([10][1]);
-        // this.props.userAge([11][1]);
-        console.log('INI dari Asynstore== ', value);
         this.setState({splash: false});
       });
     } catch (err) {
@@ -99,7 +95,6 @@ class Navigation extends Component {
     if (this.state.splash) {
       return <Splash />;
     }
-    // console.log('ini Redux Navigation===', this.props.userData.userReducer);
     return (
       <NavigationContainer>
         <Stack.Navigator>
