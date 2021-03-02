@@ -36,6 +36,11 @@ export class MyCart extends Component {
     this.props.navigation.navigate('SucssesCart', {item: this.state.response});
   }
 
+  PaySaldoGoto() {
+    this.props.navigation.navigate('PaySaldo');
+    this.closeModal();
+  }
+
   openModal() {
     this.setState({PactModal: true});
   }
@@ -227,7 +232,7 @@ export class MyCart extends Component {
                     <Text style={styles.textModal}>Exit</Text>
                   </TouchableOpacity>
                   <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('PaySaldo')}
+                    onPress={() => this.PaySaldoGoto()}
                     style={styles.klikM2}>
                     <Text style={styles.textModal}>Saldo</Text>
                   </TouchableOpacity>

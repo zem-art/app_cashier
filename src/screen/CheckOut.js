@@ -15,7 +15,7 @@ export class CheckOut extends Component {
     const {item} = this.props.route.params;
     this.state = {
       date: item.created_at,
-      nameKasir: item.kasir_id,
+      nameKasir: item.kasir,
       moneyChanges: item.kembalian,
       pay: item.harga_total,
       kode: item.kode_member,
@@ -29,7 +29,7 @@ export class CheckOut extends Component {
       <View style={styles.container}>
         <StatusBar backgroundColor="#29abe2" />
         <View style={styles.header}>
-          <Text style={styles.title}>Transaksi Cash Berhasil</Text>
+          <Text style={styles.title}>Transaksi Berhasil</Text>
         </View>
         <View style={styles.body}>
           <View style={styles.inbody}>
@@ -62,6 +62,10 @@ export class CheckOut extends Component {
                 <Text>Rp .</Text>
                 <Text> {this.state.moneyChanges}</Text>
               </View>
+            </View>
+            <View style={styles.inBottom}>
+              <Text>Kode :</Text>
+              <Text>{this.state.kode} </Text>
             </View>
             <View style={styles.inBottom}>
               <Text>Date :</Text>

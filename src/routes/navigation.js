@@ -40,6 +40,7 @@ import ScanInAdd from '../screen/ScanInAdd';
 import MyCart from '../screen/mYCart';
 import DeleteId from '../screen/HeaderMyCart';
 import CheckOut from '../screen/CheckOut';
+import PaySaldo from '../screen/PaySaldo';
 
 const Stack = createStackNavigator();
 
@@ -281,6 +282,11 @@ class Navigation extends Component {
           <Stack.Screen
             name="SucssesCart"
             component={CheckOut}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="PaySaldo"
+            component={PaySaldo}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
