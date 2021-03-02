@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, Image, TouchableOpacity} from 'react-native';
+import {Text, Image, TouchableOpacity} from 'react-native';
 import {styles} from '../styles/styleHomeK';
 
 export class BodyHomeK extends Component {
