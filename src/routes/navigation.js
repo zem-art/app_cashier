@@ -39,6 +39,7 @@ import AddCart from '../screen/addCart';
 import ScanInAdd from '../screen/ScanInAdd';
 import MyCart from '../screen/mYCart';
 import DeleteId from '../screen/HeaderMyCart';
+import CheckOut from '../screen/CheckOut';
 
 const Stack = createStackNavigator();
 
@@ -275,6 +276,11 @@ class Navigation extends Component {
           <Stack.Screen
             name="DeleteId"
             component={DeleteId}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="SucssesCart"
+            component={CheckOut}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

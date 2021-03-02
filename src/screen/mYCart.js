@@ -8,6 +8,8 @@ import {
   Image,
   StatusBar,
   Alert,
+  Modal,
+  TextInput,
 } from 'react-native';
 import {styles} from '../styles/styleMyCart';
 import {connect} from 'react-redux';
@@ -21,11 +23,24 @@ export class MyCart extends Component {
       data: [],
       loading: false,
       response: {},
+      PactModal: false,
+      buyer: '',
     };
   }
 
   componentDidMount() {
     this.getCart();
+  }
+
+  leadTo() {
+    this.props.navigation.navigate('SucssesCart', {item: this.state.response});
+  }
+
+  openModal() {
+    this.setState({PactModal: true});
+  }
+  closeModal() {
+    this.setState({PactModal: false});
   }
 
   getCart = async () => {
@@ -37,7 +52,7 @@ export class MyCart extends Component {
       })
         .then((result) => {
           ToastAndroid.show('Data Berhasil Di Tampilkan', ToastAndroid.LONG);
-          console.log('DAta==', result.data.data);
+          // console.log('DAta==', result.data.data);
           this.setState({data: result.data.data});
         })
         .catch((err) => {
@@ -61,11 +76,16 @@ export class MyCart extends Component {
       headers: {
         Authorization: `Bearer${this.props.userData.userReducer.token}`,
       },
+      data: {
+        dibayar: this.state.buyer,
+      },
     })
       .then((result) => {
-        console.log('Sucsse ChecOt==', result.data);
+        console.log('Sucsse Chec()t==', result.data);
         this.getCart();
         this.setState({loading: false, response: result.data.data});
+        this.leadTo();
+        this.closeModal();
       })
       .catch((err) => {
         console.log('Eroror==', err);
@@ -111,6 +131,7 @@ export class MyCart extends Component {
   }
 
   render() {
+    const {PactModal} = this.state;
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#29abe2" />
@@ -166,19 +187,69 @@ export class MyCart extends Component {
           </View>
         </ScrollView>
         <View style={styles.bottom}>
-          <TouchableOpacity style={styles.inBottom}>
-            {this.state.isloading ? (
-              <Spinner
-                style={styles.loading}
-                color={'#ffff'}
-                size={25}
-                type="Wave"
-              />
-            ) : (
-              <Text>CekOuth</Text>
-            )}
+          <TouchableOpacity
+            onPress={() => this.openModal()}
+            style={styles.inBottom}>
+            <Text style={styles.textSend}>Check Out</Text>
           </TouchableOpacity>
         </View>
+        <Modal transparent={true} animationType="slide" visible={PactModal}>
+          <View style={styles.Modal}>
+            <TouchableOpacity
+              onPress={() => this.closeModal()}
+              style={styles.topModal}
+            />
+            <ScrollView>
+              <View style={styles.dataMoal}>
+                <Text style={styles.titleModal}>
+                  Silahkan Masukan Nominal Uang Anda
+                </Text>
+                <View style={styles.topDataModal}>
+                  <View style={styles.input}>
+                    <Text>Rp .</Text>
+                    <TextInput
+                      style={styles.iinput}
+                      keyboardType="number-pad"
+                      placeholder="0.000.00"
+                      onChangeText={(dibayar) =>
+                        this.setState({buyer: dibayar})
+                      }
+                    />
+                  </View>
+                  <Text style={styles.textAttention}>
+                    * Hanya Untuk Pembayar Cash
+                  </Text>
+                </View>
+                <View style={styles.pactklikModal}>
+                  <TouchableOpacity
+                    onPress={() => this.props.navigation.navigate('Cart')}
+                    style={styles.klikM1}>
+                    <Text style={styles.textModal}>Exit</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => this.props.navigation.navigate('PaySaldo')}
+                    style={styles.klikM2}>
+                    <Text style={styles.textModal}>Saldo</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    onPress={() => this.checkOuth()}
+                    style={styles.klikM}>
+                    {this.state.loading ? (
+                      <Spinner
+                        style={styles.loading}
+                        color={'#FFFFFF'}
+                        size={25}
+                        type="Wave"
+                      />
+                    ) : (
+                      <Text style={styles.textModal}>Cash</Text>
+                    )}
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </ScrollView>
+          </View>
+        </Modal>
       </View>
     );
   }

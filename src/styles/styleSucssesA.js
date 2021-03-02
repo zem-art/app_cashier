@@ -143,6 +143,15 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
   },
+  inKlik2: {
+    width: '100%',
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 10,
+    borderRadius: 10,
+    backgroundColor: '#29abe2',
+  },
 });
 
 export {styles};
