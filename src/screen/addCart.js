@@ -8,6 +8,7 @@ import {
   Image,
   ScrollView,
   Alert,
+  ToastAndroid,
 } from 'react-native';
 import {styles} from '../styles/styleAddCart';
 import Spinner from 'react-native-spinkit';
@@ -28,7 +29,7 @@ export class AddCart extends Component {
   routesGoto = () => {
     Alert.alert(
       'Question',
-      'Apakah Ingin Menambahkan Barang',
+      'Ingin Menambahkan Barang',
       [
         {
           text: 'No',
@@ -68,10 +69,15 @@ export class AddCart extends Component {
         this.setState({isloading: false});
         this.clear();
         this.routesGoto();
+        ToastAndroid.show('Berhasil Menambah Ke Keranjang', ToastAndroid.LONG);
       })
       .catch((err) => {
         console.log('Erororo== ', err);
         this.setState({isloading: false});
+        ToastAndroid.show(
+          'Tolong Masukan Data Dengan Benar',
+          ToastAndroid.LONG,
+        );
       });
   }
   render() {
