@@ -111,6 +111,26 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50,
   },
+  pactKlik: {
+    height: 70,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 30,
+  },
+  inKlik: {
+    height: 50,
+    // borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    borderRadius: 10,
+    backgroundColor: '#29abe2',
+  },
+  textSend: {
+    color: '#ffffff',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
 });
 
 export {styles};

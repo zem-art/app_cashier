@@ -34,11 +34,11 @@ import DetailP from '../screen/DetailP';
 import TopUp from '../screen/TopUp';
 import TopUpScan from '../screen/TopUpScan';
 import SucssesTopUp from '../screen/SucssesTopUp';
-import {ScanTopUp} from '../screen/ScanTopUp';
+import ScanTopUp from '../screen/ScanTopUp';
 import AddCart from '../screen/addCart';
-import {ScanInAdd} from '../screen/ScanInAdd';
+import ScanInAdd from '../screen/ScanInAdd';
 import MyCart from '../screen/mYCart';
-import {DeleteId} from '../components/HeaderMyCart';
+import DeleteId from '../screen/HeaderMyCart';
 
 const Stack = createStackNavigator();
 

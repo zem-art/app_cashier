@@ -83,7 +83,7 @@ class BottomTab extends Component {
                   ),
                 }}
               />
-              <Tab.Screen
+              {/* <Tab.Screen
                 name="Scan"
                 component={ScanQr}
                 options={{
@@ -94,7 +94,7 @@ class BottomTab extends Component {
                     />
                   ),
                 }}
-              />
+              /> */}
               <Tab.Screen
                 name="Profile"
                 component={Profile}

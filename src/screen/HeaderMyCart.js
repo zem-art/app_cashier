@@ -19,6 +19,7 @@ export class DeleteId extends Component {
     const {item} = this.props.route.params;
     this.state = {
       loading: false,
+      id: item.id,
       data: [],
       name: item.nama_barang,
       price: item.total_harga,
@@ -27,8 +28,58 @@ export class DeleteId extends Component {
     };
   }
 
+  goTo() {
+    this.props.navigation.navigate('Cashier');
+  }
+
+  DeleteItem = async () => {
+    this.setState({loading: true});
+    try {
+      axios
+        .delete(
+          `https://project-mini.herokuapp.com/api/hapus/keranjang/${this.state.id}`,
+          {
+            headers: {
+              Authorization: `Bearer${this.props.userData.userReducer.token}`,
+            },
+          },
+        )
+        .then((result) => {
+          console.log('Sucsse==', result.data);
+          this.setState({loading: false});
+          ToastAndroid.show(result.data.message, ToastAndroid.LONG);
+          this.goTo();
+        })
+        .catch((err) => {
+          console.log('Eororo Delet==', err);
+          this.setState({loading: false});
+        });
+    } catch (err) {
+      console.log('eroror', err);
+      this.setState({loading: false});
+    }
+  };
+
+  Question = () => {
+    Alert.alert(
+      'Confirmation',
+      'Mau Menghapus Produk Ini Dari Keranjang',
+      [
+        {
+          text: 'No',
+          onPress: () => ToastAndroid.show('Delete Cancel', ToastAndroid.LONG),
+        },
+        {
+          text: 'Yes',
+          onPress: () => this.DeleteItem(),
+          // ToastAndroid.show('User Route Yes', ToastAndroid.LONG),
+        },
+      ],
+      {cancelable: false},
+    );
+  };
+
   render() {
-    console.log('Ini Data ==', this.props.route.params);
     return (
       <View>
         <View style={styles.header}>
@@ -67,24 +118,11 @@ export class DeleteId extends Component {
               </View>
             </View>
           </View>
-          <View
-            style={{
-              height: 70,
-              alignItems: 'center',
-              justifyContent: 'center',
-              paddingHorizontal: 30,
-            }}>
+          <View style={styles.pactKlik}>
             <TouchableOpacity
-              style={{
-                height: 50,
-                borderWidth: 1,
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderWidth: 1,
-                width: '100%',
-                borderRadius: 10,
-              }}>
-              <Text>Delete</Text>
+              onPress={() => this.Question()}
+              style={styles.inKlik}>
+              <Text style={styles.textSend}>Delete</Text>
             </TouchableOpacity>
           </View>
         </ScrollView>
