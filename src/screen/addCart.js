@@ -8,7 +8,6 @@ import {
   Image,
   ScrollView,
   Alert,
-  ToastAndroid,
 } from 'react-native';
 import {styles} from '../styles/styleAddCart';
 import Spinner from 'react-native-spinkit';
