@@ -35,7 +35,7 @@ export class MyCart extends Component {
         },
       })
         .then((result) => {
-          ToastAndroid.show('Berhasil Mengambil Data', ToastAndroid.LONG);
+          ToastAndroid.show('Data Berhasil Di Tampilkan', ToastAndroid.LONG);
           console.log('DAta==', result.data.data);
           this.setState({data: result.data.data});
         })
