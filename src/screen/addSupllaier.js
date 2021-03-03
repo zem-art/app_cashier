@@ -10,6 +10,7 @@ import {
 import {styles} from '../styles/styleSupllier';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import Spinner from 'react-native-spinkit';
 
 export class AddSupllaier extends Component {
   constructor() {
@@ -21,10 +22,11 @@ export class AddSupllaier extends Component {
   }
 
   goTo() {
-    this.props.navigation.navigate('AddBuyer');
+    this.props.navigation.navigate('Staf');
   }
 
   addSuplleir = async () => {
+    this.setState({loading: true});
     await axios({
       url: 'https://project-mini.herokuapp.com/api/add-supplier',
       method: 'POST',
@@ -38,13 +40,13 @@ export class AddSupllaier extends Component {
       .then((result) => {
         console.log('Sucsess Add==', result.data);
         this.setState({loading: false});
-        ToastAndroid.show('Berhasil Menambahkan Perusaahaa', ToastAndroid.LONG);
+        ToastAndroid.show('Berhasil Menambahkan Supllaier', ToastAndroid.LONG);
         this.goTo();
       })
       .catch((err) => {
         console.log('Eroror Add==', err);
         this.setState({loading: false});
-        ToastAndroid.show('Eror Add Company', ToastAndroid.LONG);
+        ToastAndroid.show('Masukan Nama Supllaier', ToastAndroid.LONG);
       });
   };
   render() {
@@ -61,7 +63,7 @@ export class AddSupllaier extends Component {
             <TextInput
               multiline={true}
               style={styles.input}
-              placeholder="Nama Perusahaan"
+              placeholder="Nama Supllaier"
               onChangeText={(company) => this.setState({company: company})}
             />
           </View>
@@ -70,7 +72,11 @@ export class AddSupllaier extends Component {
           <TouchableOpacity
             onPress={() => this.addSuplleir()}
             style={styles.klik}>
-            <Text style={styles.textKlik}>Submit</Text>
+            {this.state.loading ? (
+              <Spinner color={'white'} size={25} type="Wave" />
+            ) : (
+              <Text style={styles.textKlik}>Submit</Text>
+            )}
           </TouchableOpacity>
         </View>
       </View>

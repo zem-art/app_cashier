@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   },
   back: {
     height: 30,
-    width: 35,
+    width: 30,
   },
   title: {
     color: '#ffff',
