@@ -19,11 +19,15 @@ export class PaySaldo extends Component {
       loading: false,
       kode: '',
       response: {},
+      keranjang: [],
     };
   }
 
   goTo() {
-    this.props.navigation.navigate('SucssesCart', {item: this.state.response});
+    this.props.navigation.navigate('SucssesCart', {
+      item: this.state.response,
+      data: this.state.keranjang,
+    });
   }
 
   paySaldo() {
@@ -40,7 +44,11 @@ export class PaySaldo extends Component {
     })
       .then((result) => {
         console.log('Sucsses==', result.data);
-        this.setState({loading: false, response: result.data.data});
+        this.setState({
+          loading: false,
+          response: result.data.data,
+          keranjang: result.data.keranjang,
+        });
         ToastAndroid.show('Berhasil Melakukan Pembayaran', ToastAndroid.LONG);
         this.goTo();
       })

@@ -25,6 +25,7 @@ export class MyCart extends Component {
       response: {},
       PactModal: false,
       buyer: '',
+      keranjang: [],
     };
   }
 
@@ -33,7 +34,10 @@ export class MyCart extends Component {
   }
 
   leadTo() {
-    this.props.navigation.navigate('SucssesCart', {item: this.state.response});
+    this.props.navigation.navigate('SucssesCart', {
+      item: this.state.response,
+      data: this.state.keranjang,
+    });
   }
 
   PaySaldoGoto() {
@@ -88,7 +92,11 @@ export class MyCart extends Component {
       .then((result) => {
         console.log('Sucsse Chec()t==', result.data);
         this.getCart();
-        this.setState({loading: false, response: result.data.data});
+        this.setState({
+          loading: false,
+          response: result.data.data,
+          keranjang: result.data.keranjang,
+        });
         this.leadTo();
         this.closeModal();
       })
