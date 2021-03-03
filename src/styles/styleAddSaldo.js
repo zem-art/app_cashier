@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#F9C900',
   },
   body: {
-    height: 240,
+    height: 300,
+    // flex: 1,
     // borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -60,6 +61,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     // paddingHorizontal: 10,
+  },
+  bottom: {
+    height: 10,
+    // borderWidth: 1,
   },
   klik: {
     // borderWidth: 1,
