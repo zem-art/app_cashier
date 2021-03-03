@@ -134,17 +134,17 @@ export class AddSaldo extends Component {
               )}
             </TouchableOpacity>
           </View>
-          <View style={styles.pactBack}>
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={styles.klikBack}>
-              <Image
-                style={styles.back}
-                source={require('../assets/icon/Back.png')}
-              />
-            </TouchableOpacity>
-          </View>
         </ScrollView>
+        <View style={styles.pactBack}>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.goBack()}
+            style={styles.klikBack}>
+            <Image
+              style={styles.back}
+              source={require('../assets/icon/Back.png')}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
