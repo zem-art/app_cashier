@@ -51,6 +51,18 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 20,
   },
+  pactKlik: {
+    height: 80,
+    width: '100%',
+    justifyContent: 'center',
+    // borderWidth: 1,
+    paddingHorizontal: 20,
+  },
+  klik: {
+    // borderWidth: 1,
+    width: 50,
+  },
+  back: {height: 50, width: 50},
 });
 
 export {styles};

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, Image} from 'react-native';
+import {Text, View, Image, TouchableOpacity} from 'react-native';
 import {styles} from '../styles/styleQrCode';
 import {connect} from 'react-redux';
 
@@ -23,6 +23,16 @@ export class QrCode extends Component {
               source={{uri: this.props.userData.userReducer.qrcode}}
             />
           </View>
+        </View>
+        <View style={styles.pactKlik}>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('Home')}
+            style={styles.klik}>
+            <Image
+              style={styles.back}
+              source={require('../assets/icon/Back.png')}
+            />
+          </TouchableOpacity>
         </View>
       </View>
     );
