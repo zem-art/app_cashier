@@ -11,6 +11,7 @@ import HomeBos from '../container/HomeBos';
 import MeMember from '../container/MeMember';
 import Profile from '../container/Profile';
 import ProfileBos from '../container/ProfileAdmin';
+import StockLaporan from '../container/StockLaporan';
 // import ScanQr from '../screen/ScanQr';
 
 const Tab = createBottomTabNavigator();
@@ -27,15 +28,26 @@ class BottomTab extends Component {
         {this.props.userData.userReducer.role ? (
           this.props.userData.userReducer.role == 1 ? (
             <>
-              <Tab.Screen name="HomeBos" component={HomeBos} />
               <Tab.Screen
-                name="ProfileA"
-                component={ProfileBos}
+                name="Dashboard"
+                component={HomeBos}
+                options={{
+                  tabBarIcon: () => (
+                    <Image
+                      style={styles.icon1}
+                      source={require('../assets/icon/Dashboard.png')}
+                    />
+                  ),
+                }}
+              />
+              <Tab.Screen
+                name="Stock Toko"
+                component={StockLaporan}
                 options={{
                   tabBarIcon: () => (
                     <Image
                       style={styles.icon}
-                      source={require('../assets/icon/iconProfile.png')}
+                      source={require('../assets/icon/StockIt.png')}
                     />
                   ),
                 }}
@@ -139,5 +151,9 @@ const styles = StyleSheet.create({
   icon: {
     height: 20,
     width: 20,
+  },
+  icon1: {
+    height: 21,
+    width: 21,
   },
 });
