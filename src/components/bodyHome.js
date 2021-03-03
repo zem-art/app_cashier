@@ -79,7 +79,7 @@ export class Body extends Component {
           return (
             <View style={styles.inBody}>
               <View style={styles.History}>
-                <Text>Bank : {item.bank}</Text>
+                <Text>Via : {item.bank}</Text>
                 <View style={styles.pactPrice}>
                   <Text>Price : </Text>
                   <Text style={styles.textPrice}>{item.jumlah}</Text>
