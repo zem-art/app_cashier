@@ -16,10 +16,18 @@ export class StockLaporan extends Component {
     this.state = {
       response: [],
       loading: false,
+      refreash: false,
     };
   }
 
   componentDidMount() {
+    this.getStock();
+  }
+
+  onRefreash() {
+    this.setState({
+      refreash: true,
+    });
     this.getStock();
   }
 
@@ -33,15 +41,19 @@ export class StockLaporan extends Component {
       })
         .then((result) => {
           console.log('Sucsse ==', result.data);
-          this.setState({loading: false, response: result.data.data});
+          this.setState({
+            loading: false,
+            response: result.data.data,
+            refreash: false,
+          });
         })
         .catch((err) => {
           console.log('Erororo=', err);
-          this.setState({loading: false});
+          this.setState({loading: false, refreash: false});
           ToastAndroid.show('Gagal Memuat Data', ToastAndroid.LONG);
         });
     } catch (err) {
-      this.setState({loading: false});
+      this.setState({loading: false, refreash: false});
       ToastAndroid.show('Gagal Memuat Data', ToastAndroid.LONG);
       console.log('Errro==', err);
     }
@@ -52,7 +64,14 @@ export class StockLaporan extends Component {
         <View style={styles.header}>
           <Text style={styles.title}>Stock Gudang </Text>
         </View>
-        <ScrollView style={styles.body}>
+        <ScrollView
+          style={styles.body}
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreash}
+              onRefresh={() => this.onRefreash()}
+            />
+          }>
           {this.state.response.map((i) => {
             return (
               <View style={styles.inbody}>
