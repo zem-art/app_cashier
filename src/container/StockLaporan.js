@@ -40,7 +40,6 @@ export class StockLaporan extends Component {
         },
       })
         .then((result) => {
-          console.log('Sucsse ==', result.data);
           this.setState({
             loading: false,
             response: result.data.data,
