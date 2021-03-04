@@ -10,7 +10,7 @@ import HomeKasir from '../container/HomeKasir';
 import HomeBos from '../container/HomeBos';
 import MeMember from '../container/MeMember';
 import Profile from '../container/Profile';
-import ProfileBos from '../container/ProfileAdmin';
+// import ProfileBos from '../con?tainer/ProfileAdmin';
 import StockLaporan from '../container/StockLaporan';
 // import ScanQr from '../screen/ScanQr';
 

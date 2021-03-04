@@ -1,14 +1,86 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {
+  ScrollView,
+  Text,
+  View,
+  RefreshControl,
+  ToastAndroid,
+} from 'react-native';
+import {styles} from '../styles/styleLaporStock';
+import {connect} from 'react-redux';
+import axios from 'axios';
 
 export class StockLaporan extends Component {
+  constructor() {
+    super();
+    this.state = {
+      response: [],
+      loading: false,
+    };
+  }
+
+  componentDidMount() {
+    this.getStock();
+  }
+
+  getStock = async () => {
+    this.setState({loading: true});
+    try {
+      await axios('https://project-mini.herokuapp.com/api/laporan-stok', {
+        headers: {
+          Authorization: `Bearer${this.props.userData.userReducer.token}`,
+        },
+      })
+        .then((result) => {
+          console.log('Sucsse ==', result.data);
+          this.setState({loading: false, response: result.data.data});
+        })
+        .catch((err) => {
+          console.log('Erororo=', err);
+          this.setState({loading: false});
+          ToastAndroid.show('Gagal Memuat Data', ToastAndroid.LONG);
+        });
+    } catch (err) {
+      this.setState({loading: false});
+      ToastAndroid.show('Gagal Memuat Data', ToastAndroid.LONG);
+      console.log('Errro==', err);
+    }
+  };
   render() {
     return (
-      <View>
-        <Text> Ini Bagian Laporan Stock </Text>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.title}>Stock Gudang </Text>
+        </View>
+        <ScrollView style={styles.body}>
+          {this.state.response.map((i) => {
+            return (
+              <View style={styles.inbody}>
+                <View style={styles.pactName}>
+                  <Text style={styles.text}>Nama Barang : </Text>
+                  <Text>{i.nama_barang}</Text>
+                </View>
+                <View style={styles.pactData}>
+                  <View style={styles.data}>
+                    <Text style={styles.text}>Stock</Text>
+                    <Text>{i.stok} pcs</Text>
+                  </View>
+                  <View style={styles.data}>
+                    <Text style={styles.text}>Update</Text>
+                    <Text>{i.diperbarui}</Text>
+                  </View>
+                </View>
+              </View>
+            );
+          })}
+        </ScrollView>
       </View>
     );
   }
 }
-
-export default StockLaporan;
+const mapStateToProps = (state) => {
+  return {
+    userData: state,
+  };
+};
+export default connect(mapStateToProps)(StockLaporan);
