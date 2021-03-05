@@ -6,7 +6,9 @@ export class BodyHomeB extends Component {
   render() {
     return (
       <>
-        <TouchableOpacity style={stylesB.inBody}>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('AddPurcase')}
+          style={stylesB.inBody}>
           <Image
             style={stylesB.icon}
             source={require('../assets/icon/purcase.png')}

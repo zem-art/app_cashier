@@ -41,6 +41,7 @@ import MyCart from '../screen/mYCart';
 import DeleteId from '../screen/HeaderMyCart';
 import CheckOut from '../screen/CheckOut';
 import PaySaldo from '../screen/PaySaldo';
+import AddPurcase from '../screen/AddPurcase';
 
 const Stack = createStackNavigator();
 
@@ -282,6 +283,11 @@ class Navigation extends Component {
           <Stack.Screen
             name="PaySaldo"
             component={PaySaldo}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AddPurcase"
+            component={AddPurcase}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
