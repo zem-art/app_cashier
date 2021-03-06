@@ -15,7 +15,9 @@ export class BodyHomeB extends Component {
           />
           <Text>Pembelian</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={stylesB.inBody}>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('Salesreport')}
+          style={stylesB.inBody}>
           <Image
             style={stylesB.icon}
             source={require('../assets/icon/sales.png')}

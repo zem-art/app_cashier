@@ -41,7 +41,6 @@ export class AddPurcase extends Component {
       },
     })
       .then((result) => {
-        console.log('Succsse==', result.data);
         this.setState({loading: false, data: result.data.data});
       })
       .catch((err) => {

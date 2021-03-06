@@ -64,6 +64,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     elevation: 7,
   },
+  inbody1: {
+    // borderWidth: 1,
+    margin: 10,
+    height: 200,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 10,
+    backgroundColor: '#ffffff',
+    elevation: 7,
+  },
   text: {
     color: '#a9a9a9',
     fontWeight: 'bold',
