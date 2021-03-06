@@ -24,7 +24,9 @@ export class BodyHomeB extends Component {
           />
           <Text>Penjualan</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={stylesB.inBody}>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('Loosreport')}
+          style={stylesB.inBody}>
           <Image
             style={stylesB.icon}
             source={require('../assets/icon/Loss.png')}

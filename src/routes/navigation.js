@@ -43,6 +43,7 @@ import CheckOut from '../screen/CheckOut';
 import PaySaldo from '../screen/PaySaldo';
 import AddPurcase from '../screen/PurchaseReport';
 import SalesReport from '../screen/SalesReport';
+import LossReport from '../screen/LossReport';
 
 const Stack = createStackNavigator();
 
@@ -294,6 +295,11 @@ class Navigation extends Component {
           <Stack.Screen
             name="Salesreport"
             component={SalesReport}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Loosreport"
+            component={LossReport}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
