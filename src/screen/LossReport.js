@@ -24,7 +24,7 @@ export class LossReport extends Component {
   }
 
   lead_To() {
-    this.props.navigation.navigate('ResponM', {item: this.state.bank});
+    this.props.navigation.navigate('Month', {item: this.state.bank});
   }
 
   GetMonth() {
@@ -43,7 +43,7 @@ export class LossReport extends Component {
       .then((result) => {
         console.log('Sucssess==', result.data);
         this.setState({bank: result.data.data, isloading: false});
-        // this.lead_To();
+        this.lead_To();
         ToastAndroid.show(
           'Permintaan Anda Berhasil Di Proses',
           ToastAndroid.LONG,
