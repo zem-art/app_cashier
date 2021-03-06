@@ -4,7 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import AsyncStorage from '@react-native-community/async-storage';
 import {connect} from 'react-redux';
 
-import Intro from '../screen/Intro';
+import Intro from '../screen/auth/Intro';
 import Splash from '../screen/Splash';
 import Login from '../screen/auth/login';
 import Register from '../screen/auth/Register';

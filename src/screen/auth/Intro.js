@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Text, View, Image, StatusBar, TouchableOpacity} from 'react-native';
-import {styles} from '../styles/styleIntro';
+import {styles} from '../../styles/styleIntro';
 
 export class Intro extends Component {
   render() {
@@ -15,7 +15,7 @@ export class Intro extends Component {
         <View style={styles.body}>
           <Image
             style={styles.icon}
-            source={require('../assets/img/14-removebg-preview.png')}
+            source={require('../../assets/img/14-removebg-preview.png')}
           />
         </View>
         <View style={styles.pactAccount}>
@@ -24,7 +24,7 @@ export class Intro extends Component {
             style={styles.login}>
             <Image
               style={styles.iconLogin}
-              source={require('../assets/icon/login1.png')}
+              source={require('../../assets/icon/login1.png')}
             />
             <Text style={styles.textLogin}>Sign</Text>
           </TouchableOpacity>
@@ -33,7 +33,7 @@ export class Intro extends Component {
             style={styles.register}>
             <Image
               style={styles.iconLogin}
-              source={require('../assets/icon/signUP.png')}
+              source={require('../../assets/icon/signUP.png')}
             />
             <Text style={styles.textRegister}>Sign Up</Text>
           </TouchableOpacity>
