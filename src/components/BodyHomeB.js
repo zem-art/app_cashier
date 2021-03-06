@@ -33,7 +33,9 @@ export class BodyHomeB extends Component {
           />
           <Text>Kerugian</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={stylesB.inBody}>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('Spending')}
+          style={stylesB.inBody}>
           <Image
             style={stylesB.icon}
             source={require('../assets/icon/expends.png')}

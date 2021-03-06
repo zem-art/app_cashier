@@ -12,6 +12,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     flexDirection: 'row',
   },
+  header1: {
+    backgroundColor: '#29abe2',
+    height: 60,
+    alignItems: 'center',
+    paddingHorizontal: 15,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   title: {
     color: '#ffffff',
     fontSize: 20,
@@ -21,6 +29,10 @@ const styles = StyleSheet.create({
     height: 25,
     width: 25,
     marginRight: 10,
+  },
+  icon1: {
+    height: 30,
+    width: 30,
   },
   pactName: {
     // height: 30,
@@ -75,6 +87,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     elevation: 7,
   },
+  inbody2: {
+    // borderWidth: 1,
+    margin: 10,
+    height: 130,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 10,
+    backgroundColor: '#ffffff',
+    elevation: 7,
+  },
   text: {
     color: '#a9a9a9',
     fontWeight: 'bold',
@@ -93,6 +116,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  data1: {
+    height: 80,
+    borderBottomColor: '#29abe2',
+    borderBottomWidth: 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  Picker: {
+    height: 60,
+    width: 250,
+    borderRadius: 10,
   },
   inDate: {
     alignItems: 'center',
