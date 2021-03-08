@@ -7,10 +7,10 @@ import {
   TouchableOpacity,
   View,
   StatusBar,
+  Modal,
 } from 'react-native';
 import {styles} from '../styles/styleAllBos';
 import {connect} from 'react-redux';
-// import DatePicker from 'react-native-datepicker';
 import axios from 'axios';
 import Spinner from 'react-native-spinkit';
 import {Picker} from '@react-native-picker/picker';
@@ -22,12 +22,12 @@ export class Spending extends Component {
       response: {},
       loading: false,
       inputDate: '',
+      data: false,
     };
   }
 
   postDate = async () => {
     this.setState({loading: true});
-    console.log('Mulai Mengirim');
     axios({
       url: 'https://project-mini.herokuapp.com/api/laporan-pengeluaran',
       method: 'POST',
@@ -45,6 +45,7 @@ export class Spending extends Component {
           'Permintaan Anda Berhasil Di Proses',
           ToastAndroid.LONG,
         );
+        this.openModal();
       })
       .catch((err) => {
         console.log('ERororor==', err);
@@ -56,7 +57,15 @@ export class Spending extends Component {
       });
   };
 
+  openModal() {
+    this.setState({data: true});
+  }
+
+  closeModal() {
+    this.setState({data: false});
+  }
   render() {
+    const {data} = this.state;
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#29abe2" />
@@ -68,7 +77,8 @@ export class Spending extends Component {
             />
           </TouchableOpacity>
           <Text style={styles.title}>Laporan Pengeluaran</Text>
-          <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate('AddSpending')}>
             <Image
               style={styles.icon1}
               source={require('../assets/icon/addReport.png')}
@@ -99,7 +109,7 @@ export class Spending extends Component {
           </Picker>
         </View>
         <ScrollView style={styles.body}>
-          {this.state.response.data !== undefined && // Jika Data Nya Engg Ada / A=undifen Maka Tidak Di tampilkan
+          {this.state.response.data !== undefined && // Jika Data Nya Engg Ada / undifen Maka Tidak Di tampilkan
             this.state.response.data.map((i) => {
               return (
                 <View style={styles.inbody2}>
@@ -128,6 +138,38 @@ export class Spending extends Component {
             )}
           </TouchableOpacity>
         </View>
+        <Modal transparent={true} animationType="slide" visible={data}>
+          <View style={styles.Modal}>
+            <TouchableOpacity
+              onPress={() => this.closeModal()}
+              style={styles.UpModal}
+            />
+            <View style={styles.bottomData}>
+              <View style={styles.inBottomModal}>
+                <Text style={styles.titleM}>Total Pengeluaran</Text>
+                <View style={styles.inModalData}>
+                  <Text>Pengeluaran Harian :</Text>
+                  <Text>
+                    Rp . {JSON.stringify(this.state.response.pengeluaran_hari)}
+                  </Text>
+                </View>
+                <View style={styles.inModalData}>
+                  <Text>Pengeluaran Bulan :</Text>
+                  <Text>
+                    Rp . {JSON.stringify(this.state.response.pengeluaran_bulan)}
+                  </Text>
+                </View>
+              </View>
+              <View style={styles.pactModalKlik}>
+                <TouchableOpacity
+                  onPress={() => this.closeModal()}
+                  style={styles.klikM}>
+                  <Text style={styles.textSend}>Done</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </Modal>
       </View>
     );
   }
