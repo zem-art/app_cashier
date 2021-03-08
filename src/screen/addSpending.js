@@ -12,7 +12,7 @@ import {
 import {styles} from '../styles/styleAddSaldo';
 import axios from 'axios';
 import {connect} from 'react-redux';
-import {Picker} from '@react-native-picker/picker';
+
 import Spinner from 'react-native-spinkit';
 
 export class AddSpending extends Component {
