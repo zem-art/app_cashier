@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   inbody1: {
-    height: 250,
+    height: 260,
     // borderWidth: 1,
     width: '98%',
     alignItems: 'center',
@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
     justifyContent: 'space-between',
     width: '100%',
+    marginBottom: 5,
   },
   Loading: {
     flex: 1,
