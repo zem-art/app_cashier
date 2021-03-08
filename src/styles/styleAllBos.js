@@ -65,6 +65,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffff',
     elevation: 6,
   },
+  inData1: {
+    height: 70,
+    width: '100%',
+    // borderWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 10,
+    backgroundColor: '#ffff',
+    elevation: 6,
+  },
   inbody: {
     // borderWidth: 1,
     margin: 10,

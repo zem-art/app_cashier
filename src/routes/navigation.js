@@ -47,6 +47,7 @@ import LossReport from '../screen/LossReport';
 import SucssesMonth from '../screen/Sucsses/sucssesMonth';
 import Spending from '../screen/SpendingReport';
 import AddSpending from '../screen/addSpending';
+import ReportMont from '../screen/Report/ReportPurcasemonth';
 
 const Stack = createStackNavigator();
 
@@ -318,6 +319,11 @@ class Navigation extends Component {
           <Stack.Screen
             name="AddSpending"
             component={AddSpending}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="ReportPurcaseMont"
+            component={ReportMont}
             options={{headerShown: false}}
           />
         </Stack.Navigator>
