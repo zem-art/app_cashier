@@ -20,24 +20,23 @@ export class AddSpending extends Component {
     super();
     this.state = {
       price: '',
-      bank: {},
       isloading: false,
-      inputBank: '',
+      name: '',
     };
   }
 
   lead_To() {
-    this.props.navigation.navigate('ResponM', {item: this.state.bank});
+    this.props.navigation.navigate('Dashboard');
   }
 
   addMoney() {
     this.setState({isloading: true});
     console.log('Mulai Mengirim');
     axios({
-      url: 'https://project-mini.herokuapp.com/api/payments',
+      url: 'https://project-mini.herokuapp.com/api/add-pengeluaran',
       method: 'POST',
       data: {
-        bank: this.state.inputBank,
+        nama_pengeluaran: this.state.name,
         jumlah: this.state.price,
       },
 
@@ -46,32 +45,42 @@ export class AddSpending extends Component {
       },
     })
       .then((result) => {
-        console.log('Berhasil Add Saldo==', result.data.data);
-        this.setState({bank: result.data.data, isloading: false});
+        console.log('Berhasil Menambahkan Pengeluaran==', result.data.data);
         this.lead_To();
-        ToastAndroid.show('Berhasil Menambahkan Saldo Anda', ToastAndroid.LONG);
+        ToastAndroid.show(
+          'Berhasil Menambahkan Pengeluaran',
+          ToastAndroid.LONG,
+        );
       })
       .catch((err) => {
-        console.log('Erro Add Saldo', err);
+        console.log('Errr', err);
         this.setState({isloading: false});
+        ToastAndroid.show('Gagal', ToastAndroid.LONG);
       });
   }
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar backgroundColor="#F9C900" />
-        <View style={styles.header}>
+        <StatusBar backgroundColor="#29abe2" />
+        <View style={styles.header1}>
+          <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+            <Image
+              style={styles.backUp}
+              source={require('../assets/icon/back.png')}
+            />
+          </TouchableOpacity>
           <Text style={styles.title}>Tambah Pengeluaran</Text>
         </View>
         <ScrollView>
           <View style={styles.body}>
-            <View style={styles.inbody}>
-              <View style={styles.pactNomina}>
-                <Text>Nama Pengeluaran</Text>
+            <View style={styles.inbody1}>
+              <View style={styles.pact}>
+                <Text style={styles.text}>Nama Pengeluaran</Text>
                 <TextInput
-                  onChangeText={(price) => this.setState({price: price})}
-                  style={styles.input}
-                  placeholder="Nominal"
+                  onChangeText={(nama) => this.setState({name: nama})}
+                  style={styles.input1}
+                  placeholder="Nama Pengeluaran"
+                  multiline
                 />
               </View>
               <View style={styles.pactNominal}>
@@ -88,7 +97,7 @@ export class AddSpending extends Component {
           <View style={styles.pacTouchable}>
             <TouchableOpacity
               onPress={() => this.addMoney()}
-              style={styles.klik}>
+              style={styles.klik1}>
               {this.state.isloading ? (
                 <Spinner
                   style={styles.loading}
@@ -97,7 +106,7 @@ export class AddSpending extends Component {
                   type="Wave"
                 />
               ) : (
-                <Text style={styles.textSend}>Add Saldo</Text>
+                <Text style={styles.textSend}>Tambah Laporan</Text>
               )}
             </TouchableOpacity>
           </View>
