@@ -1,8 +1,30 @@
 import React, {Component} from 'react';
-import {Text, View, Image, TouchableOpacity} from 'react-native';
+import {Text, Alert, ToastAndroid, Image, TouchableOpacity} from 'react-native';
 import {stylesB} from '../styles/stylesHomeB';
 
 export class BodyHomeB extends Component {
+  Route = () => {
+    return Alert.alert(
+      'Attendance',
+      'Absensi Karyawan',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => ToastAndroid.show('Cancel', ToastAndroid.LONG),
+          style: 'cancel',
+        },
+        {
+          text: 'Bulanan',
+          onPress: () => ToastAndroid.show('Bulan', ToastAndroid.LONG),
+        },
+        {
+          text: 'Harian',
+          onPress: () => this.props.navigation.navigate('AbsenHarian'),
+        },
+      ],
+      {cancelable: false},
+    );
+  };
   render() {
     return (
       <>
@@ -51,14 +73,12 @@ export class BodyHomeB extends Component {
           />
           <Text>Pengeluaran</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => this.props.navigation.navigate(null)}
-          style={stylesB.inBody}>
+        <TouchableOpacity onPress={() => this.Route()} style={stylesB.inBody}>
           <Image
             style={stylesB.icon}
             source={require('../assets/icon/Check.png')}
           />
-          <Text>Absensi Kasir</Text>
+          <Text>Absensi Karyawan</Text>
         </TouchableOpacity>
       </>
     );
