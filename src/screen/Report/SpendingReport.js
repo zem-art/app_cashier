@@ -9,7 +9,7 @@ import {
   StatusBar,
   Modal,
 } from 'react-native';
-import {styles} from '../styles/styleAllBos';
+import {styles} from '../../styles/styleAllBos';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import Spinner from 'react-native-spinkit';
@@ -73,7 +73,7 @@ export class Spending extends Component {
           <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
             <Image
               style={styles.icon}
-              source={require('../assets/icon/back.png')}
+              source={require('../../assets/icon/back.png')}
             />
           </TouchableOpacity>
           <Text style={styles.title}>Laporan Pengeluaran</Text>
@@ -81,7 +81,7 @@ export class Spending extends Component {
             onPress={() => this.props.navigation.navigate('AddSpending')}>
             <Image
               style={styles.icon1}
-              source={require('../assets/icon/addReport.png')}
+              source={require('../../assets/icon/addReport.png')}
             />
           </TouchableOpacity>
         </View>

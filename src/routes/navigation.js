@@ -41,12 +41,12 @@ import MyCart from '../screen/mYCart';
 import DeleteId from '../screen/HeaderMyCart';
 import CheckOut from '../screen/CheckOut';
 import PaySaldo from '../screen/PaySaldo';
-import AddPurcase from '../screen/PurchaseReport';
-import SalesReport from '../screen/SalesReport';
-import LossReport from '../screen/LossReport';
+import AddPurcase from '../screen/Report/PurchaseReport';
+import SalesReport from '../screen/Report/SalesReport';
+import LossReport from '../screen/Report/LossReport';
 import SucssesMonth from '../screen/Sucsses/sucssesMonth';
-import Spending from '../screen/SpendingReport';
-import AddSpending from '../screen/addSpending';
+import Spending from '../screen/Report/SpendingReport';
+import AddSpending from '../screen/Report/addSpending';
 import ReportMont from '../screen/Report/ReportPurcasemonth';
 
 const Stack = createStackNavigator();

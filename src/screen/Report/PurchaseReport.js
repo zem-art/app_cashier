@@ -8,7 +8,7 @@ import {
   View,
   StatusBar,
 } from 'react-native';
-import {styles} from '../styles/styleAllBos';
+import {styles} from '../../styles/styleAllBos';
 import {connect} from 'react-redux';
 import DatePicker from 'react-native-datepicker';
 import axios from 'axios';
@@ -62,7 +62,7 @@ export class AddPurcase extends Component {
           <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
             <Image
               style={styles.icon}
-              source={require('../assets/icon/back.png')}
+              source={require('../../assets/icon/back.png')}
             />
           </TouchableOpacity>
 

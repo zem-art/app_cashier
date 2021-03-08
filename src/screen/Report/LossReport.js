@@ -7,7 +7,7 @@ import {
   ToastAndroid,
   Image,
 } from 'react-native';
-import {styles} from '../styles/styleAll';
+import {styles} from '../../styles/styleAll';
 import {Picker} from '@react-native-picker/picker';
 import axios from 'axios';
 import Spinner from 'react-native-spinkit';
@@ -67,7 +67,7 @@ export class LossReport extends Component {
           <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
             <Image
               style={styles.back}
-              source={require('../assets/icon/back.png')}
+              source={require('../../assets/icon/back.png')}
             />
           </TouchableOpacity>
           <Text style={styles.title}>Laporan Kerugian</Text>

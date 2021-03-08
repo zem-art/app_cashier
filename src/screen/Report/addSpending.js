@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   ToastAndroid,
 } from 'react-native';
-import {styles} from '../styles/styleAddSaldo';
+import {styles} from '../../styles/styleAddSaldo';
 import axios from 'axios';
 import {connect} from 'react-redux';
 
@@ -66,7 +66,7 @@ export class AddSpending extends Component {
           <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
             <Image
               style={styles.backUp}
-              source={require('../assets/icon/back.png')}
+              source={require('../../assets/icon/back.png')}
             />
           </TouchableOpacity>
           <Text style={styles.title}>Tambah Pengeluaran</Text>
