@@ -14,6 +14,16 @@ const stylesB = StyleSheet.create({
     borderBottomColor: '#F9C900',
     borderBottomWidth: 2,
   },
+  header1: {
+    // borderWidth: 1,
+    height: 60,
+    alignItems: 'center',
+    flexDirection: 'row',
+    paddingHorizontal: 15,
+    borderBottomColor: '#F9C900',
+    borderBottomWidth: 2,
+    justifyContent: 'space-between',
+  },
   title: {
     color: '#F9C900',
     fontSize: 20,
@@ -45,6 +55,7 @@ const stylesB = StyleSheet.create({
     width: 40,
     marginBottom: 5,
   },
+  exit: {height: 25, width: 25},
 });
 
 export {stylesB};
