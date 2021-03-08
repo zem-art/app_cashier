@@ -49,6 +49,7 @@ import Spending from '../screen/Report/SpendingReport';
 import AddSpending from '../screen/Report/addSpending';
 import ReportMont from '../screen/Report/ReportPurcasemonth';
 import AbsenHarian from '../screen/Attendance/AbsenHarian';
+import MountAbsensi from '../screen/Attendance/MountAbsensi';
 
 const Stack = createStackNavigator();
 
@@ -330,6 +331,11 @@ class Navigation extends Component {
           <Stack.Screen
             name="AbsenHarian"
             component={AbsenHarian}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AbsenBulan"
+            component={MountAbsensi}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

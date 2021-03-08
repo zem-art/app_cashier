@@ -15,7 +15,7 @@ export class BodyHomeB extends Component {
         },
         {
           text: 'Bulanan',
-          onPress: () => ToastAndroid.show('Bulan', ToastAndroid.LONG),
+          onPress: () => this.props.navigation.navigate('AbsenBulan'),
         },
         {
           text: 'Harian',
