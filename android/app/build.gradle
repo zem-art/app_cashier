@@ -137,7 +137,7 @@ android {
         missingDimensionStrategy 'react-native-camera', 'mlkit' // Untuk React Native Camera
         multiDexEnabled true  // Untuk React Native Camera
         versionCode 1
-        versionName "1.0"
+        versionName "1.1"
     }
     splits {
         abi {

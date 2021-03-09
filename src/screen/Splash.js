@@ -19,7 +19,7 @@ export class Splash extends Component {
         </View>
         <Spinner style={styles.loading} color={'white'} size={25} type="Wave" />
         <View style={styles.version}>
-          <Text style={styles.textVersion}>Versi : 1.0</Text>
+          <Text style={styles.textVersion}>Versi : 1.1</Text>
         </View>
       </View>
     );
