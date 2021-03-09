@@ -10,7 +10,7 @@ export class ProfileAdmin extends Component {
   constructor() {
     super();
     this.state = {
-      isloading: true,
+      isloading: false,
       data: {},
     };
   }
@@ -20,6 +20,7 @@ export class ProfileAdmin extends Component {
   }
 
   getProfil = async () => {
+    this.setState({isloading: true});
     try {
       await axios
         .get('https://project-mini.herokuapp.com/api/profile', {

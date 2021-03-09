@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#29abe2',
   },
   body: {
-    height: 300,
+    height: 280,
     // flex: 1,
     // borderWidth: 1,
     alignItems: 'center',
@@ -102,6 +102,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#29abe2',
   },
+  klik2: {
+    // borderWidth: 1,
+    height: 50,
+    width: '80%',
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F9C900',
+  },
   textSend: {
     fontSize: 18,
     color: '#ffff',
@@ -129,10 +138,10 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     paddingLeft: 20,
     justifyContent: 'center',
-    marginTop: 100,
+    height: 70,
   },
   klikBack: {
-    height: 70,
+    height: 50,
     width: 50,
     // borderWidth: 1,
     alignItems: 'center',

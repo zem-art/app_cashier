@@ -73,7 +73,7 @@ export class ScanInAdd extends Component {
             style={styles.klik}>
             <Image
               style={styles.klik}
-              source={require('../assets/icon/Back.png')}
+              source={require('../assets/icon/back.png')}
             />
           </TouchableOpacity>
         </View>

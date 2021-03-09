@@ -121,7 +121,7 @@ export class AddSaldo extends Component {
           <View style={styles.pacTouchable}>
             <TouchableOpacity
               onPress={() => this.addMoney()}
-              style={styles.klik}>
+              style={styles.klik2}>
               {this.state.isloading ? (
                 <Spinner
                   style={styles.loading}
@@ -141,7 +141,7 @@ export class AddSaldo extends Component {
             style={styles.klikBack}>
             <Image
               style={styles.back}
-              source={require('../assets/icon/Back.png')}
+              source={require('../assets/icon/BackDown.png')}
             />
           </TouchableOpacity>
         </View>

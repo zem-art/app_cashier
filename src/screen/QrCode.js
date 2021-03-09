@@ -30,7 +30,7 @@ export class QrCode extends Component {
             style={styles.klik}>
             <Image
               style={styles.back}
-              source={require('../assets/icon/Back.png')}
+              source={require('../assets/icon/BackDown.png')}
             />
           </TouchableOpacity>
         </View>

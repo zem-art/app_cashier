@@ -102,7 +102,7 @@ export class NoPhone extends Component {
             onPress={() => this.props.navigation.goBack()}>
             <Image
               style={styles.back}
-              source={require('../../assets/icon/Back.png')}
+              source={require('../../assets/icon/BackDown.png')}
             />
           </TouchableOpacity>
         </View>

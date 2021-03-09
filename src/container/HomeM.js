@@ -13,7 +13,6 @@ import {styles} from '../styles/styleHomeM';
 import axios from 'axios';
 import Spinner from 'react-native-spinkit';
 import {connect} from 'react-redux';
-import Body from '../components/bodyHome';
 import AsyncStorage from '@react-native-community/async-storage';
 
 class HomeM extends Component {
@@ -21,24 +20,30 @@ class HomeM extends Component {
     super();
     this.state = {
       data: {},
-      isloading: true,
+      isloading: false,
       isEror: false,
       refreash: false,
+      response: [],
     };
   }
 
   componentDidMount() {
-    this.getData();
+    this.getAll();
+  }
+
+  getAll() {
+    this.getData(), this.getHistory();
   }
 
   onRefreash() {
     this.setState({
       refreash: true,
     });
-    this.getData();
+    this.getAll();
   }
 
   getData = async () => {
+    this.setState({isloading: true});
     try {
       await axios
         .get('https://project-mini.herokuapp.com/api/get-member', {
@@ -86,6 +91,32 @@ class HomeM extends Component {
     }
   };
 
+  getHistory = async () => {
+    this.setState({isloading: true});
+    try {
+      await axios
+        .get('https://project-mini.herokuapp.com/api/transaksi', {
+          headers: {
+            Authorization: `Bearer${this.props.userData.userReducer.token}`,
+          },
+        })
+        .then((result) => {
+          this.setState({
+            response: result.data.data,
+            isloading: false,
+            refreash: false,
+          });
+        })
+        .catch((err) => {
+          console.log('Eror Get Data===', err);
+          this.setState({isloading: false, isEror: true, refreash: false});
+        });
+    } catch (err) {
+      console.log('Eroro Get Data==', err);
+      this.setState({isloading: false, isEror: false, refreash: false});
+    }
+  };
+
   render() {
     if (this.state.isloading) {
       return (
@@ -126,7 +157,23 @@ class HomeM extends Component {
             </TouchableOpacity>
           </View>
           <View style={styles.body}>
-            <Body navigation={this.props.navigation} />
+            {this.state.response.map((item) => {
+              return (
+                <View style={styles.inBody}>
+                  <View style={styles.History}>
+                    <Text>Via : {item.bank}</Text>
+                    <View style={styles.pactPrice}>
+                      <Text>Price : </Text>
+                      <Text style={styles.textPrice}>{item.jumlah}</Text>
+                    </View>
+                  </View>
+                  <View style={styles.pactDate}>
+                    <Text>Date</Text>
+                    <Text style={styles.textDate}>{item.created_at}</Text>
+                  </View>
+                </View>
+              );
+            })}
           </View>
         </ScrollView>
       </View>
