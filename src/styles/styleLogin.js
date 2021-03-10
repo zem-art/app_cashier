@@ -59,6 +59,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  text: {
+    color: '#a9a9a9',
+    fontSize: 15,
+    fontWeight: 'bold',
+  },
   inBottom: {
     height: 30,
     // borderWidth: 1,

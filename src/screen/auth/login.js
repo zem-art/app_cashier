@@ -14,6 +14,7 @@ import {connect} from 'react-redux';
 import Spinner from 'react-native-spinkit';
 import {styles} from '../../styles/styleLogin';
 import AsyncStorage from '@react-native-community/async-storage';
+import Checkbox from '@react-native-community/checkbox';
 
 class Login extends Component {
   constructor() {
@@ -23,6 +24,7 @@ class Login extends Component {
       email: '',
       password: '',
       isloading: false,
+      box: false,
     };
   }
   changeEye = () => {
@@ -44,27 +46,26 @@ class Login extends Component {
           const {is_verified} = result.data.data;
           const {role_id} = result.data.data;
           const {token} = result.data;
-          console.log('==Sedang Berjalan==');
           this.props.userRole(role_id);
           this.props.userToken(token);
           this.props.userVerifed(is_verified);
-          console.log('==Selesai Menyimpan==');
+          console.log('LOgin', result.data);
           if (token !== null || role_id !== null || is_verified !== null) {
             ToastAndroid.show('Anda Berhasil Login', ToastAndroid.LONG);
             const token_Key = ['token', token];
             const role_Key = ['role', JSON.stringify(role_id)];
             const verifed_Key = ['verifid', is_verified];
-            console.log('===Mulai Menyimpan Di Asynstore===');
-            AsyncStorage.multiSet([token_Key, role_Key, verifed_Key]).then(
-              (value) => {
-                this.setState({
-                  token_Key: value,
-                  role_Key: value,
-                  verifed_Key: value,
-                });
-                console.log('++++===SAVE DONE===++++');
-              },
-            );
+            this.state.box
+              ? AsyncStorage.multiSet([token_Key, role_Key, verifed_Key]).then(
+                  (value) => {
+                    this.setState({
+                      token_Key: value,
+                      role_Key: value,
+                      verifed_Key: value,
+                    });
+                  },
+                )
+              : null;
             ToastAndroid.show('Anda Berhasil Login', ToastAndroid.LONG);
             this.setState({
               isloading: false,
@@ -150,6 +151,17 @@ class Login extends Component {
                 />
               </TouchableOpacity>
             </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Checkbox
+                value={this.state.box}
+                onValueChange={() => this.setState({box: !this.state.box})}
+              />
+              <Text style={styles.text}>Ingatkan Saya</Text>
+            </View>
           </View>
           <View style={styles.Bootom}>
             <TouchableOpacity
@@ -187,20 +199,20 @@ class Login extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    userId: (id) => dispatch({type: 'SET_ID', payload: id}),
     userVerifed: (is_verified) =>
       dispatch({type: 'SET_VERIVIC', payload: is_verified}),
-    kodeUser: (kode_member) =>
-      dispatch({type: 'SET_KODE', payload: kode_member}),
-    nameUser: (nama) => dispatch({type: 'SET_NAME', payload: nama}),
-    numberUser: (nomor) => dispatch({type: 'SET_NUMBER', payload: nomor}),
-    userQrcode: (qr_code) => dispatch({type: 'SET_QRCODE', payload: qr_code}),
     userRole: (role_id) => dispatch({type: 'SET_ROLE', payload: role_id}),
     userToken: (token) => dispatch({type: 'SET_USER', payload: token}),
-    userImage: (avatar) => dispatch({type: 'SET_IMAGE', payload: avatar}),
-    userEmail: (email) => dispatch({type: 'SET_EMAIL', payload: email}),
-    userAddress: (alamat) => dispatch({type: 'SET_ADDRESS', payload: alamat}),
-    userAge: (umur) => dispatch({type: 'SET_AGE', payload: umur}),
+    // userId: (id) => dispatch({type: 'SET_ID', payload: id}),
+    // kodeUser: (kode_member) =>
+    //   dispatch({type: 'SET_KODE', payload: kode_member}),
+    // nameUser: (nama) => dispatch({type: 'SET_NAME', payload: nama}),
+    // numberUser: (nomor) => dispatch({type: 'SET_NUMBER', payload: nomor}),
+    // userQrcode: (qr_code) => dispatch({type: 'SET_QRCODE', payload: qr_code}),
+    // userImage: (avatar) => dispatch({type: 'SET_IMAGE', payload: avatar}),
+    // userEmail: (email) => dispatch({type: 'SET_EMAIL', payload: email}),
+    // userAddress: (alamat) => dispatch({type: 'SET_ADDRESS', payload: alamat}),
+    // userAge: (umur) => dispatch({type: 'SET_AGE', payload: umur}),
   };
 };
 export default connect(null, mapDispatchToProps)(Login);
