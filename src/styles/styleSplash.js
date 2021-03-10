@@ -20,6 +20,13 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+    // borderWidth: 1,
+  },
+  title: {
+    color: '#ffffff',
+    fontSize: 25,
+    fontWeight: 'bold',
+    marginBottom: 100,
   },
   loading: {
     margin: 10,

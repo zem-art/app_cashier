@@ -16,10 +16,11 @@ export class Splash extends Component {
             autoPlay
             loop
           />
+          <Text style={styles.title}>Cashir Ku</Text>
         </View>
         <Spinner style={styles.loading} color={'white'} size={25} type="Wave" />
         <View style={styles.version}>
-          <Text style={styles.textVersion}>Versi : 1.1</Text>
+          <Text style={styles.textVersion}>Versi : 1.2</Text>
         </View>
       </View>
     );
