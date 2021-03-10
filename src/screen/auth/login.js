@@ -62,10 +62,7 @@ class Login extends Component {
                   },
                   console.log('==Data Tersimpan=='),
                 )
-              : ToastAndroid.show(
-                  'Data Anda Tidak Tersimpan',
-                  ToastAndroid.LONG,
-                );
+              : console.log('==Data Tidak Tersimpan===');
             ToastAndroid.show('Anda Berhasil Login', ToastAndroid.LONG);
             this.setState({
               isloading: false,
