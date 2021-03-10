@@ -60,7 +60,6 @@ class HomeM extends Component {
           this.props.kodeUser(kode_member);
           this.props.nameUser(nama);
           this.props.userQrcode(qr_code);
-          // console.log('Berhasil Get ==', result.data.data);
           this.setState({
             data: result.data.data,
             isloading: false,
@@ -77,7 +76,7 @@ class HomeM extends Component {
                 role_Key: value,
                 verifed_Key: value,
               });
-              console.log('++++===SAVE DONE===++++');
+              console.log('++++===SAVE DONE HOME===++++');
             },
           );
         })

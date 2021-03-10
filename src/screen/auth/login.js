@@ -34,7 +34,6 @@ class Login extends Component {
 
   userLogin = async () => {
     this.setState({isloading: true});
-    console.log('Mulai Menyimpan');
     try {
       axios
         .post('https://project-mini.herokuapp.com/api/login', {
@@ -42,20 +41,17 @@ class Login extends Component {
           password: this.state.password,
         })
         .then((result) => {
-          console.log('sedang Menyimpan');
           const {is_verified} = result.data.data;
           const {role_id} = result.data.data;
           const {token} = result.data;
           this.props.userRole(role_id);
           this.props.userToken(token);
           this.props.userVerifed(is_verified);
-          console.log('LOgin', result.data);
           if (token !== null || role_id !== null || is_verified !== null) {
-            ToastAndroid.show('Anda Berhasil Login', ToastAndroid.LONG);
             const token_Key = ['token', token];
             const role_Key = ['role', JSON.stringify(role_id)];
             const verifed_Key = ['verifid', is_verified];
-            this.state.box
+            this.state.box // Fitur Remember Me
               ? AsyncStorage.multiSet([token_Key, role_Key, verifed_Key]).then(
                   (value) => {
                     this.setState({
@@ -64,8 +60,12 @@ class Login extends Component {
                       verifed_Key: value,
                     });
                   },
+                  console.log('==Data Tersimpan=='),
                 )
-              : null;
+              : ToastAndroid.show(
+                  'Data Anda Tidak Tersimpan',
+                  ToastAndroid.LONG,
+                );
             ToastAndroid.show('Anda Berhasil Login', ToastAndroid.LONG);
             this.setState({
               isloading: false,
@@ -91,7 +91,6 @@ class Login extends Component {
     }
   };
   render() {
-    // console.log('==INi Data Redux==', this.props.userData.userReducer);
     return (
       <View style={styles.container}>
         <StatusBar backgroundColor="#4f52ffff" />
@@ -151,11 +150,7 @@ class Login extends Component {
                 />
               </TouchableOpacity>
             </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-              }}>
+            <View style={styles.checkBox}>
               <Checkbox
                 value={this.state.box}
                 onValueChange={() => this.setState({box: !this.state.box})}
@@ -203,16 +198,6 @@ const mapDispatchToProps = (dispatch) => {
       dispatch({type: 'SET_VERIVIC', payload: is_verified}),
     userRole: (role_id) => dispatch({type: 'SET_ROLE', payload: role_id}),
     userToken: (token) => dispatch({type: 'SET_USER', payload: token}),
-    // userId: (id) => dispatch({type: 'SET_ID', payload: id}),
-    // kodeUser: (kode_member) =>
-    //   dispatch({type: 'SET_KODE', payload: kode_member}),
-    // nameUser: (nama) => dispatch({type: 'SET_NAME', payload: nama}),
-    // numberUser: (nomor) => dispatch({type: 'SET_NUMBER', payload: nomor}),
-    // userQrcode: (qr_code) => dispatch({type: 'SET_QRCODE', payload: qr_code}),
-    // userImage: (avatar) => dispatch({type: 'SET_IMAGE', payload: avatar}),
-    // userEmail: (email) => dispatch({type: 'SET_EMAIL', payload: email}),
-    // userAddress: (alamat) => dispatch({type: 'SET_ADDRESS', payload: alamat}),
-    // userAge: (umur) => dispatch({type: 'SET_AGE', payload: umur}),
   };
 };
 export default connect(null, mapDispatchToProps)(Login);

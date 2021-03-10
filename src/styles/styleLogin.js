@@ -83,6 +83,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#4f52ffff',
     // marginLeft: 10,
   },
+  checkBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   textLogin: {
     color: '#ffffff',
     fontSize: 17,
